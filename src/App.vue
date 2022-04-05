@@ -4,7 +4,7 @@
       <img class="logo" alt="UOC logo" src="./assets/uoc-logo.png" />
       <div class="app-name">Recipe book</div>
     </div>
-    <search-bar @search="setSearchTerm" />
+    <search-bar @showForm="toggleForm" @search="setSearchTerm" />
     <recipe-list :recipeList="filteredData" @delete-recipe="deleteRecipe" />
     <recipe-form
       v-if="showModal"
@@ -19,7 +19,6 @@ import RecipeList from "./components/RecipeList.vue";
 import RecipeForm from "./components/RecipeForm.vue";
 import SearchBar from "./components/SearchBar.vue";
 import { defineComponent } from "vue";
-
 export default defineComponent({
   name: "App",
   components: {
@@ -65,7 +64,6 @@ export default defineComponent({
       },
     ],
     showModal: false,
-    recipesData: RecipeList,
     filteredData: RecipeList,
   }),
   methods: {
@@ -83,7 +81,7 @@ export default defineComponent({
     setSearchTerm(value) {
       console.log(value);
       if (value && value.length > 0) {
-        this.filteredData = this.recipesData.filter((i) => {
+        this.filteredData = this.recipeList.filter((i) => {
           const val = value.toLowerCase();
           const title = i.title && i.title.toLowerCase();
           if (val && title.indexOf(val) !== -1) {
@@ -92,7 +90,7 @@ export default defineComponent({
           return false;
         });
       } else {
-        this.filteredData = this.recipesData;
+        this.filteredData = this.recipeList;
       }
     },
   },
@@ -132,3 +130,4 @@ S body {
   font-size: 20px;
 }
 </style>
+
