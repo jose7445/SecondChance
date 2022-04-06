@@ -26,8 +26,11 @@ export default defineComponent({
     RecipeForm,
     SearchBar,
   },
-  data: () => ({
-    recipeList: [
+  data() {
+    // Initialize empty array
+    let filteredData = []
+
+    let recipeList = [
       {
         id: 1,
         servings: 4,
@@ -62,10 +65,17 @@ export default defineComponent({
         imageUrl:
           "https://www.unileverfoodsolutions.es/dam/global-ufs/mcos/SPAIN/calcmenu/recipes/ES-recipes/In-Development/american-bbq-beef-salad/main-header.jpg",
       },
-    ],
-    showModal: false,
-    filteredData: RecipeList,
-  }),
+    ]
+
+    // At the start show all recipes in the filtered data array
+    filteredData = recipeList
+
+    return {
+      showModal: false,
+      recipeList,
+      filteredData
+    }
+  },
   methods: {
     deleteRecipe(id) {
       this.recipeList.splice(id, 1);
@@ -79,12 +89,11 @@ export default defineComponent({
       }
     },
     setSearchTerm(value) {
-      console.log(value);
       if (value && value.length > 0) {
         this.filteredData = this.recipeList.filter((i) => {
           const val = value.toLowerCase();
-          const title = i.title && i.title.toLowerCase();
-          if (val && title.indexOf(val) !== -1) {
+          const title = i.title.toLowerCase();
+          if (title.includes(val)) {
             return true;
           }
           return false;

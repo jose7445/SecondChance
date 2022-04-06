@@ -23,7 +23,7 @@ export default defineComponent({
     deleteRecipe(id) {
       this.$emit("delete-recipe", id);
     },
-  },
+  }
 });
 </script>
 
