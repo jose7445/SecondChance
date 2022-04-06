@@ -4,7 +4,7 @@
       type="text"
       placeholder="Search for a recipe"
       id="search"
-      @change="search"
+      @input="search"
       v-model="searchText"
     />
     <button @click="clearSearch">Clear search</button>
