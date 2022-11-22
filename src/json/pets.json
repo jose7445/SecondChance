@@ -1,0 +1,242 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Thor",
+      "image_url": "https://cdn.pixabay.com/photo/2017/09/25/08/04/cat-2784291_960_720.jpg",
+      "location": "Barcelona",
+      "species": "Gato",
+      "sex": "Macho",
+      "size": "Mediano",
+      "birth_date": "2018-06-01",
+      "handle_status": {
+        "vaccinated": false,
+        "dewormed": true,
+        "sterilized": true,
+        "microchip": true
+      },
+      "bio": "Thor llegó de Montcada y es algo tímido pero con un poco de confianza se deja mimar y acariciar.",
+      "status": "En adopción",
+      "personality": ["Bueno con gatos", "Timido", "Juguetón"],
+      "info_notes": [],
+      "short_description": "Me gusta comer y dormir!",
+      "race": "Persa"
+    },
+    {
+      "id": 2,
+      "name": "Pancho",
+      "image_url": "https://cdn.pixabay.com/photo/2019/05/19/19/07/boxer-4214890_960_720.jpg",
+      "location": "Badalona",
+      "species": "Perro",
+      "sex": "Macho",
+      "size": "Mediano",
+      "birth_date": "2015-12-03",
+      "handle_status": {
+        "vaccinated": true,
+        "dewormed": true,
+        "sterilized": true,
+        "microchip": true
+      },
+      "bio": "Pancho es un perro muy obediente y cariñoso. Muy bueno con los niños y otros perros.",
+      "status": "En adopción",
+      "personality": [
+        "Bueno con otros perros",
+        "Bueno con niños",
+        "Cariñoso",
+        "Bueno en casa"
+      ],
+      "info_notes": [
+        "Estoy en tratamiento médico",
+        "Soy positivo en Leishmania"
+      ],
+      "short_description": "Me gusta ir al parque con otros perros!",
+      "race": "Boxer"
+    },
+    {
+      "id": 3,
+      "name": "Lola",
+      "image_url": "https://cdn.pixabay.com/photo/2021/01/12/18/08/golden-retriever-5912184_960_720.jpg",
+      "location": "Barcelona",
+      "species": "Perro",
+      "sex": "Hembra",
+      "size": "Pequeño",
+      "birth_date": "2019-05-18",
+      "handle_status": {
+        "vaccinated": true,
+        "dewormed": false,
+        "sterilized": true,
+        "microchip": true
+      },
+      "bio": "Lola es buenísima! Le encanta estar con gente y es lo más cariñoso que existe. No ha tenido una vida fácil, fue maltratada casi toda su vida. A pesar de haber tenido un pasado doloroso, ella sólo busca cariño y poder vivir tranquila. Es una perra tranquila, sabe ir con bozal perfectamente y es muy obediente y aprende enseguida.",
+      "status": "En adopción",
+      "personality": [
+        "Me gusta pasear",
+        "Me gusta estar en compañía",
+        "Cariñoso",
+        "Juguetón"
+      ],
+      "info_notes": [],
+      "short_description": "Me porto bien con los otros perros!",
+      "race": "Labrador"
+    },
+    {
+      "id": 4,
+      "name": "Catiperri",
+      "image_url": "https://cdn.pixabay.com/photo/2016/03/13/21/32/cat-1254523_960_720.jpg",
+      "location": "Barcelona",
+      "species": "Gato",
+      "sex": "Hembra",
+      "size": "Mediano",
+      "birth_date": "2016-03-12",
+      "handle_status": {
+        "vaccinated": false,
+        "dewormed": false,
+        "sterilized": true,
+        "microchip": false
+      },
+      "bio": "Me llamó Catiperri y llevó mucho tiempo viviendo en la calle, unos 4 años calculo. La vida callejera me ha vuelto desconfiada. Sólo mi alimentadora merecía mi atención y dejaba que me acariciara cuando venía a darme comida y cariño. Soy limpia, uso el arenero y creo que, con un poco de paciencia volveré a confiar.",
+      "status": "En adopción",
+      "personality": ["Cauteloso con extraños", "Tímido", "Independiente"],
+      "info_notes": [],
+      "short_description": "Nunca araño a los demás!",
+      "race": "Siberiano"
+    },
+    {
+      "id": 5,
+      "name": "Aramis",
+      "image_url": "https://cdn.pixabay.com/photo/2016/10/31/14/47/dog-1785748_960_720.jpg",
+      "location": "Sabadell",
+      "species": "Perro",
+      "sex": "Macho",
+      "size": "Pequeño",
+      "birth_date": "2019-08-08",
+      "handle_status": {
+        "vaccinated": true,
+        "dewormed": true,
+        "sterilized": true,
+        "microchip": true
+      },
+      "bio": "Aramis ha sido encontrado en la calle, llegó flaquito pero no estaba en muy malas condiciones. Por su carácter y su edad, pensamos que ha podido tener familia hasta hace poquito. ",
+      "status": "Adoptado",
+      "personality": [
+        "Bueno con otros perros",
+        "Bueno con gatos",
+        "Bueno con otros animales",
+        "Me gusta pasear",
+        "Cariñoso"
+      ],
+      "info_notes": [],
+      "short_description": "Tirame una pelota y jugaremos!",
+      "race": "Schnauzer"
+    },
+    {
+      "id": 6,
+      "name": "Lucy",
+      "image_url": "https://cdn.pixabay.com/photo/2019/04/25/15/11/cat-4155119_960_720.jpg",
+      "location": "Montmeló",
+      "species": "Gato",
+      "sex": "Hembra",
+      "size": "Pequeño",
+      "birth_date": "2018-02-09",
+      "handle_status": {
+        "vaccinated": true,
+        "dewormed": true,
+        "sterilized": false,
+        "microchip": true
+      },
+      "bio": "Rescatada entre maullando y escondiéndose entre los coches, la pequeña Lucy es una gatita muy juguetona, aventurera, divertida... sociable con otros gatos, tímida con las personas hasta que te conoce y te empieza a ronronear, es un pequeño motorcillo!",
+      "status": "En adopción",
+      "personality": [
+        "Bueno con gatos",
+        "Bueno con niños",
+        "Bueno en casa",
+        "Cariñoso"
+      ],
+      "info_notes": ["Soy positivo en Leucemia felina"],
+      "short_description": "Duermo poco y juego mucho!",
+      "race": "Ragdoll"
+    },
+    {
+      "id": 7,
+      "name": "Bowie",
+      "image_url": "https://cdn.pixabay.com/photo/2018/04/27/11/19/cat-3354387_960_720.jpg",
+      "location": "Terrassa",
+      "species": "Gato",
+      "sex": "Macho",
+      "size": "Mediano",
+      "birth_date": "2015-04-15",
+      "handle_status": {
+        "vaccinated": true,
+        "dewormed": true,
+        "sterilized": true,
+        "microchip": true
+      },
+      "bio": "Me llamo Bowie, fuí abandonado y tenía una herida muy grande en el cuello, mi delgadez asustaba y una fractura en la pata que se podía ver el hueso roto. Despues de la cirugía y una larga rehabilitación no logre recuperar la movilidad de mi patita y la llevo encogida, pero hago una vida normal.",
+      "status": "Adoptado",
+      "personality": [
+        "Bueno con gatos",
+        "Bueno con niños",
+        "Bueno en casa",
+        "Cariñoso"
+      ],
+      "info_notes": ["Estoy en tratamiento médico"],
+      "short_description": "Seremos buenos amigos!",
+      "race": "Siamés"
+    },
+    {
+      "id": 8,
+      "name": "Floyd",
+      "image_url": "https://cdn.pixabay.com/photo/2014/12/10/05/50/english-bulldog-562723_960_720.jpg",
+      "location": "Castelldefels",
+      "species": "Perro",
+      "sex": "Macho",
+      "size": "Pequeño",
+      "birth_date": "2016-10-08",
+      "handle_status": {
+        "vaccinated": false,
+        "dewormed": false,
+        "sterilized": false,
+        "microchip": true
+      },
+      "bio": "Floyd es un perro de tamaño mediano, es muy bueno tanto dentro como fuera de casa. Apto con perros, gatos y niños ¿Te animas a adoptarlo?",
+      "status": "En adopción",
+      "personality": [
+        "Bueno con otros perros",
+        "Bueno con gatos",
+        "Bueno en el coche",
+        "Cariñoso",
+        "Amigable con extraños"
+      ],
+      "info_notes": ["Necesito licencia PPP"],
+      "short_description": "No soy nada gruñon!",
+      "race": "Bulldog"
+    },
+    {
+      "id": 9,
+      "name": "Murdog",
+      "image_url": "https://cdn.pixabay.com/photo/2019/10/06/05/59/dog-4529343_960_720.jpg",
+      "location": "Barcelona",
+      "species": "Perro",
+      "sex": "Macho",
+      "size": "Mediano",
+      "birth_date": "2014-11-01",
+      "handle_status": {
+        "vaccinated": true,
+        "dewormed": true,
+        "sterilized": true,
+        "microchip": true
+      },
+      "bio": "Murdog es un perro noble, vigilante muy tranquilo, cariñoso leal y fiel. Ahora está de acogida en un refugio, esperando tener una familia.",
+      "status": "En acogida",
+      "personality": [
+        "Bueno con otros perros",
+        "Cariñoso",
+        "A veces ladro",
+        "Amigable con extraños"
+      ],
+      "info_notes": [],
+      "short_description": "Se dar la patita!",
+      "race": "Schnoodle"
+    }
+  ]
+}

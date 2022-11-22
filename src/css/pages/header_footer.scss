@@ -1,0 +1,30 @@
+
+.bg-scroll {
+  background-color: rgba(255, 255, 255, 80%);
+  /* red with opacity */
+}
+.q-tab__label {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/** MEDIA QUERY PHONE 480PX **/
+@media (max-width: 480px) {
+  .responsive-size {
+    height: auto !important;
+  }
+  .bg-button-menu {
+    background-color: transparent;
+  }
+  .q-toolbar {
+    padding: 0;
+  }
+  .q-avatar {
+    border-radius: 0;
+  }
+}
+
+/** Extra large devices (large desktops, 1200px and up) **/
+@media (min-width: 1200px) {
+}
+

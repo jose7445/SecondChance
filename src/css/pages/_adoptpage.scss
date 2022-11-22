@@ -1,0 +1,60 @@
+.img-bg-adopt {
+  background-image: url("../assets/imagenes/background_adopt.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+  min-height: 800px;
+}
+
+@media (max-width: 480px) {
+  .img-bg-adopt {
+    background-image: url("../assets/imagenes/background_adopt_phone.webp");
+    background-attachment: scroll;
+  }
+}
+
+.border-bg {
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.bg-card {
+  box-shadow: none;
+  background-color: transparent;
+  padding-top: 10rem;
+  text-align: center;
+}
+
+.flex-bg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-pet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 10rem;
+  column-gap: 10rem;
+}
+
+@media (max-width: 480px) {
+  .flex-pet {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    row-gap: 3rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .flex-pet {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    column-gap: 3rem;
+  }
+}

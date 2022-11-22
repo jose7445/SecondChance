@@ -1,0 +1,86 @@
+// app global css in SCSS form
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $p;
+  font-size: 1.6rem;
+  font-weight: 300;
+  background-color: #f3f5f7;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 120rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.text-h1 {
+  line-height: 1.4;
+  font-family: $title;
+  color: $secondary;
+  font-weight: 600;
+}
+.text-h2,
+.text-h3,
+.text-h4 {
+  font-family: $title;
+  color: $secondary;
+  font-weight: 600;
+}
+
+.span-title {
+  font-family: $title;
+  font-weight: 900;
+  color: $primary;
+}
+
+.q-btn {
+  color: #ffffff;
+  background-color: $primary;
+}
+
+p {
+  color: $secondary !important;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+
+a {
+  text-decoration: none;
+
+  color: $primary;
+}
+
+/** MEDIA QUERIS GLOBALES **/
+
+/** MEDIA QUERY PHONE 320PX - 480PX **/
+@media (max-width: 480px) {
+  .text-h1 {
+    font-size: 30px;
+  }
+  .text-h2 {
+    font-size: 25px;
+    text-align: center;
+  }
+  .text-h3 {
+    font-size: 20px;
+    text-align: center;
+  }
+  .text-h4 {
+    font-size: 18px;
+  }
+  .span-title {
+    font-family: $title;
+    font-weight: 700;
+    color: $primary;
+  }
+}
