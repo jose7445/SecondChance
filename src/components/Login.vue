@@ -1,86 +1,138 @@
 <template>
-  <div class="modal-container">
-    <div class="recipe-form-header">
-      <section class="contact">
-        <div class="contact-box">
-          <div class="contact-links">
-            <h2 class="text-h2 text-center text-white">LOGIN</h2>
-            <div class="links">
-              <div class="link">
-                <a
-                  ><img
-                    src="https://i.postimg.cc/m2mg2Hjm/linkedin.png"
-                    alt="linkedin"
-                /></a>
-              </div>
-              <div class="link">
-                <a class="img-form"
-                  ><img
-                    class="img-form"
-                    src="https://i.postimg.cc/YCV2QBJg/github.png"
-                    alt="github"
-                /></a>
-              </div>
-              <div class="link">
-                <a
-                  ><img
-                    src="https://i.postimg.cc/W4Znvrry/codepen.png"
-                    alt="codepen"
-                /></a>
-              </div>
-            </div>
-          </div>
-          <div class="contact-form-wrapper">
-            <div class="button-close">
-              <button @click="closeForm">
-                <img src="../assets/close-button.svg" alt="Close modal" />
-              </button>
-            </div>
-            <form>
-              <div class="form-item">
-                <input type="text" name="sender" required />
-                <label>Usuario:</label>
-              </div>
-              <div class="form-item">
-                <input type="text" name="email" required />
-                <label>Contraseña:</label>
-              </div>
-              <button class="submit-btn">Enviar</button>
-            </form>
-            <div class="vertical-bottom text-center q-mt-xl">
-              Si no tienes todavía, crea tu
-              <a href="#" @click="toggleForm()">cuenta</a>
-            </div>
-          </div>
+  <q-card-section class="q-pa-none">
+    <div class="contact-box">
+      <div class="contact-links">
+        <h2 class="text-h2 text-center text-white">INICIAR SESIÓN</h2>
+        <div class="links q-gutter-lg">
+          <q-btn
+            round
+            color="green"
+            size="20px"
+            icon="mdi-facebook"
+            href="https://www.facebook.com/joseluis.agudosabate/"
+            aria-label="Facebook"
+          />
+          <q-btn
+            round
+            color="green"
+            size="20px"
+            icon="mdi-instagram"
+            href="https://www.facebook.com/"
+            aria-label="Instagram"
+          />
+          <q-btn
+            round
+            color="green"
+            size="20px"
+            icon="mdi-linkedin"
+            href="https://www.linkedin.com/in/jose-agudo-sabate-bb1041137"
+            aria-label="Linkedin"
+          />
         </div>
-      </section>
+      </div>
+      <div class="contact-form-wrapper">
+        <q-form class="q-gutter-md">
+          <div class="form-item">
+            <q-input
+              square
+              clearable
+              v-model="email"
+              type="email"
+              lazy-rules
+              :rules="[(val, rules) => rules.email(val) || 'Email incorrecto']"
+              label="Email"
+            >
+              <template v-slot:prepend>
+                <q-icon name="email" />
+              </template>
+            </q-input>
+          </div>
+          <div class="form-item">
+            <q-input
+              square
+              clearable
+              v-model="password"
+              :type="isPwd ? 'password' : 'text'"
+              label="Password"
+              :rules="[(val) => val.length > 6 || 'Minimo 6 caracteres']"
+            >
+              <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+              <template v-slot:prepend>
+                <q-icon name="password" />
+              </template>
+            </q-input>
+          </div>
+          <div class="text-center inherit">
+            <q-btn label="ENVIAR" @click="login" color="primary" />
+          </div>
+        </q-form>
+        <div class="q-pt-lg row justify-between">
+          <div>¿Olvidaste la clave?</div>
+          <router-link to="registrarse">Registrarse</router-link>
+        </div>
+      </div>
     </div>
-    <Register v-if="showModal" @close-modal="showModal = false" />
-  </div>
+  </q-card-section>
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import Register from "../components/Register.vue";
+import { useQuasar } from "quasar";
+import { ref } from "vue";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "vue-router";
 
-export default defineComponent({
-  name: "Form",
-  components: { Register },
+export default {
+  setup() {
+    const $q = useQuasar();
+    const email = ref("");
+    const password = ref("");
+    const error = ref(null);
+    const router = useRouter();
+    const isPwd = ref(true);
 
-  data() {
-    return { showModal: false };
+    return {
+      email,
+      password,
+      error,
+      isPwd,
+
+      async login() {
+        const auth = getAuth();
+
+        signInWithEmailAndPassword(auth, email.value, password.value)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+
+            $q.notify({
+              message: "Sesión iniciada",
+              type: "positive",
+            });
+            setTimeout(() => location.reload(), 1000);
+          })
+          .catch((error) => {
+            console.log(error.code);
+            switch (error.code) {
+              case "auth/user-not-found":
+                error.message = "Usuario no encontrado";
+                break;
+              case "auth/wrong-password":
+                error.message = "Password incorrecta";
+                break;
+            }
+            $q.notify({
+              message: error.message,
+              type: "negative",
+            });
+          });
+      },
+    };
   },
-  methods: {
-    closeForm() {
-      this.$emit("close-modal");
-    },
-    toggleForm() {
-      if (this.showModal === false) {
-        this.showModal = true;
-      }
-    },
-  },
-});
+};
 </script>
-
-<style></style>

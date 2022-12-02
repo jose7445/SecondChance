@@ -15,8 +15,8 @@
 
     <!--SECTION ONE-->
 
-    <section class="section-three q-pa-xl">
-      <div class="text-center text-h2 q-pb-xl">
+    <section class="section-three q-mb-xl">
+      <div class="title text-center text-h2 q-pa-xl">
         Adopotar nuestras
         <span class="span-title">mascotes</span>
         <p class="q-pt-md">
@@ -71,7 +71,7 @@
           </div>
           <div class="pet-detail bg-white custom-fields q-mt-lg">
             <div class="text-h3 q-pb-lg">Estado:</div>
-            <div>
+            <div class="pet_status">
               <span
                 v-if="pets.handle_status?.vaccinated"
                 class="bg-primary q-pa-sm q-mr-xl rounded-borders"
@@ -135,29 +135,80 @@
                 aria-label="Adoptar"
                 icon-right="mdi-hand-heart"
                 label="Adoptar"
+                @click="medium = true"
               />
               <q-btn
                 aria-label="Guardar"
                 icon-right="mdi-heart-multiple"
                 label="Guardar"
+                @click="open"
               />
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!--SECTION THREE-->
+    <section class="section-three-about q-pa-xl bg-white">
+      <div class="container">
+        <div class="text-center text-h2">
+          Quieres seguir buscando tu mascota
+          <span class="span-title"> favorita?</span>
+          <div class="text-center inherit q-pt-xl">
+            <q-btn
+              aria-label="Volver"
+              icon-right="mdi-chevron-right"
+              label="Volver"
+              to="/adoptar"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--SECTION THREE-->
     <!--SECTION ONE-->
+    <q-dialog v-model="medium">
+      <q-card class="bg-transparent" style="width: 900px; max-width: 80vw">
+        <Form />
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="alert">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Favoritos</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          Se ha añadido a <span class="span-title">{{ pets.name }}</span> a tus
+          favoritos!
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="white" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
 import { getPetById } from "../boot/db.js";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc, arrayUnion } from "firebase/firestore";
+import db from "../boot/db";
+import Form from "../components/Form.vue";
 
 export default {
   name: "CardDetail",
-  data() {
+  components: { Form },
+
+  data: () => {
     return {
       pets: [],
+      favourite: [],
+      medium: false,
+      alert: false,
     };
   },
 
@@ -168,18 +219,50 @@ export default {
     }
     this.pets = await getPetById(id);
   },
+  methods: {
+    async open() {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+          console.log(uid);
+          const cityRef = doc(db, "users", user.uid);
+          setDoc(
+            cityRef,
+            { favourite: arrayUnion(this.pets) },
+            { merge: true }
+          );
+          this.alert = true;
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
+    },
+  },
 };
 </script>
 
 <style>
 /** <!--BACKGROUND PAGE--> **/
 .img-bg-detail {
-  background-image: url("../assets/imagenes/background_about.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 800px;
+  min-height: 200px;
+}
+
+.border-bg {
+  border-top: 2px solid #79d671;
+  border-bottom: 2px solid #79d671;
+}
+
+@media (max-width: 480px) {
+  .img-bg-detail {
+    background-image: url("../assets/imagenes/background_about_phone.webp");
+    background-position: center;
+    background-attachment: scroll;
+  }
 }
 
 .img-pet img {
@@ -187,9 +270,23 @@ export default {
   height: 750px;
 }
 
+@media (max-width: 480px) {
+  .img-pet img {
+    width: 100%;
+    height: 300px;
+  }
+}
+
 .pet-detail {
   width: 100%;
   padding: 5rem;
+}
+
+@media (max-width: 480px) {
+  .pet-detail {
+    width: 100%;
+    padding: 2rem;
+  }
 }
 
 table {
@@ -219,5 +316,19 @@ table th {
 .custom-fields th,
 .custom-fields td {
   text-align: left;
+}
+
+@media (max-width: 480px) {
+  .custom-fields th,
+  .custom-fields td {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pet_status span {
+    padding: 1px;
+    margin-right: 5px;
+  }
 }
 </style>

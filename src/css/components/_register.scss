@@ -1,52 +1,15 @@
-.modal-container {
-  position: fixed;
-  top: 0;
-  left: 0;
+.contact-box-register {
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 10;
-}
-
-.contact {
-  margin: 0 auto;
-  width: 45%;
-  margin-top: 180px;
-  background-color: transparent;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.button-close button {
-  position: absolute;
-  top: 265px;
-  right: 675px;
-  margin-right: 100px;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-}
-
-.button-close button img {
-  width: 25px;
-}
-
-.contact-box {
-  width: clamp(100px, 90%, 1000px);
-  margin: 80px 50px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.contact-links,
-.contact-form-wrapper {
-  width: 50%;
-  padding: 8% 5% 10% 5%;
-}
-
-.contact-links {
+.contact-links-register {
+  border-radius: 0;
+  width: 100%;
+  height: 260px;
+  padding: 2rem;
   background-color: #50924a;
   background: radial-gradient(
       circle at 55% 92%,
@@ -62,132 +25,20 @@
     radial-gradient(circle at 0% 0%, #50924a 0 40%, transparent 40.2%), #79d671;
   border-radius: 10px 0 0 10px;
 }
-
-.contact-form-wrapper {
-  background-color: #f3f5f7;
-  border-radius: 0 10px 10px 0;
+.contact-form-wrapper-register {
+  width: 35%;
+  padding: 7rem;
 }
 
-@media only screen and (max-width: 800px) {
-  .contact {
+@media (max-width: 480px) {
+  .contact-links-register {
+    border-radius: 0;
     width: 100%;
+    height: 250px;
   }
-  .contact-links,
-  .contact-form-wrapper {
+  .contact-form-wrapper-register {
     width: 100%;
-  }
-
-  .contact-links {
-    border-radius: 10px 10px 0 0;
-  }
-
-  .contact-form-wrapper {
     border-radius: 0 0 10px 10px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .contact-box {
-    width: 100%;
-    margin: 8% 5%;
-  }
-}
-
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 50px;
-}
-
-.link {
-  margin: 10px;
-  cursor: pointer;
-}
-
-.link img {
-  width: 45px;
-  height: 45px;
-  filter: hue-rotate(220deg) drop-shadow(2px 4px 4px #0006);
-  transition: 0.2s;
-  user-select: none;
-}
-
-.link img:hover {
-  transform: scale(1.1, 1.1);
-}
-
-.link img:active {
-  transform: scale(1.1, 1.1);
-  filter: hue-rotate(220deg) drop-shadow(2px 4px 4px #222) sepia(0.3);
-}
-
-.form-item {
-  position: relative;
-}
-
-label {
-  position: absolute;
-  top: 10px;
-  left: 2%;
-  color: #999;
-  font-size: clamp(14px, 1.5vw, 18px);
-  pointer-events: none;
-  user-select: none;
-}
-
-input,
-textarea {
-  width: 100%;
-  outline: 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  padding: 12px;
-  font-size: clamp(15px, 1.5vw, 18px);
-}
-
-input:focus + label,
-input:valid + label,
-textarea:focus + label,
-textarea:valid + label {
-  font-size: clamp(13px, 1.3vw, 16px);
-  color: #777;
-  top: -20px;
-  transition: all 0.225s ease;
-}
-
-.submit-btn {
-  background-color: #79d671;
-  filter: drop-shadow(2px 2px 3px #0003);
-  color: #fff;
-  font-size: clamp(16px, 1.6vw, 18px);
-  display: block;
-  padding: 12px 20px;
-  margin: 2px auto;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  user-select: none;
-  transition: 0.2s;
-}
-
-.submit-btn:hover {
-  transform: scale(1.1, 1.1);
-}
-
-.submit-btn:active {
-  transform: scale(1.1, 1.1);
-  filter: sepia(0.5);
-}
-
-@media only screen and (max-width: 480px) {
-  .links {
-    padding-top: 30px;
-  }
-
-  img {
-    width: 38px;
-    height: 38px;
+    padding: 3rem;
   }
 }

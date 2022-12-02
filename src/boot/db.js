@@ -4,16 +4,19 @@ import {
   getFirestore,
   collection,
   addDoc,
+  getDoc,
   doc,
   query,
   where,
   orderBy,
   getDocs,
 } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+import { getAuth } from "firebase/auth";
 
 const db = getFirestore();
 const petCollection = collection(db, "pets");
+const userCollection = collection(db, "users");
 export default db;
 
 //Funcion consulta para mostrar los pets por ID a traves del firebase

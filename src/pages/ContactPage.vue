@@ -30,7 +30,7 @@
                   icon-right="mdi-chevron-right"
                   label="Contactar"
                   aria-label="Contactar"
-                  @click="toggleForm()"
+                  @click="medium = true"
                 />
               </div>
             </div>
@@ -51,7 +51,7 @@
                   icon-right="mdi-chevron-right"
                   label="Contactar"
                   aria-label="Contactar"
-                  @click="toggleForm()"
+                  @click="medium = true"
                 />
               </div>
             </div>
@@ -72,7 +72,7 @@
                   icon-right="mdi-chevron-right"
                   label="Contactar"
                   aria-label="Contactar"
-                  @click="toggleForm()"
+                  @click="medium = true"
                 />
               </div>
             </div>
@@ -80,7 +80,11 @@
         </div>
       </div>
     </section>
-    <Form v-if="showModal" @close-modal="showModal = false" />
+    <q-dialog v-model="medium">
+      <q-card class="bg-transparent" style="width: 900px; max-width: 80vw">
+        <Form />
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -94,16 +98,10 @@ export default defineComponent({
   components: { Form },
   data() {
     return {
-      showModal: false,
+      medium: false,
     };
   },
 
-  methods: {
-    toggleForm() {
-      if (this.showModal === false) {
-        this.showModal = true;
-      }
-    },
-  },
+  methods: {},
 });
 </script>

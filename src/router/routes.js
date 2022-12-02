@@ -7,28 +7,33 @@ const routes = [
     children: [{ path: "", component: () => import("src/pages/HomePage.vue") }],
   },
   {
-    path: "/about",
+    path: "/nosotros",
     component: () => import("src/layouts/Header&Footer.vue"),
     children: [
       { path: "", component: () => import("src/pages/AboutPage.vue") },
     ],
   },
   {
-    path: "/contact",
+    path: "/contactar",
     component: () => import("src/layouts/Header&Footer.vue"),
     children: [
       { path: "", component: () => import("src/pages/ContactPage.vue") },
     ],
   },
   {
-    path: "/adopt",
+    path: "/adoptar",
     component: () => import("src/layouts/Header&Footer.vue"),
     children: [
       { path: "", component: () => import("src/pages/AdoptPage.vue") },
     ],
   },
   {
-    path: "/pets/:id",
+    path: "/registrarse",
+    component: () => import("src/layouts/Header&Footer.vue"),
+    children: [{ path: "", component: () => import("src/pages/Register.vue") }],
+  },
+  {
+    path: "/adoptar/:id",
     name: "pets",
     component: CardDetail,
   },
@@ -42,6 +47,28 @@ const routes = [
         name: "pets",
         component: () => import("src/pages/CardDetail.vue"),
       },
+    ],
+  },
+
+  {
+    path: "/panelcontrol",
+    component: () => import("src/layouts/PanelControl.vue"),
+    children: [
+      { path: "", component: () => import("src/pages/ControlPage.vue") },
+    ],
+  },
+  {
+    path: "/panelcontrol/perfil",
+    component: () => import("src/layouts/PanelControl.vue"),
+    children: [
+      { path: "", component: () => import("src/pages/ProfilePage.vue") },
+    ],
+  },
+  {
+    path: "/panelcontrol/favoritos",
+    component: () => import("src/layouts/PanelControl.vue"),
+    children: [
+      { path: "", component: () => import("src/pages/FavouritePets.vue") },
     ],
   },
 

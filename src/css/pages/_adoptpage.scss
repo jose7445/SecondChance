@@ -58,3 +58,55 @@
     column-gap: 3rem;
   }
 }
+
+.testimonial {
+  background-color: #ffffff;
+  border: 2px solid #79d671;
+  padding: 40px 25px 25px;
+  flex-grow: 1;
+  flex-basis: 280px;
+  max-width: 400px;
+  position: relative;
+
+  // Fonts
+
+  // Bottom layout
+  &__img {
+    display: inline-block;
+    width: 50px;
+    margin-right: 10px;
+
+    img {
+      vertical-align: bottom;
+      border-radius: 50%;
+    }
+  }
+
+  &__info {
+    display: inline-block;
+  }
+}
+
+// General Styles
+.container {
+  max-width: 120rem;
+  width: 90%;
+  margin: 0 auto;
+
+  // Specific Styles
+  &--testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px 40px;
+    justify-content: center;
+    padding: 45px 45px 90px;
+
+    @media (min-width: 78.125em) {
+      padding: 0;
+      max-width: 1160px;
+    }
+    @media (max-width: 480px) {
+      padding: 0;
+    }
+  }
+}
