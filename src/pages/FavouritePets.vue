@@ -3,14 +3,12 @@
     <div class="container">
       <div class="text-center text-h2 q-pb-lg">
         Tus mascotas <span class="span-title">favoritas</span>
-        <p class="q-pt-md">
+        <p v-if="favouriteArray.length" class="q-pt-md">
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
         </p>
+        <p v-else class="q-pt-md">No tienes ningún animal en tus favoritos !</p>
       </div>
       <div class="q-pa-xl row justify-around">
-        <!-- <div v-for="favouriteArray in favouriteArray" :key="favouriteArray.id">
-          <FavouriteCard :favouriteArray="favouriteArray" />
-        </div> -->
         <div v-for="favouriteArray in favouriteArray" :key="favouriteArray.id">
           <Card :pets="favouriteArray" />
         </div>
@@ -37,7 +35,6 @@ export default defineComponent({
     };
   },
 
-  // onAuthStateChanged(auth, (user) => {})
   async created() {
     const auth = getAuth();
     const user = auth.currentUser;
@@ -50,7 +47,6 @@ export default defineComponent({
         if (docSnap.exists()) {
           const userInfo = docSnap.data();
           this.favouriteArray = userInfo.favourite;
-          console.log(this.favouriteArray);
         } else {
           console.log("No such document!");
         }

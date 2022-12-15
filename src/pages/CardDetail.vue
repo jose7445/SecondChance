@@ -1,163 +1,139 @@
 <template>
-  <q-page>
-    <!--BACKGROUND PAGE-->
-
-    <div
-      class="img-bg-detail flex-bg"
-      style="background-image: `{{pets.img_url}}`}"
-    >
-      <div class="border-bg text-center container text-h1">
-        <span class="span-title">- {{ pets.name }} -</span>
-      </div>
-    </div>
-
-    <!--/BACKGROUND PAGE-->
-
-    <!--SECTION ONE-->
-
-    <section class="section-three q-mb-xl">
-      <div class="title text-center text-h2 q-pa-xl">
-        Adopotar nuestras
-        <span class="span-title">mascotes</span>
-        <p class="q-pt-md">
-          ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
-        </p>
-      </div>
+  <main v-if="pets" class="page-details">
+    <section class="pet-attributes">
       <div class="container">
-        <div class="flex-detail">
-          <div class="img-pet">
-            <img
-              class="pet-image"
-              v-bind:src="pets.image_url"
-              :alt="pets.name"
-            />
-          </div>
-          <div class="pet-detail bg-white custom-fields">
-            <div class="text-h3 q-pb-lg">Caracteristicas:</div>
-
-            <table>
-              <tbody>
-                <tr>
-                  <th>Nombre:</th>
-                  <td>{{ pets.name }}</td>
-                </tr>
-                <tr>
-                  <th>Especie:</th>
-                  <td>{{ pets.species }}</td>
-                </tr>
-                <tr>
-                  <th>Localización:</th>
-                  <td>{{ pets.location }}</td>
-                </tr>
-                <tr>
-                  <th>Sexo:</th>
-                  <td>{{ pets.sex }}</td>
-                </tr>
-                <tr>
-                  <th>Raza:</th>
-                  <td>{{ pets.race }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="pet-detail bg-white custom-fields q-mt-lg">
-            <div class="text-h3 q-pb-lg">Biografia:</div>
-            <p>{{ pets.bio }}</p>
-          </div>
-          <div class="pet-detail bg-white custom-fields q-mt-lg">
-            <div class="text-h3 q-pb-lg">Personalidad:</div>
-            <p v-for="item in pets.personality" :key="item">- {{ item }}</p>
-          </div>
-          <div class="pet-detail bg-white custom-fields q-mt-lg">
-            <div class="text-h3 q-pb-lg">Estado:</div>
-            <div class="pet_status">
-              <span
-                v-if="pets.handle_status?.vaccinated"
-                class="bg-primary q-pa-sm q-mr-xl rounded-borders"
-                >Vacunado
-              </span>
-              <span v-else class="bg-red-4 q-pa-sm q-mr-xl rounded-borders"
-                >Vacunado
-              </span>
-
-              <span
-                v-if="pets.handle_status?.dewormed"
-                class="bg-primary q-pa-sm q-mr-xl rounded-borders"
-                >Desparasitado
-              </span>
-              <span v-else class="bg-red-4 q-pa-sm q-mr-xl rounded-borders"
-                >Desparasitado
-              </span>
-
-              <span
-                v-if="pets.handle_status?.sterilized"
-                class="bg-primary q-pa-sm q-mr-xl rounded-borders"
-                >Esterilizado
-              </span>
-              <span v-else class="bg-red-4 q-pa-sm q-mr-xl rounded-borders"
-                >Esterilizado
-              </span>
-
-              <span
-                v-if="pets.handle_status?.microchip"
-                class="bg-primary q-pa-sm q-mr-xl rounded-borders"
-                >Microchip
-              </span>
-              <span v-else class="bg-red-4 q-pa-sm q-mr-xl rounded-borders"
-                >Microchip
-              </span>
+        <div class="row items">
+          <div class="col-md-5">
+            <!-- Pet img -->
+            <div class="detail-header">
+              <img
+                class="pet-image"
+                v-bind:src="pets.image_url"
+                :alt="pets.name"
+              />
             </div>
           </div>
-          <div
-            class="pet-detail bg-white custom-fields q-mt-lg"
-            v-if="pets.info_notes?.length > 0"
-          >
-            <div class="text-h3 q-pb-lg">Información adicional:</div>
-            <div>
-              <div v-for="info in pets.info_notes" :key="info">
-                <p>- {{ info }}</p>
+          <!-- Pet info -->
+          <div class="q-pa-xl information">
+            <div class="text-h2">
+              {{ pets.name }}
+              <span class="span-title"
+                >{{ pets.age }} años, {{ pets.location }}</span
+              >
+            </div>
+            <div class="main-details">
+              <ul class="q-pt-md q-pl-none q-ma-none">
+                <li>
+                  <strong>Especie</strong> <span>{{ pets.species }}</span>
+                </li>
+                <li>
+                  <strong>Raza</strong> <span>{{ pets.race }}</span>
+                </li>
+                <li>
+                  <strong>Sexo</strong><span>{{ pets.sex }}</span>
+                </li>
+                <li>
+                  <strong>Medida</strong><span>{{ pets.size }}</span>
+                </li>
+              </ul>
+              <div class="pet-buttons">
+                <div class="text-center q-gutter-xl q-pt-md">
+                  <q-btn
+                    aria-label="Adoptar"
+                    icon-right="mdi-hand-heart"
+                    label="Adoptar"
+                    @click="medium = true"
+                  />
+                  <q-btn
+                    aria-label="Guardar"
+                    icon-right="mdi-heart-multiple"
+                    label="Guardar en favoritos"
+                    @click="savePet"
+                    v-if="isLoged && !actualPet"
+                  />
+                  <q-btn
+                    v-if="actualPet"
+                    aria-label="Guardar"
+                    icon-right="mdi-delete"
+                    label="Borrar de
+                  favoritos"
+                    @click="remove"
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <div class="pet-detail bg-white custom-fields q-mt-lg">
-            <div class="text-h3 q-pb-lg text-center">
-              Te gusta <span class="span-title">{{ pets.name }}?</span>
-            </div>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </p>
-            <div class="text-center q-gutter-xl q-pt-md">
-              <q-btn
-                aria-label="Adoptar"
-                icon-right="mdi-hand-heart"
-                label="Adoptar"
-                @click="medium = true"
-              />
-              <q-btn
-                aria-label="Guardar"
-                icon-right="mdi-heart-multiple"
-                label="Guardar"
-                @click="open"
-              />
-            </div>
+        </div>
+
+        <!-- Pet history -->
+        <div class="pet-history q-pa-lg bg-grey-1">
+          <div class="text-h4 q-pb-md">Mi historia</div>
+          <p>{{ pets.bio }}</p>
+        </div>
+        <div class="row justify-between pet-information">
+          <div class="pet-personality col-md-6 col-lg-4 mb-5 q-pa-lg">
+            <!-- Pet personality -->
+            <div class="text-h4">Mi personalidad</div>
+            <ul
+              class="row q-gutter-x-md q-gutter-y-md q-pl-none q-pt-lg personality"
+            >
+              <li v-for="item in pets.personality" :key="item">{{ item }}</li>
+            </ul>
+          </div>
+
+          <!-- Pet status -->
+          <div class="col-md-6 col-lg-4 mb-5 pet-handle q-pa-lg">
+            <div class="text-h4">Me entregan</div>
+            <ul class="q-pa-none">
+              <li>
+                <strong>Vacunado</strong
+                ><span class="yes" v-if="pets.handle_status?.vaccinated"
+                  >Sí</span
+                ><span v-else>No</span>
+              </li>
+              <li>
+                <strong>Desparasitado</strong
+                ><span class="yes" v-if="pets.handle_status?.dewormed">Sí</span
+                ><span v-else>No</span>
+              </li>
+              <li>
+                <strong>Esterelizado</strong
+                ><span class="yes" v-if="pets.handle_status?.sterilized"
+                  >Sí</span
+                ><span v-else>No</span>
+              </li>
+              <li>
+                <strong>Microchip</strong
+                ><span class="yes" v-if="pets.handle_status?.microchip">Sí</span
+                ><span v-else>No</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pet notes -->
+          <div
+            class="col-md-6 col-lg-4 mb-5 pet-notes q-pa-lg"
+            v-if="pets.info_notes?.length > 0"
+          >
+            <div class="text-h4">Tienes que saber</div>
+            <ul class="q-pa-none">
+              <li v-for="item in pets.info_notes" :key="item">{{ item }}</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
-    <!--SECTION THREE-->
-    <section class="section-three-about q-pa-xl bg-white">
+
+    <!-- Section back -->
+    <section class="section-back q-pa-xl bg-white">
       <div class="container">
         <div class="text-center text-h2">
           Quieres seguir buscando tu mascota
           <span class="span-title"> favorita?</span>
-          <div class="text-center inherit q-pt-xl">
+          <div class="text-center inherit q-pt-lg">
             <q-btn
               aria-label="Volver"
-              icon-right="mdi-chevron-right"
+              icon-right="mdi-arrow-left"
               label="Volver"
               to="/adoptar"
             />
@@ -165,14 +141,15 @@
         </div>
       </div>
     </section>
-    <!--SECTION THREE-->
-    <!--SECTION ONE-->
+
+    <!-- Modal Form  -->
     <q-dialog v-model="medium">
       <q-card class="bg-transparent" style="width: 900px; max-width: 80vw">
         <Form />
       </q-card>
     </q-dialog>
 
+    <!-- Dialog favourites  -->
     <q-dialog v-model="alert">
       <q-card>
         <q-card-section>
@@ -185,17 +162,41 @@
         </q-card-section>
 
         <q-card-actions align="right">
-          <q-btn flat label="OK" color="white" v-close-popup />
+          <q-btn flat label="OK" color="white" v-close-popup to="/adoptar" />
         </q-card-actions>
       </q-card>
     </q-dialog>
-  </q-page>
+
+    <!-- Dialog remove favourites  -->
+    <q-dialog v-model="alertRemove">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Favoritos</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          Se ha eliminado a <span class="span-title">{{ pets.name }}</span> de
+          tus favoritos!
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="white" v-close-popup to="/adoptar" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+  </main>
 </template>
 
 <script>
 import { getPetById } from "../boot/db.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, setDoc, arrayUnion } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  arrayUnion,
+  arrayRemove,
+  getDoc,
+} from "firebase/firestore";
 import db from "../boot/db";
 import Form from "../components/Form.vue";
 
@@ -207,8 +208,12 @@ export default {
     return {
       pets: [],
       favourite: [],
+      userArray: [],
       medium: false,
       alert: false,
+      isLoged: false,
+      actualPet: false,
+      alertRemove: false,
     };
   },
 
@@ -218,16 +223,52 @@ export default {
       id = parseInt(id);
     }
     this.pets = await getPetById(id);
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+      this.isLoged = true;
+
+      try {
+        if (docSnap.exists()) {
+          const userInfo = docSnap.data();
+          this.userArray = userInfo;
+
+          let arrayObtenido = [];
+
+          arrayObtenido = this.userArray.favourite.map(function (elem) {
+            let returnObjeto = {
+              id: elem.id,
+            };
+            return returnObjeto;
+          });
+          const id = this.$route.params.id;
+          const found = arrayObtenido.find((x) => x.id == id);
+          if (found) {
+            this.actualPet = true;
+          }
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log("Usuario no logeado");
+    }
   },
+
   methods: {
-    async open() {
+    async savePet() {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
           const uid = user.uid;
           console.log(uid);
+          this.isLoged = true;
           const cityRef = doc(db, "users", user.uid);
           setDoc(
             cityRef,
@@ -235,100 +276,33 @@ export default {
             { merge: true }
           );
           this.alert = true;
+
           // ...
         } else {
-          // User is signed out
-          // ...
+          console.log(error);
+        }
+      });
+    },
+
+    remove() {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const uid = user.uid;
+          console.log(uid);
+          const profile = doc(db, "users", user.uid);
+
+          setDoc(
+            profile,
+            { favourite: arrayRemove(this.pets) },
+            { merge: true }
+          );
+          this.alertRemove = true;
+        } else {
+          console.log(error);
         }
       });
     },
   },
 };
 </script>
-
-<style>
-/** <!--BACKGROUND PAGE--> **/
-.img-bg-detail {
-  min-height: 200px;
-}
-
-.border-bg {
-  border-top: 2px solid #79d671;
-  border-bottom: 2px solid #79d671;
-}
-
-@media (max-width: 480px) {
-  .img-bg-detail {
-    background-image: url("../assets/imagenes/background_about_phone.webp");
-    background-position: center;
-    background-attachment: scroll;
-  }
-}
-
-.img-pet img {
-  width: 100%;
-  height: 750px;
-}
-
-@media (max-width: 480px) {
-  .img-pet img {
-    width: 100%;
-    height: 300px;
-  }
-}
-
-.pet-detail {
-  width: 100%;
-  padding: 5rem;
-}
-
-@media (max-width: 480px) {
-  .pet-detail {
-    width: 100%;
-    padding: 2rem;
-  }
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  vertical-align: middle;
-  width: 100%;
-}
-
-table tbody tr,
-table thead tr,
-table tfoot tr {
-  border: 1px solid #f2f2f2;
-}
-
-table tbody th,
-table tfoot th {
-  border-right: 1px solid #f2f2f2;
-}
-
-table td,
-table th {
-  padding: 5px 10px;
-  text-align: center;
-}
-
-.custom-fields th,
-.custom-fields td {
-  text-align: left;
-}
-
-@media (max-width: 480px) {
-  .custom-fields th,
-  .custom-fields td {
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .pet_status span {
-    padding: 1px;
-    margin-right: 5px;
-  }
-}
-</style>

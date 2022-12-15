@@ -1,0 +1,43 @@
+/** Header **/
+.bg-scroll {
+  background-color: rgba(255, 255, 255, 80%);
+}
+.q-tab__label {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/** Header MQ PHONE **/
+@media (max-width: 480px) {
+  .responsive-size {
+    height: auto !important;
+  }
+  .bg-button-menu {
+    background-color: transparent;
+  }
+  .q-toolbar {
+    padding: 0;
+  }
+  .q-avatar {
+    border-radius: 0;
+  }
+  .title-footer {
+    font-size: 15px;
+  }
+}
+
+/** Button login MQ PHONE **/
+@media (max-width: 480px) {
+  .button_login {
+    padding: 0rem;
+  }
+  .button_login button {
+    padding: 0rem;
+    font-size: 1rem;
+  }
+}
+
+.q-item.q-router-link--active,
+.q-item--active {
+  color: var(--q-secondary);
+}

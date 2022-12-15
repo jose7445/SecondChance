@@ -1,60 +1,262 @@
 <template>
-  <div class="box">
-    <table>
-      <tr>
-        <td>
-          <section>
-            <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-              id="blah"
-              alt="Avatar"
-            />
-          </section>
-          <div class="text-secondary text-h2">{{ userArray.name }}</div>
-        </td>
-        <td>
-          <ul class="column column-padding">
-            <li>
-              <div class="text-primary text-h4">Nombre</div>
-              <div class="text-secondary text-h5 q-pt-md">
-                {{ userArray.name }} {{ userArray.subname }}
-              </div>
-            </li>
+  <q-page class="q-pa-sm">
+    <div class="row q-col-gutter-md">
+      <div class="col-lg-6 col-md-4 col-xs-12 col-sm-12">
+        <q-card class="card-bg text-black">
+          <q-card-section class="text-center bg-transparent">
+            <q-avatar size="100px">
+              <img
+                class="pet-image"
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              />
+            </q-avatar>
+            <div class="text-h4 q-mt-md">
+              {{ userArray.name }} {{ userArray.subname }}
+            </div>
+          </q-card-section>
+          <div class="text-h5 q-pb-md text-center">
+            <q-icon name="mail" />
+            {{ userArray.email }}
+            <q-icon name="call" />
+            {{ userArray.phone }}
+          </div>
 
-            <li>
-              <div class="text-primary text-h4 q-pt-md">Email</div>
-              <div class="text-secondary text-h5 q-pt-md">
-                {{ userArray.email }}
-              </div>
-            </li>
+          <div class="text-h5 q-pb-md text-center">
+            <q-icon name="location_on" />
+            {{ userArray.direction }}, {{ userArray.city }} - {{ userArray.cp }}
+          </div>
+          <q-separator color="primary" inset />
+          <q-card-section>
+            <div class="text-h5 text-center">
+              {{ userArray.bio }}
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
 
-            <li>
-              <div class="text-primary text-h4 q-pt-md">Telefono</div>
-              <div class="text-secondary text-h5 q-pt-md">
-                {{ userArray.phone }}
-              </div>
-            </li>
+      <div class="col-lg-6 col-md-8 col-xs-12 col-sm-12">
+        <q-card>
+          <q-card-section class="q-pa-sm">
+            <q-list class="row">
+              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <q-toggle v-model="readonly" label="Modificar perfil" />
+              </q-item>
 
-            <q-separator spaced />
-            <li>
-              <div class="text-primary text-h4 q-pt-md">
-                Porque quieres adoptar?
-              </div>
-              <div class="text-secondary text-h5 q-pt-md">
-                {{ userArray.bio }}
-              </div>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </div>
+              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    square
+                    clearable
+                    required
+                    v-model="name"
+                    type="text"
+                    label="Nombre"
+                    :readonly="readonly"
+                  />
+                </q-item-section>
+              </q-item>
+              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    square
+                    clearable
+                    required
+                    type="text"
+                    label="Apellidos"
+                    v-model="subname"
+                    :readonly="readonly"
+                  />
+                </q-item-section>
+              </q-item>
+              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    square
+                    required
+                    type="tel"
+                    mask="6## - ## - ## - ##"
+                    label="Telefono"
+                    :readonly="readonly"
+                  />
+                </q-item-section>
+              </q-item>
+              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    square
+                    clearable
+                    required
+                    label="Direccion"
+                    v-model="direction"
+                    :readonly="readonly"
+                  />
+                </q-item-section>
+              </q-item>
+              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    square
+                    clearable
+                    required
+                    label="Ciudad"
+                    v-model="city"
+                    :readonly="readonly"
+                  />
+                </q-item-section>
+              </q-item>
+
+              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    square
+                    clearable
+                    required
+                    label="Codigo Postal"
+                    v-model="cp"
+                    :readonly="readonly"
+                  />
+                </q-item-section>
+              </q-item>
+
+              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    type="textarea"
+                    square
+                    clearable
+                    required
+                    label="Biografia"
+                    v-model="bio"
+                    :readonly="readonly"
+                    autogrow
+                  />
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn @click="updateInfo" color="primary"
+              >Actualizar información</q-btn
+            >
+          </q-card-actions>
+        </q-card>
+      </div>
+
+      <q-space />
+
+      <div class="col-lg-6 col-md-8 col-xs-12 col-sm-12">
+        <q-card class="card-bg text-black">
+          <q-card-section class="text-h6 q-pa-sm">
+            <div class="text-h6">Modificar contraseña</div>
+          </q-card-section>
+          <q-form @submit="updatePassword">
+            <q-card-section class="q-pa-sm row">
+              <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    type="password"
+                    square
+                    clearable
+                    required
+                    label="Contraseña actual"
+                    v-model="oldPassword"
+                  />
+                </q-item-section>
+              </q-item>
+
+              <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    type="password"
+                    square
+                    clearable
+                    required
+                    label="Nueva contraseña"
+                    v-model="newPassword"
+                  />
+                </q-item-section>
+              </q-item>
+
+              <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <q-item-section>
+                  <q-input
+                    type="password"
+                    square
+                    clearable
+                    required
+                    v-model="newPassword"
+                    label="Confirmar nueva contraseña"
+                  />
+                </q-item-section>
+              </q-item>
+            </q-card-section>
+            <q-card-actions align="right">
+              <q-btn type="submit" color="primary">Modificar contraseña</q-btn>
+            </q-card-actions>
+          </q-form>
+        </q-card>
+      </div>
+    </div>
+
+    <q-dialog v-model="alertPositive">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Modificar contraseña</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          Contraseña modificada con exito
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="white" to="/" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="alertNegative">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Modificar contraseña</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          Vuelve a inicar sesion para modificar la contraseña
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="white" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+  </q-page>
+
+  <q-dialog v-model="alertUpdate">
+    <q-card>
+      <q-card-section>
+        <div class="text-h6">Actualizar perfil</div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        Perfil actualizado con exito
+      </q-card-section>
+
+      <q-card-actions align="right">
+        <q-btn flat label="OK" color="white" v-close-popup to="/panelcontrol" />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  updatePassword,
+  signOut,
+} from "firebase/auth";
 import { defineComponent } from "vue";
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
 import db from "../boot/db";
 
 export default defineComponent({
@@ -62,6 +264,20 @@ export default defineComponent({
     return {
       userArray: [],
       showModal: false,
+      name: "",
+      userState: "",
+      subname: "",
+      phone: "",
+      direction: "",
+      city: "",
+      cp: "",
+      bio: "",
+      readonly: true,
+      newPassword: "",
+      oldPassword: "",
+      alertPositive: false,
+      alertNegative: false,
+      alertUpdate: false,
     };
   },
 
@@ -73,6 +289,7 @@ export default defineComponent({
     if (user) {
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
+      console.log(this.userState);
 
       try {
         if (docSnap.exists()) {
@@ -88,85 +305,56 @@ export default defineComponent({
       console.log("Usuario no logeado");
     }
   },
+
+  methods: {
+    async updateInfo() {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const uid = user.uid;
+
+          const profile = doc(db, "users", user.uid);
+
+          const object = {
+            name: this.name,
+            subname: this.subname,
+            phone: this.phone,
+            direction: this.direction,
+            city: this.city,
+            cp: this.cp,
+            bio: this.bio,
+          };
+          let updateInfo = Object.fromEntries(
+            Object.entries(object).filter(([_, v]) => v != "")
+          );
+          updateDoc(profile, updateInfo, { merge: true });
+          this.alertUpdate = true;
+        } else {
+          console.log("error");
+        }
+      });
+    },
+
+    async updatePassword() {
+      const auth = getAuth();
+
+      const user = auth.currentUser;
+      const newPassword = this.newPassword;
+
+      updatePassword(user, newPassword)
+        .then(() => {
+          this.alertPositive = true;
+          signOut(auth)
+            .then(() => {})
+            .catch((error) => {
+              // An error happened.
+            });
+        })
+        .catch((error) => {
+          this.alertNegative = true;
+          console.log(error);
+        });
+    },
+  },
 });
 </script>
-
-<style>
-.info {
-  position: relative;
-  left: -20px;
-}
-
-.info li {
-  padding: 20px 0;
-  color: gray;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.box {
-  width: 90%;
-  margin: 10vh auto;
-}
-
-.box table {
-  width: 100%;
-}
-
-.box table td {
-  margin: 30px;
-  border-radius: 5px;
-  box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
-  padding: 30px;
-  background-color: #fff;
-  color: #fff;
-  vertical-align: top;
-}
-
-.box table td:nth-child(1) section {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 5vh auto;
-}
-
-.box table td:nth-child(1) .fa {
-  position: absolute;
-  right: 25px;
-  top: 25px;
-  font-size: 2em;
-}
-
-.box table td img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-}
-
-.box table td h3 {
-  color: gray;
-  font-weight: normal;
-}
-
-@media (max-width: 820px) {
-  .box {
-    width: 100%;
-  }
-  .box table td {
-    display: block;
-  }
-  .box table .section2 .quantityselector section {
-    width: 41%;
-    margin: 0px 10px;
-  }
-  .box table .section2 ul {
-    position: relative;
-    left: -40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .column-padding {
-    padding: 0;
-  }
-}
-</style>

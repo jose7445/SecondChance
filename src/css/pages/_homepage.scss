@@ -1,4 +1,4 @@
-/** <!--BACKGROUND PAGE--> **/
+/**  Section image top  **/
 .img-bg {
   background-image: url("../assets/imagenes/background_home.webp");
   background-repeat: no-repeat;
@@ -18,7 +18,7 @@
   border-bottom: 2px solid #ffffff;
 }
 
-/** MEDIA QUERY PHONE 480px **/
+/** Section image top MQ PHONE **/
 @media (max-width: 480px) {
   .img-bg {
     background-image: url("../assets/imagenes/background_home_phone.webp");
@@ -26,44 +26,44 @@
   }
 }
 
-/** <!--BACKGROUND PAGE--> **/
-
-/** <!--SECTION ONE--> **/
-.flex-section-one {
+/** Section secondchance **/
+.flex-section-secondchance {
   display: flex;
   align-items: center;
   gap: 6rem;
 }
 
-/** MEDIA QUERY PHONE 480PX **/
+/** Section secondchance MQ PHONE **/
 @media (max-width: 480px) {
-  .flex-section-one {
+  .flex-section-secondchance {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
     width: 100%;
     gap: 0;
   }
-  .section-one {
+  .section-secondchance {
     padding: 2rem;
   }
 }
 
-/** MEDIA QUERY TABLET 480PX-768PX **/
+/** Section secondchance MQ TABLET **/
 @media (min-width: 480px) and (max-width: 768px) {
-  .flex-section-one {
+  .flex-section-secondchance {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
     width: 100%;
     gap: 0;
   }
+  .text-left {
+    text-align: center;
+  }
 }
 
+/** Section secondchance MQ DESKTOP  **/
 @media (min-width: 769px) and (max-width: 1024px) {
-  .flex-section-one {
+  .flex-section-secondchance {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -73,8 +73,9 @@
   }
 }
 
+/** Section secondchance MQ DESKTOP **/
 @media (min-width: 1025px) and (max-width: 1200px) {
-  .flex-section-one {
+  .flex-section-secondchance {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -84,10 +85,7 @@
   }
 }
 
-/** <!--SECTION ONE--> **/
-
-/** <!--SECTION TWO--> **/
-
+/** Section why **/
 .flex-first {
   display: flex;
 }
@@ -97,40 +95,37 @@
   flex-direction: row-reverse;
 }
 
-.img-section-two img {
+.img-section-why img {
   max-width: 600px;
   height: 400px;
 }
 
-/** MEDIA QUERY PHONE 480PX **/
+/** Section why MQ PHONE **/
 @media (max-width: 480px) {
   .flex-first {
-    display: flex;
     flex-direction: column;
   }
   .flex-second {
-    display: flex;
     flex-direction: column;
   }
-  .img-section-two {
-    width: 100%;
-  }
-  .text-section-two > div {
+
+  .text-section-why > div {
     padding: 1rem 0 1rem 0;
   }
 
-  .text-section-two p {
+  .text-section-why p {
     padding: 0 0 2rem 0;
   }
-  .section-two {
+  .section-why {
     padding: 3rem 0 0 0;
   }
-  .img-section-two img {
+  .img-section-why img {
     width: 100%;
     height: 250px;
   }
 }
 
+/** Section why MQ TABLET **/
 @media (min-width: 480px) and (max-width: 768px) {
   .flex-first {
     display: flex;
@@ -140,27 +135,28 @@
     display: flex;
     flex-direction: column;
   }
-  .img-section-two {
+  .img-section-why {
     width: 100%;
     text-align: center;
   }
-  .text-section-two > div {
+  .text-section-why > div {
     padding: 3rem 0 1rem 0;
     text-align: center;
   }
 
-  .text-section-two p {
+  .text-section-why p {
     padding: 1rem 0 3rem;
   }
-  .section-two {
+  .section-why {
     padding: 3rem 0 0 0;
   }
-  .img-section-two img {
+  .img-section-why img {
     width: 100%;
     height: 400px;
   }
 }
 
+/** Section why MQ DESKTOP **/
 @media (min-width: 769px) and (max-width: 1024px) {
   .flex-first {
     display: flex;
@@ -170,26 +166,28 @@
     display: flex;
     flex-direction: column;
   }
-  .img-section-two {
+  .img-section-why {
     width: 100%;
     text-align: center;
   }
-  .text-section-two > div {
+  .text-section-why > div {
     padding: 3rem 0 1rem 0;
     text-align: center;
   }
 
-  .text-section-two p {
+  .text-section-why p {
     padding: 1rem 0 3rem;
   }
-  .section-two {
+  .section-why {
     padding: 3rem 0 0 0;
   }
-  .img-section-two img {
+  .img-section-why img {
     width: 100%;
     height: 400px;
   }
 }
+
+/** Section why MQ DESKTOP **/
 @media (min-width: 1025px) and (max-width: 1200px) {
   .flex-first {
     display: flex;
@@ -199,36 +197,34 @@
     display: flex;
     flex-direction: column;
   }
-  .img-section-two {
+  .img-section-why {
     width: 100%;
     text-align: center;
   }
-  .text-section-two > div {
+  .text-section-why > div {
     padding: 3rem 0 1rem 0;
     text-align: center;
   }
 
-  .text-section-two p {
+  .text-section-why p {
     padding: 1rem 0 3rem;
   }
-  .section-two {
+  .section-why {
     padding: 3rem 0 0 0;
   }
-  .img-section-two img {
+  .img-section-why img {
     width: 100%;
     height: 400px;
   }
 }
 
-/** <!--SECTION TWO--> **/
-
-/** <!--SECTION THREE--> **/
-.row-section-three {
+/** Section collaborate **/
+.row-section-collaborate {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.col-section-three {
+.col-section-collaborate {
   width: 100%;
   padding: 0 1em 0 1em;
   text-align: center;
@@ -236,35 +232,43 @@
   justify-content: center;
 }
 
-/** MEDIA QUERY PHONE 480PX **/
+/** Section collaborate MQ PHONE **/
 @media (max-width: 480px) {
-  .col-section-three {
-    flex: 0 0 140%;
+  .col-section-collaborate {
+    flex: 0 0 130%;
     padding: 1rem;
+  }
+  .row-section-collaborate {
+    padding: 3rem;
+  }
+  .section-collaborate {
+    padding: 2rem 0;
   }
 }
 
+/** Section collaborate MQ TABLET **/
 @media (min-width: 480px) and (max-width: 768px) {
-  .col-section-three {
+  .col-section-collaborate {
     flex: 0 0 120%;
     padding: 1rem;
   }
 }
-
+/** Section collaborate MQ DESKTOP **/
 @media (min-width: 769px) and (max-width: 1024px) {
-  .col-section-three {
+  .col-section-collaborate {
     flex: 0 0 120%;
     padding: 1rem;
   }
 }
-
+/** Section collaborate MQ DESKTOP **/
 @media (min-width: 1025px) and (max-width: 1200px) {
-  .col-section-three {
+  .col-section-collaborate {
     flex: 0 0 110%;
     padding: 1rem;
   }
 }
 
+/** Contact card **/
 .card {
   width: 100%;
   height: 100%;
@@ -308,5 +312,3 @@
 .card:hover {
   color: white;
 }
-
-/** <!--SECTION THREE--> **/

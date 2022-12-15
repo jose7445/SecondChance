@@ -5,7 +5,7 @@
         class="responsive-size container q-pa-none q-pt-sm"
         style="height: 110px"
       >
-        <!--LOGO DESKTOP-->
+        <!--logo desktop-->
         <router-link to="/">
           <q-avatar
             class="gt-xs logo-image"
@@ -14,9 +14,8 @@
             <img alt="logo_desktop" src="../assets/logo_desktop.webp" />
           </q-avatar>
         </router-link>
-        <!--LOGO DESKTOP-->
 
-        <!--MENU PHONE-->
+        <!--menu phone-->
         <div class="q-gutter-lg row lt-sm">
           <q-btn
             flat
@@ -53,15 +52,15 @@
           <q-space></q-space>
           <q-space></q-space>
         </div>
-        <!--MENU PHONE-->
 
-        <!--LOGO PHONE-->
-        <q-avatar class="lt-sm logo-image" style="width: 100px; height: auto">
-          <img alt="logo_phone" src="../assets/logo_phone.webp" />
-        </q-avatar>
-        <!--LOGO PHONE-->
+        <!--logo phone-->
+        <router-link to="/">
+          <q-avatar class="lt-sm logo-image" style="width: 100px; height: auto">
+            <img alt="logo_phone" src="../assets/logo_phone.webp" />
+          </q-avatar>
+        </router-link>
 
-        <!--MENU DESKTOP-->
+        <!--menu desktop-->
         <q-tabs class="gt-xs text-primary">
           <router-link to="/"
             ><q-tab name="Inicio" label="Inicio"
@@ -77,9 +76,8 @@
             ><q-tab name="Contacto" label="Contacto"
           /></router-link>
         </q-tabs>
-        <!--MENU DESKTOP-->
 
-        <!--BUTTON LOGIN + LOGOUT DESKTOP-->
+        <!--button login & logout desktop-->
         <q-space />
         <div v-if="!isLoggedIn">
           <q-btn
@@ -90,7 +88,8 @@
             @click="medium = true"
           />
         </div>
-        <!--BUTTON LOGIN OK DESKTOP-->
+
+        <!--button login succes-->
         <div v-if="isLoggedIn">
           <div class="q-pa-md button_login">
             <q-btn-dropdown
@@ -98,6 +97,7 @@
               color="primary"
               class="btn-hover"
             >
+              <!--user options-->
               <div class="row no-wrap q-pa-md justify-center">
                 <div class="column">
                   <div class="text-h6 q-mb-md">Opciones</div>
@@ -120,10 +120,11 @@
                   <div class="text-subtitle1 q-mt-md q-mb-xs">
                     {{ currentUser.email }}
                   </div>
-                  <!--BUTTON LOGOUT DESKTOP-->
+
+                  <!--button logout-->
                   <q-btn
                     color="primary"
-                    label="Logout"
+                    label="Cerrar sesión"
                     class="btn-hover"
                     push
                     size="sm"
@@ -135,9 +136,8 @@
             </q-btn-dropdown>
           </div>
         </div>
-        <!--BUTTON LOGIN + LOGOUT DESKTOP-->
 
-        <!--BUTTON LOGIN PHONE-->
+        <!--button login phone-->
         <div v-if="!isLoggedIn">
           <q-btn
             class="lt-md"
@@ -152,22 +152,23 @@
       </q-toolbar>
     </q-header>
 
-    <!--MODEL LOGIN-->
+    <!--model login form-->
     <q-dialog v-model="medium">
       <q-card class="bg-transparent" style="width: 900px; max-width: 80vw">
         <Login />
       </q-card>
     </q-dialog>
-    <!--MODEL LOGIN-->
 
     <q-page-container>
       <router-view />
     </q-page-container>
 
-    <!--FOOTER-->
+    <!--footer-->
     <q-footer reveal>
       <q-toolbar class="container q-pa-none">
-        <q-toolbar-title>© SecondChance, 2022</q-toolbar-title>
+        <q-toolbar-title class="title-footer"
+          >© SecondChance, 2022</q-toolbar-title
+        >
         <div class="">
           <q-btn
             flat
@@ -196,7 +197,6 @@
         </div>
       </q-toolbar>
     </q-footer>
-    <!--FOOTER-->
   </q-layout>
 </template>
 
@@ -204,6 +204,8 @@
 import { ref } from "vue";
 import Login from "../components/Login.vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   name: "Header&Footer",
@@ -213,8 +215,9 @@ export default {
     const medium = ref(false);
     const currentUser = ref(null);
     const isLoggedIn = ref(null);
+    const router = useRouter();
+    const $q = useQuasar();
 
-    // auth status
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -237,8 +240,13 @@ export default {
           .then(() => {
             isLoggedIn.value = false;
             currentUser.value = null;
-            location.reload();
+            $q.notify({
+              message: "Has salido de tu sesión",
+              type: "positive",
+            });
+            setTimeout(() => router.push({ path: "/" }), 500);
           })
+
           .catch((err) => {
             console.log(err);
           });

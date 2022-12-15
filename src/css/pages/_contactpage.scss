@@ -1,3 +1,4 @@
+/** Section image top **/
 .border-bg {
   border-top: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
@@ -25,13 +26,13 @@
   align-items: center;
 }
 
-/** <!--SECTION THREE--> **/
-.row-section-three {
+/** Section contact **/
+.row-section-contact {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.col-section-three {
+.col-section-contact {
   width: 100%;
   padding: 0 1em 3em 1em;
   text-align: center;
@@ -39,11 +40,14 @@
   justify-content: center;
 }
 
-/** MEDIA QUERY PHONE 480PX **/
+/** Section contact MQ PHONE**/
 @media (max-width: 480px) {
-  .col-section-three {
-    flex: 0 0 140%;
+  .col-section-contact {
+    flex: 0 0 113%;
     padding: 1rem;
+  }
+  .section-contact {
+    padding: 2rem;
   }
 }
 .card {

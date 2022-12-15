@@ -32,13 +32,14 @@
           </div>
         </div>
         <div class="contact-form-wrapper-register">
-          <q-form class="q-gutter-md">
+          <q-form class="q-gutter-md" @submit="register">
             <div class="form-item">
               <q-input
                 square
                 clearable
+                required
                 v-model="name"
-                type="name"
+                type="text"
                 lazy-rules
                 :rules="[(val) => val.length > 0 || 'Campo obligatorio']"
                 label="Nombre"
@@ -48,12 +49,13 @@
                 </template>
               </q-input>
             </div>
-            <div class="form-item column">
+            <div class="form-item">
               <q-input
                 square
+                required
                 clearable
                 v-model="subname"
-                type="name"
+                type="text"
                 lazy-rules
                 :rules="[(val) => val.length > 0 || 'Campo obligatorio']"
                 label="Apellidos"
@@ -63,30 +65,89 @@
                 </template>
               </q-input>
             </div>
+
             <div class="form-item">
               <q-input
                 square
                 clearable
+                required
                 v-model="phone"
                 type="tel"
                 lazy-rules
-                mask="(6) ## - ### - ###"
-                :rules="[
-                  (val, rules) => rules.phone(val) || 'Email incorrecto',
-                ]"
+                mask="6## - ## - ## - ##"
                 label="Telefono"
+                :rules="[(val) => val.length >= 18 || 'Telefono no valido']"
               >
                 <template v-slot:prepend>
-                  <q-icon name="phone" />
+                  <q-icon name="call" />
                 </template>
               </q-input>
             </div>
+
+            <div class="form-item">
+              <q-input
+                square
+                required
+                clearable
+                v-model="direction"
+                type="text"
+                lazy-rules
+                :rules="[(val) => val.length > 0 || 'Campo obligatorio']"
+                label="Dirección"
+              >
+                <template v-slot:prepend>
+                  <q-icon name="home" />
+                </template>
+              </q-input>
+            </div>
+
+            <div class="row justify-between">
+              <div class="form-item">
+                <q-input
+                  square
+                  clearable
+                  required
+                  v-model="city"
+                  type="text"
+                  lazy-rules
+                  :rules="[(val) => val.length > 0 || 'Campo obligatorio']"
+                  label="Ciudad"
+                >
+                  <template v-slot:prepend>
+                    <q-icon name="location_on" />
+                  </template>
+                </q-input>
+              </div>
+
+              <div class="form-item">
+                <q-input
+                  square
+                  clearable
+                  required
+                  v-model="cp"
+                  type="number"
+                  lazy-rules
+                  :rules="[
+                    (val) => val.length === 5 || 'Codigo postal no valido',
+                  ]"
+                  label="Codigo Postal"
+                >
+                  <template v-slot:prepend>
+                    <q-icon name="map" />
+                  </template>
+                </q-input>
+              </div>
+            </div>
+
             <div class="form-item">
               <q-input
                 square
                 clearable
+                required
                 v-model="textarea"
+                autogrow
                 type="textarea"
+                :rules="[(val) => val.length > 0 || 'Campo obligatorio']"
                 label="Porque quieres adoptar?"
                 lazy-rules
               >
@@ -97,6 +158,7 @@
               <q-input
                 square
                 clearable
+                required
                 v-model="email"
                 type="email"
                 lazy-rules
@@ -106,7 +168,7 @@
                 label="Email"
               >
                 <template v-slot:prepend>
-                  <q-icon name="email" />
+                  <q-icon name="mail" />
                 </template>
               </q-input>
             </div>
@@ -115,6 +177,7 @@
               <q-input
                 square
                 clearable
+                required
                 v-model="password"
                 :type="isPwd ? 'password' : 'text'"
                 label="Password"
@@ -133,12 +196,7 @@
               </q-input>
             </div>
             <div class="text-center inherit">
-              <q-btn
-                label="ENVIAR"
-                type="submit"
-                color="primary"
-                @click="register"
-              />
+              <q-btn label="Registrarse" type="submit" color="primary" />
             </div>
           </q-form>
         </div>
@@ -164,6 +222,9 @@ export default {
     const subname = ref("");
     const phone = ref("");
     const textarea = ref("");
+    const direction = ref("");
+    const city = ref("");
+    const cp = ref("");
     const password_validate = ref("");
     const error = ref(null);
     const router = useRouter();
@@ -176,6 +237,9 @@ export default {
       name,
       phone,
       subname,
+      direction,
+      city,
+      cp,
       textarea,
       password_validate,
       isPwd,
@@ -192,13 +256,15 @@ export default {
                 subname: subname.value,
                 phone: phone.value,
                 email: userCredential.user.email,
-                password: password.value,
+                direction: direction.value,
+                city: city.value,
+                cp: cp.value,
                 bio: textarea.value,
               });
-              setTimeout(() => router.push({ path: "/" }), 1500);
             } catch (error) {
               console.log(error);
             }
+            setTimeout(() => router.push({ path: "/" }), 2000);
 
             $q.notify({
               message: "Registro completado",
@@ -209,13 +275,16 @@ export default {
             console.log(error.code);
             switch (error.code) {
               case "auth/invalid-email":
-                error.message = "Correo incorrecto";
+                error.message = "Correo eletronico incorrecto";
                 break;
               case "auth/weak-password":
-                error.message = "Password debil";
+                error.message = "Contraseña debil";
                 break;
               case "auth/email-already-in-use":
-                error.message = "Correo en uso";
+                error.message = "Correo eletronico en uso";
+                break;
+              case "auth/admin-restricted-operation":
+                error.message = "Faltan campos por rellenar";
                 break;
             }
             $q.notify({

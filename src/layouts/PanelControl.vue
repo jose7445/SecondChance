@@ -13,7 +13,12 @@
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-list bordered padding class="rounded-borders text-primary">
         <router-link to="/panelcontrol/perfil">
-          <q-item clickable v-ripple active-class="my-menu-link">
+          <q-item
+            clickable
+            v-ripple
+            active-class="my-menu-link"
+            class="text-secondary"
+          >
             <q-item-section avatar>
               <q-icon name="person" />
             </q-item-section>
@@ -22,16 +27,31 @@
           </q-item>
         </router-link>
 
-        <q-item clickable v-ripple active-class="my-menu-link">
+        <q-item
+          clickable
+          v-ripple
+          active-class="my-menu-link"
+          to="/mail"
+          class="text-secondary"
+        >
           <q-item-section avatar>
             <q-icon name="send" />
           </q-item-section>
 
-          <q-item-section>Mensajes</q-item-section>
+          <q-item-section
+            ><div>
+              Mensajes
+              <q-badge color="red-4" rounded align="middle" /></div
+          ></q-item-section>
         </q-item>
 
         <router-link to="/panelcontrol/favoritos"
-          ><q-item clickable v-ripple active-class="my-menu-link">
+          ><q-item
+            clickable
+            v-ripple
+            active-class="my-menu-link"
+            class="text-secondary"
+          >
             <q-item-section avatar>
               <q-icon name="mdi-heart" />
             </q-item-section>
@@ -40,7 +60,12 @@
           </q-item></router-link
         >
 
-        <q-item clickable v-ripple active-class="my-menu-link">
+        <q-item
+          clickable
+          v-ripple
+          active-class="my-menu-link"
+          class="text-secondary"
+        >
           <q-item-section avatar>
             <q-icon name="mdi-fire" />
           </q-item-section>
@@ -50,21 +75,20 @@
 
         <q-separator spaced />
 
-        <q-item clickable v-ripple active-class="my-menu-link">
-          <q-item-section avatar>
-            <q-icon name="settings" />
-          </q-item-section>
+        <router-link to="/panelcontrol/faq">
+          <q-item
+            clickable
+            v-ripple
+            active-class="my-menu-link"
+            class="text-secondary"
+          >
+            <q-item-section avatar>
+              <q-icon name="help" />
+            </q-item-section>
 
-          <q-item-section>Opciones de perfil</q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple active-class="my-menu-link">
-          <q-item-section avatar>
-            <q-icon name="help" />
-          </q-item-section>
-
-          <q-item-section>Ayuda</q-item-section>
-        </q-item>
+            <q-item-section>FAQ</q-item-section>
+          </q-item>
+        </router-link>
       </q-list>
     </q-drawer>
 
@@ -90,3 +114,5 @@ export default {
   },
 };
 </script>
+
+<style></style>

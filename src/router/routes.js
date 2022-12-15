@@ -72,11 +72,22 @@ const routes = [
     ],
   },
 
+  {
+    path: "/panelcontrol/faq",
+    component: () => import("src/layouts/PanelControl.vue"),
+    children: [{ path: "", component: () => import("src/pages/FaqPage.vue") }],
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),
+  },
+
+  {
+    path: "/mail",
+    component: () => import("../layouts/Mail.vue"),
   },
 ];
 

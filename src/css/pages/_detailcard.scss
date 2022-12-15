@@ -1,0 +1,119 @@
+/**  Pet info **/
+.page-details {
+  padding-top: 3rem;
+
+  .detail-header {
+    border: 15px solid white;
+    box-shadow: 0px 0px 1px 1px rgb(219, 218, 218);
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 40px;
+
+    .pet-image {
+      max-height: 100%;
+      max-width: 100%;
+      width: 470px;
+      height: 370px;
+      margin-bottom: -1px;
+    }
+  }
+
+  .pet-history {
+    border: 2px solid #79d671;
+    margin-bottom: 1rem;
+  }
+
+  .pet-personality li {
+    background: $primary;
+    border-radius: 15px;
+    color: white;
+    padding: 7px 10px;
+    height: 22px;
+  }
+
+  li {
+    padding: 8px 0;
+    border-bottom: 1px solid $primary;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .pet-handle span {
+    border-radius: 20px;
+    padding: 0 10px;
+    background: $negative;
+    color: white;
+    &.yes {
+      background: $primary;
+    }
+  }
+}
+
+/**  Pet info MQ PHONE**/
+@media (max-width: 480px) {
+  /**  Section back MQ PHONE **/
+  .section-back {
+    padding: 2rem 1rem 2rem 1rem;
+  }
+  .information {
+    padding: 1rem 1rem 3rem 1rem;
+  }
+  .pet-information {
+    flex-direction: column;
+  }
+  .items {
+    flex-direction: column;
+  }
+  .page-details {
+    padding-top: 3rem;
+
+    .detail-header {
+      height: 300px;
+      .pet-image {
+        width: 340px;
+        height: 300px;
+        margin-bottom: -1px;
+      }
+    }
+  }
+}
+
+/**  Pet info MQ TABLET**/
+@media (min-width: 480px) and (max-width: 768px) {
+  .information {
+    padding: 1rem 1rem 3rem 1rem;
+  }
+  .pet-information {
+    display: flex;
+    flex-direction: column;
+  }
+  .items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  .page-details {
+    padding-top: 3rem;
+
+    .detail-header {
+      height: 300px;
+      width: 400px;
+
+      .pet-image {
+        width: 400px;
+        height: 300px;
+        margin-bottom: -1px;
+      }
+    }
+  }
+}

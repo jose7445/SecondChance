@@ -36,6 +36,7 @@
             <q-input
               square
               clearable
+              required
               v-model="email"
               type="email"
               lazy-rules
@@ -51,6 +52,7 @@
             <q-input
               square
               clearable
+              required
               v-model="password"
               :type="isPwd ? 'password' : 'text'"
               label="Password"
@@ -69,31 +71,69 @@
             </q-input>
           </div>
           <div class="text-center inherit">
-            <q-btn label="ENVIAR" @click="login" color="primary" />
+            <q-btn
+              type="submit"
+              label="ENVIAR"
+              @click="login"
+              color="primary"
+            />
           </div>
         </q-form>
+
+        <!-- Button password remember-->
         <div class="q-pt-lg row justify-between">
-          <div>¿Olvidaste la clave?</div>
+          <q-btn flat @click="prompt = true">¿Olvidaste la clave?</q-btn>
           <router-link to="registrarse">Registrarse</router-link>
         </div>
       </div>
     </div>
   </q-card-section>
+
+  <!-- Modal password remember -->
+  <q-dialog v-model="prompt" persistent>
+    <q-card style="min-width: 350px">
+      <q-card-section>
+        <div class="text-h6">Introduzca su correo eletronico</div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        <q-input
+          dense
+          v-model="address"
+          autofocus
+          @keyup.enter="prompt = false"
+        />
+      </q-card-section>
+
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="Cancelar" v-close-popup />
+        <q-btn
+          @click="resetPassword"
+          flat
+          label="Enviar información"
+          v-close-popup
+        />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
 import { useQuasar } from "quasar";
 import { ref } from "vue";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "vue-router";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 
 export default {
   setup() {
     const $q = useQuasar();
     const email = ref("");
+    const address = ref("");
     const password = ref("");
     const error = ref(null);
-    const router = useRouter();
     const isPwd = ref(true);
 
     return {
@@ -101,6 +141,8 @@ export default {
       password,
       error,
       isPwd,
+      prompt: ref(false),
+      address,
 
       async login() {
         const auth = getAuth();
@@ -108,13 +150,12 @@ export default {
         signInWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
 
             $q.notify({
               message: "Sesión iniciada",
               type: "positive",
             });
-            setTimeout(() => location.reload(), 1000);
+            setTimeout(() => location.reload(), 2000);
           })
           .catch((error) => {
             console.log(error.code);
@@ -123,7 +164,49 @@ export default {
                 error.message = "Usuario no encontrado";
                 break;
               case "auth/wrong-password":
-                error.message = "Password incorrecta";
+                error.message = "Contraseña incorrecta";
+                break;
+              case "auth/missing-email":
+                error.message = "Correo eletronico obligatorio";
+                break;
+              case "auth/internal-error":
+                error.message = "Contraseña obligatoria";
+                break;
+              case "auth/too-many-requests":
+                error.message =
+                  "Demasiados intentos. Vuelve a intentarlo mas tarde";
+                break;
+            }
+            $q.notify({
+              message: error.message,
+              type: "negative",
+            });
+          });
+      },
+
+      async resetPassword() {
+        const auth = getAuth();
+
+        sendPasswordResetEmail(auth, address.value)
+          .then(() => {
+            $q.notify({
+              message: "Revise su correo eletronico",
+              type: "positive",
+            });
+            setTimeout(() => router.push({ path: "/" }), 2000);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            switch (error.code) {
+              case "auth/invalid-email":
+                error.message = "Correo eletronico incorrecto";
+                break;
+              case "auth/user-not-found":
+                error.message = "Correo eletronico no encontrado";
+                break;
+              case "auth/missing-email":
+                error.message = "Correo eletronico obligatorio";
                 break;
             }
             $q.notify({

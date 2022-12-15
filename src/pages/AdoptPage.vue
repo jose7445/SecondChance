@@ -1,7 +1,6 @@
 <template>
   <q-page>
-    <!--BACKGROUND PAGE-->
-
+    <!-- Section image top -->
     <div class="img-bg-adopt flex-bg">
       <div class="border-bg text-center container text-h1">
         Los ojos de un animal tienen el poder de hablar un gran lenguaje
@@ -9,38 +8,31 @@
       </div>
     </div>
 
-    <!--/BACKGROUND PAGE-->
-
-    <!--SECTION SEARCH-->
-    <section class="section-one bg-white q-pa-xl">
-      <div class="container">
-        <div class="text-center text-h2 q-pb-lg">
-          Busca tu proxima <span class="span-title">mascota</span>
-        </div>
-        <p class="text-justify">
-          Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-          archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
-          las industrias desde el año 1500, cuando un impresor (N. del T.
-          persona que se dedica a la imprenta) desconocido usó una galería de
-          textos y los mezcló de tal manera.
-        </p>
-        <SearchPage v-on:search="setSearchTerm" />
+    <!--Section search-->
+    <section class="section-search bg-white q-pa-xl">
+      <div class="text-center text-h2 q-pb-lg">
+        Busca tu proxima <span class="span-title">mascota</span>
       </div>
+      <p class="text-center">
+        Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+        archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
+        las industrias desde el año 1500, cuando un impresor (N. del T. persona
+        que se dedica a la imprenta) desconocido usó una galería de textos y los
+        mezcló de tal maneraqweqweqweqweqwe.
+      </p>
+      <SearchPage v-on:search="setSearchTerm" />
     </section>
 
-    <!--SECTION SEARCH-->
-
-    <!--SECTION ONE-->
-
-    <section class="section-three q-pa-xl">
-      <div class="text-center text-h2 q-pb-xl">
+    <!--Section adopt-->
+    <section class="section-adopt q-pa-xl">
+      <div class="text-center text-h2 q-pa-sm">
         Adopotar nuestras
         <span class="span-title">mascotes</span>
-        <!-- <div>{{ searchTerm }}</div> -->
         <p class="q-pt-md">
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
         </p>
       </div>
+      <!--Pet cards-->
       <div class="container">
         <div class="flex-pet">
           <div v-for="pets in recipeListFiltered" :key="pets.id">
@@ -49,18 +41,17 @@
         </div>
       </div>
     </section>
-    <!--SECTION ONE-->
 
-    <!--SECTION TWO-->
-    <section class="section-one bg-white q-pa-xl">
+    <!--Section testimonial-->
+    <section class="section-testimonial bg-white q-pa-xl q-mt-lg">
       <div class="text-center text-h2 q-pb-lg">
-        Que dicen nuestros <span class="span-title">amigos?</span>
+        Que dicen nuestras <span class="span-title">familias de acogida?</span>
       </div>
-      <p class="text-center container q-pb-xl">
-        Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-        archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
-        las industrias desde el año 1500, cuando un impresor (N. del T. persona
-        que se dedica a la imprenta) desconocido usó una galería de textos y los
+      <p class="text-center q-pb-md">
+        Lorem Ipsum es simplemente el texto de relleno de las imprentas archivos
+        de texto. Lorem Ipsum ha sido el texto de relleno estándar de las
+        industrias desde el año 1500, cuando un impresor (N. del T. persona que
+        se dedica a la imprenta) desconocido usó una galería de textos y los
         mezcló de tal manera.
       </p>
       <div class="container container--testimonials">
@@ -74,7 +65,7 @@
           <div class="testimonial__details">
             <div class="testimonial__img">
               <img
-                src="https://cdn.quasar.dev/img/boy-avatar.png"
+                src="https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295430_960_720.png"
                 alt="Avatar"
               />
             </div>
@@ -95,7 +86,7 @@
           <div class="testimonial__details">
             <div class="testimonial__img">
               <img
-                src="https://cdn.quasar.dev/img/boy-avatar.png"
+                src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_960_720.png"
                 alt="Avatar"
               />
             </div>
@@ -115,7 +106,7 @@
           <div class="testimonial__details">
             <div class="testimonial__img">
               <img
-                src="https://cdn.quasar.dev/img/boy-avatar.png"
+                src="https://cdn.pixabay.com/photo/2016/09/01/08/24/smiley-1635449_960_720.png"
                 alt="Avatar"
               />
             </div>
@@ -127,8 +118,6 @@
         </div>
       </div>
     </section>
-
-    <!--SECTION TWO-->
   </q-page>
 </template>
 
@@ -153,9 +142,7 @@ export default defineComponent({
     try {
       const querySnapshot = await getDocs(collection(db, "pets"));
       querySnapshot.forEach((doc) => {
-        //console.log(doc.id, " =>", doc.data());
         this.pets.push(doc.data());
-        //console.log(this.pets);
       });
     } catch (error) {
       console.log(error);

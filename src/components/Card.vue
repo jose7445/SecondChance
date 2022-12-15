@@ -36,57 +36,12 @@
 </template>
 
 <script>
-import { getAuth } from "firebase/auth";
 import { defineComponent } from "vue";
-import { arrayRemove, doc } from "firebase/firestore";
-import db from "../boot/db";
 
 export default defineComponent({
   name: "Card",
   props: {
     pets: Object,
   },
-
-  data() {
-    return {};
-  },
-
-  // methods: {
-  //   async created() {
-  //     const auth = getAuth();
-  //     onAuthStateChanged(auth, (user) => {
-  //       if (user) {
-  //         // User is signed in, see docs for a list of available properties
-  //         // https://firebase.google.com/docs/reference/js/firebase.User
-  //         const uid = user.uid;
-  //         this.auth = true;
-  //         // ...
-  //       } else {
-  //         // User is signed out
-  //         // ...
-  //       }
-  //     });
-  //   },
-
-  // async remove() {
-  //   const auth = getAuth();
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       // User is signed in, see docs for a list of available properties
-  //       // https://firebase.google.com/docs/reference/js/firebase.User
-  //       const uid = user.uid;
-
-  //       console.log(uid);
-  //       const cityRef = doc(db, "users", user.uid);
-  //       setDoc(cityRef, { favourite: arrayRemove(this.pets) });
-  //       this.alert = true;
-  //       // ...
-  //     } else {
-  //       // User is signed out
-  //       // ...
-  //     }
-  //   });
-  // },
-  // },
 });
 </script>

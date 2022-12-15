@@ -21,8 +21,8 @@
 import { defineComponent } from "vue";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
 import Card from "./Card.vue";
-
 import "vue3-carousel/dist/carousel.css";
+
 export default defineComponent({
   name: "WrapAround",
   components: {
@@ -31,7 +31,8 @@ export default defineComponent({
     Navigation,
     Card,
   },
-  props: { pets: Array },
+  props: { pets: Object },
+
   data: () => ({
     settings: {
       itemsToShow: 1,
@@ -50,3 +51,16 @@ export default defineComponent({
   }),
 });
 </script>
+
+<style>
+@media (max-width: 480px) {
+  :root {
+    --vc-icn-width: 4em !important;
+  }
+  .carousel__next,
+  .carousel__prev {
+    width: 50px !important;
+    margin: 0 !important;
+  }
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <!--BACKGROUND PAGE-->
+    <!-- Section image top -->
 
     <div class="img-bg flex-bg">
       <div class="border-bg text-center container text-h1">
@@ -9,11 +9,8 @@
       </div>
     </div>
 
-    <!--/BACKGROUND PAGE-->
-
-    <!--CARD PAGE-->
-
-    <section>
+    <!--Carousel-->
+    <section class="carousel">
       <div class="text-center text-h2 q-pa-xl">
         Mascotas adorables
         <span class="span-title">cerca de ti!</span>
@@ -27,17 +24,14 @@
           aria-label="Más adopciones"
           icon-right="mdi-chevron-right"
           label="Más adopciones"
-          to="/adopt"
+          to="/adoptar"
         />
       </div>
     </section>
 
-    <!--/CARD PAGE-->
-
-    <!--SECTION ONE PAGE-->
-
-    <section class="section-one bg-white q-pa-xl">
-      <div class="container flex-section-one">
+    <!-- Section secondchance -->
+    <section class="section-secondchance bg-white q-pa-xl">
+      <div class="container flex-section-secondchance">
         <div class="flex-left">
           <div class="text-left text-h2 q-pb-lg">
             ¿Qué es <span class="span-title">SecondChance?</span>
@@ -53,13 +47,12 @@
         <div class="flex-right text-center">
           <q-knob
             readonly
-            :value="pets.length"
             v-model="pets.length"
             show-value
             size="90px"
             :thickness="0.22"
             color="primary"
-            track-color="green-2"
+            track-color="green-1"
             class="text-orange q-ma-md"
             aria-label="knob"
           ></q-knob>
@@ -70,12 +63,11 @@
           <q-knob
             readonly
             show-value
-            :value="pets.length"
-            v-model="pets.length"
+            v-model="adoptados"
             size="90px"
             :thickness="0.22"
             color="primary"
-            track-color="green-2"
+            track-color="green-1"
             class="text-orange q-ma-md"
             aria-label="knob"
           ></q-knob>
@@ -84,13 +76,12 @@
         <div>
           <q-knob
             readonly
-            :value="pets.length"
-            v-model="pets.length"
+            v-model="afiliados"
             show-value
             size="90px"
             :thickness="0.22"
             color="primary"
-            track-color="green-2"
+            track-color="green-1"
             class="text-orange q-ma-md"
             aria-label="knob"
           ></q-knob>
@@ -99,21 +90,18 @@
       </div>
     </section>
 
-    <!--/SECTION ONE PAGE-->
-
-    <!--/SECTION TWO PAGE-->
-
-    <section class="section-two q-pa-xl">
+    <!-- Section why -->
+    <section class="section-why q-pa-xl">
       <div class="text-center text-h2">
         ¿Por qué
         <span class="span-title">adoptar?</span>
       </div>
       <div class="container">
         <div class="flex-first q-pt-xl">
-          <div class="img-section-two">
+          <div class="img-section-why">
             <img alt="img_salvar" src="../assets/imagenes/safe.webp" />
           </div>
-          <div class="text-section-two">
+          <div class="text-section-why">
             <div class="text-left text-h3 q-pl-xl q-pt-lg">
               Salvar una <span class="span-title">vida</span>
             </div>
@@ -133,7 +121,7 @@
           </div>
         </div>
         <div class="flex-second">
-          <div class="img-section-two">
+          <div class="img-section-why">
             <img
               alt="img_mejorar"
               src="../assets/imagenes/help.webp"
@@ -141,7 +129,7 @@
               height="600"
             />
           </div>
-          <div class="text-section-two">
+          <div class="text-section-why">
             <div class="text-left text-h3 q-pr-xl q-pt-lg">
               Ayudar a una <span class="span-title">mascota</span>
             </div>
@@ -163,74 +151,68 @@
       </div>
     </section>
 
-    <!--/SECTION TWO PAGE-->
-
-    <!--/SECTION THREE PAGE-->
-
-    <section class="section-three bg-white q-pa-xl">
+    <!-- Section collaborate -->
+    <section class="section-collaborate bg-white q-pa-xl">
       <div class="text-center text-h2">
         Colaborar con
         <span class="span-title">nosotros</span>
       </div>
-      <div class="container">
-        <div class="row-section-three q-pt-xl">
-          <div class="col-section-three">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fa fa-paw"></i>
-              </div>
-              <div class="title-h3 text-h3">Adoptar</div>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quisquam consequatur necessitatibus eaque.
-              </p>
+      <div class="row-section-collaborate q-pt-xl container">
+        <div class="col-section-collaborate">
+          <!-- Contact card -->
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fa fa-paw"></i>
             </div>
+            <div class="title-h3 text-h3">Adoptar</div>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
           </div>
-          <div class="col-section-three">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-hand-holding-dollar"></i>
-              </div>
-              <div class="title-h3 text-h3">Donaciones</div>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quisquam consequatur necessitatibus eaque.
-              </p>
+        </div>
+        <div class="col-section-collaborate">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-hand-holding-dollar"></i>
             </div>
+            <div class="title-h3 text-h3">Donaciones</div>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
           </div>
-          <div class="col-section-three">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-house"></i>
-              </div>
-              <div class="title-h3 text-h3">Protectoras</div>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quisquam consequatur necessitatibus eaque.
-              </p>
+        </div>
+        <div class="col-section-collaborate">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-house"></i>
             </div>
+            <div class="title-h3 text-h3">Protectoras</div>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
           </div>
         </div>
       </div>
     </section>
-    <!--/SECTION THREE PAGE-->
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-
 import Carousel from "../components/Carousel.vue";
-import Form from "../components/Form.vue";
 import { getAllPets } from "../boot/db";
 
 export default defineComponent({
   name: "HomePage",
-  components: { Carousel, Form },
+  components: { Carousel },
   data() {
     return {
       pets: [],
-      showModal: false,
+      adoptados: 2,
+      afiliados: 3,
     };
   },
 

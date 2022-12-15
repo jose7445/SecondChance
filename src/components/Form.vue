@@ -36,10 +36,11 @@
             <q-input
               square
               clearable
+              required
               v-model="name"
-              type="name"
+              type="text"
               lazy-rules
-              :rules="[(val) => val.length > 0 || 'Campo obligatorio']"
+              :rules="[(val) => (val && val.length > 0) || 'Campo obligatorio']"
               label="Nombre"
             >
               <template v-slot:prepend>
@@ -51,6 +52,7 @@
             <q-input
               square
               clearable
+              required
               v-model="email"
               type="email"
               lazy-rules
@@ -58,39 +60,31 @@
               label="Email"
             >
               <template v-slot:prepend>
-                <q-icon name="email" />
+                <q-icon name="mail" />
               </template>
             </q-input>
           </div>
+
           <div class="form-item">
             <q-input
               square
-              clearable
-              v-model="phone"
-              type="tel"
-              lazy-rules
-              mask="(6) ## - ### - ###"
-              :rules="[(val, rules) => rules.phone(val) || 'Email incorrecto']"
-              label="Telefono"
-            >
-              <template v-slot:prepend>
-                <q-icon name="phone" />
-              </template>
-            </q-input>
-          </div>
-          <div class="form-item">
-            <q-input
-              square
+              required
               clearable
               v-model="text"
               type="textarea"
               label="Mensaje"
+              autogrow
               lazy-rules
               :rules="[(val) => (val && val.length > 0) || 'Campo obligatorio']"
             />
           </div>
           <div class="text-center inherit">
-            <q-btn label="ENVIAR" @click="triggerPositive" color="primary" />
+            <q-btn
+              type="submit"
+              label="ENVIAR"
+              @click="triggerPositive"
+              color="primary"
+            />
           </div>
         </q-form>
       </div>
@@ -101,7 +95,7 @@
 <script>
 import { useQuasar } from "quasar";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+
 
 export default {
   setup() {
@@ -109,22 +103,26 @@ export default {
 
     const name = ref(null);
     const email = ref(null);
-    const phone = ref(null);
     const text = ref(null);
-    const router = useRouter();
 
     return {
       name,
       email,
-      phone,
       text,
 
       triggerPositive() {
-        $q.notify({
-          type: "positive",
-          message: "Consulta enviada",
-        });
-        setTimeout(() => location.reload(), 1000);
+        if (name.value && email.value && text.value != null) {
+          $q.notify({
+            type: "positive",
+            message: "Consulta enviada",
+          });
+          setTimeout(() => location.reload(), 1200);
+        } else {
+          $q.notify({
+            type: "negative",
+            message: "Faltan campos por rellenar",
+          });
+        }
       },
     };
   },
