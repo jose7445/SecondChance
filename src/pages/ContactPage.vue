@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <!-- Section image top -->
-    <div class="img-bg-contact flex-bg">
+    <div class="size-bg img-contact flex-bg">
       <div class="border-bg text-center container text-h1">
         Nuestros compañeros perfectos nunca tienen menos de cuatro patas
         <br /><span class="span-title">- Colette -</span>
@@ -9,8 +9,8 @@
     </div>
 
     <!-- Section contact -->
-    <section class="section-contact bg-white q-pa-xl">
-      <div class="text-center text-h2 q-pb-xl">
+    <section class="section-contact bg-white">
+      <div class="text-center text-h2 q-pb-lg">
         Contactar con
         <span class="span-title">nosotros</span>
       </div>

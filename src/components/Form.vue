@@ -17,21 +17,21 @@
             color="green"
             size="20px"
             icon="mdi-linkedin"
-            href="https://www.instagram.com/_tortiillas_/"
-            aria-label="Instagram"
+            href="https://www.linkedin.com/in/jose-agudo-sabate-bb1041137"
+            aria-label="Linkedin"
           />
           <q-btn
             round
             color="green"
             size="20px"
             icon="mdi-instagram"
-            href="https://www.linkedin.com/in/jose-agudo-sabate-bb1041137"
-            aria-label="Facebook"
+            href="https://www.instagram.com/_tortiillas_/"
+            aria-label="Instagram"
           />
         </div>
       </div>
       <div class="contact-form-wrapper">
-        <q-form class="q-gutter-md">
+        <q-form class="q-gutter-lg">
           <div class="form-item">
             <q-input
               square
@@ -96,7 +96,6 @@
 import { useQuasar } from "quasar";
 import { ref } from "vue";
 
-
 export default {
   setup() {
     const $q = useQuasar();
@@ -116,7 +115,7 @@ export default {
             type: "positive",
             message: "Consulta enviada",
           });
-          setTimeout(() => location.reload(), 1200);
+          setTimeout(() => location.reload(), 1500);
         } else {
           $q.notify({
             type: "negative",

@@ -2,7 +2,7 @@
   <q-page>
     <!-- Section image top -->
 
-    <div class="img-bg flex-bg">
+    <div class="size-bg img-home flex-bg">
       <div class="border-bg text-center container text-h1">
         Un país se puede juzgar por la forma en que trata a sus animales
         <br /><span class="span-title">- Mahatma Gandhi -</span>
@@ -10,33 +10,35 @@
     </div>
 
     <!--Carousel-->
-    <section class="carousel">
-      <div class="text-center text-h2 q-pa-xl">
+    <section class="section-pets">
+      <div class="text-h2 text-center">
         Mascotas adorables
         <span class="span-title">cerca de ti!</span>
-        <p class="q-pt-md">
+        <p class="q-pt-lg">
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
         </p>
       </div>
-      <Carousel :pets="pets" />
-      <div class="text-center inherit q-pa-xl">
-        <q-btn
-          aria-label="Más adopciones"
-          icon-right="mdi-chevron-right"
-          label="Más adopciones"
-          to="/adoptar"
-        />
+      <div class="carousel">
+        <Carousel :pets="pets" />
+        <div class="q-pt-lg">
+          <q-btn
+            aria-label="Más adopciones"
+            icon-right="mdi-chevron-right"
+            label="Más adopciones"
+            to="/adoptar"
+          />
+        </div>
       </div>
     </section>
 
     <!-- Section secondchance -->
-    <section class="section-secondchance bg-white q-pa-xl">
+    <section class="section-secondchance bg-white">
       <div class="container flex-section-secondchance">
         <div class="flex-left">
-          <div class="text-left text-h2 q-pb-lg">
+          <div class="text-h2 q-pb-lg">
             ¿Qué es <span class="span-title">SecondChance?</span>
           </div>
-          <p class="text-justify">
+          <p>
             Lorem Ipsum es simplemente el texto de relleno de las imprentas y
             archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
             de las industrias desde el año 1500, cuando un impresor (N. del T.
@@ -44,16 +46,16 @@
             textos y los mezcló de tal manera.
           </p>
         </div>
-        <div class="flex-right text-center">
+        <div class="flex-right">
           <q-knob
             readonly
             v-model="pets.length"
             show-value
-            size="90px"
+            size="100px"
             :thickness="0.22"
             color="primary"
             track-color="green-1"
-            class="text-orange q-ma-md"
+            class="text-orange q-ma-lg text-weight-medium"
             aria-label="knob"
           ></q-knob>
           <div class="text-center text-h4">Adopciones</div>
@@ -64,11 +66,11 @@
             readonly
             show-value
             v-model="adoptados"
-            size="90px"
+            size="100px"
             :thickness="0.22"
             color="primary"
             track-color="green-1"
-            class="text-orange q-ma-md"
+            class="text-orange q-ma-lg text-weight-medium"
             aria-label="knob"
           ></q-knob>
           <div class="text-center text-h4">Adoptados</div>
@@ -78,11 +80,11 @@
             readonly
             v-model="afiliados"
             show-value
-            size="90px"
+            size="100px"
             :thickness="0.22"
             color="primary"
             track-color="green-1"
-            class="text-orange q-ma-md"
+            class="text-orange q-ma-lg text-weight-medium"
             aria-label="knob"
           ></q-knob>
           <div class="text-center text-h4">Afiliados</div>
@@ -91,21 +93,21 @@
     </section>
 
     <!-- Section why -->
-    <section class="section-why q-pa-xl">
-      <div class="text-center text-h2">
-        ¿Por qué
-        <span class="span-title">adoptar?</span>
-      </div>
+    <section class="section-why">
       <div class="container">
+        <div class="text-center text-h2">
+          ¿Por qué
+          <span class="span-title">adoptar?</span>
+        </div>
         <div class="flex-first q-pt-xl">
           <div class="img-section-why">
             <img alt="img_salvar" src="../assets/imagenes/safe.webp" />
           </div>
           <div class="text-section-why">
-            <div class="text-left text-h3 q-pl-xl q-pt-lg">
+            <div class="text-h3 q-pl-lg q-pt-lg">
               Salvar una <span class="span-title">vida</span>
             </div>
-            <p class="q-pl-xl q-pt-lg q-ma-none text-justify">
+            <p class="q-pl-lg q-pt-lg">
               Lorem Ipsum es simplemente el texto de relleno de las imprentas y
               archivos de texto. Lorem Ipsum ha sido el texto de relleno
               estándar de las industrias desde el año 1500, cuando un impresor
@@ -130,10 +132,10 @@
             />
           </div>
           <div class="text-section-why">
-            <div class="text-left text-h3 q-pr-xl q-pt-lg">
+            <div class="text-left text-h3 q-pt-lg">
               Ayudar a una <span class="span-title">mascota</span>
             </div>
-            <p class="q-pr-xl q-pt-lg q-ma-none text-justify">
+            <p class="q-pr-lg q-pt-lg">
               Lorem Ipsum es simplemente el texto de relleno de las imprentas y
               archivos de texto. Lorem Ipsum ha sido el texto de relleno
               estándar de las industrias desde el año 1500, cuando un impresor
@@ -152,12 +154,12 @@
     </section>
 
     <!-- Section collaborate -->
-    <section class="section-collaborate bg-white q-pa-xl">
+    <section class="section-collaborate bg-white">
       <div class="text-center text-h2">
         Colaborar con
         <span class="span-title">nosotros</span>
       </div>
-      <div class="row-section-collaborate q-pt-xl container">
+      <div class="row-section-collaborate q-pt-lg container">
         <div class="col-section-collaborate">
           <!-- Contact card -->
           <div class="card">

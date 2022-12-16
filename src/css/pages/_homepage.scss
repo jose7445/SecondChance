@@ -1,28 +1,12 @@
 /**  Section image top  **/
-.img-bg {
+.img-home {
   background-image: url("../assets/imagenes/background_home.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  min-height: 800px;
-}
-
-.flex-bg {
-  display: flex;
-  align-items: center;
-}
-
-.border-bg {
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
 }
 
 /** Section image top MQ PHONE **/
 @media (max-width: 480px) {
-  .img-bg {
+  .img-home {
     background-image: url("../assets/imagenes/background_home_phone.webp");
-    background-attachment: scroll;
   }
 }
 
@@ -42,8 +26,9 @@
     width: 100%;
     gap: 0;
   }
-  .section-secondchance {
-    padding: 2rem;
+
+  .flex-left p {
+    text-align: center;
   }
 }
 
@@ -85,6 +70,18 @@
   }
 }
 
+/** Section pet-carousel MQ DESKTOP **/
+
+.carousel {
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .section-pets {
+    padding: 3rem 0rem 2rem 0rem;
+  }
+}
+
 /** Section why **/
 .flex-first {
   display: flex;
@@ -104,6 +101,7 @@
 @media (max-width: 480px) {
   .flex-first {
     flex-direction: column;
+    padding-top: 3rem;
   }
   .flex-second {
     flex-direction: column;
@@ -115,9 +113,7 @@
 
   .text-section-why p {
     padding: 0 0 2rem 0;
-  }
-  .section-why {
-    padding: 3rem 0 0 0;
+    text-align: center;
   }
   .img-section-why img {
     width: 100%;
@@ -235,14 +231,8 @@
 /** Section collaborate MQ PHONE **/
 @media (max-width: 480px) {
   .col-section-collaborate {
-    flex: 0 0 130%;
-    padding: 1rem;
-  }
-  .row-section-collaborate {
-    padding: 3rem;
-  }
-  .section-collaborate {
-    padding: 2rem 0;
+    flex: 0 0 110%;
+    padding-bottom: 1rem;
   }
 }
 

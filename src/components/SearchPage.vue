@@ -2,13 +2,20 @@
   <div class="search-bar">
     <div class="search">
       <input
-        type="search"
+        type="text"
         class="search__input"
         name="search"
-        placeholder="Localización (p.ej: Barcelona) o Especie (p.ej: Gato)"
+        placeholder="Por localización o especie "
         v-model="search"
       />
-      <button class="search__btn" @click="clearSearch">Limpiar</button>
+      <q-btn
+        type="button"
+        @click="clearSearch"
+        icon-right="mdi-delete"
+        aria-label="delete"
+        size="lg"
+      >
+      </q-btn>
     </div>
   </div>
 </template>

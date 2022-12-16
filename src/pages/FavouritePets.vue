@@ -1,14 +1,14 @@
 <template>
-  <section class="section-one q-pa-xl">
+  <section>
     <div class="container">
-      <div class="text-center text-h2 q-pb-lg">
+      <div class="text-center text-h2">
         Tus mascotas <span class="span-title">favoritas</span>
-        <p v-if="favouriteArray.length" class="q-pt-md">
+        <p v-if="favouriteArray.length" class="q-pt-lg">
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
         </p>
-        <p v-else class="q-pt-md">No tienes ningún animal en tus favoritos !</p>
+        <p v-else class="q-pt-lg">No tienes ningún animal en tus favoritos !</p>
       </div>
-      <div class="q-pa-xl row justify-around">
+      <div class="row justify-around">
         <div v-for="favouriteArray in favouriteArray" :key="favouriteArray.id">
           <Card :pets="favouriteArray" />
         </div>

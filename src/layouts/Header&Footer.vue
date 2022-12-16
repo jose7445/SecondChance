@@ -2,8 +2,8 @@
   <q-layout view="hHh lpR fFf">
     <q-header class="bg-scroll" expand elevated>
       <q-toolbar
-        class="responsive-size container q-pa-none q-pt-sm"
-        style="height: 110px"
+        class="responsive-size container q-pa-none"
+        style="height: 105px"
       >
         <!--logo desktop-->
         <router-link to="/">
@@ -33,16 +33,16 @@
                   <q-item-section>Inicio</q-item-section>
                 </q-item>
                 <q-separator dark></q-separator>
-                <q-item to="adoptar" clickable>
+                <q-item to="/adoptar" clickable>
                   <q-item-section>Adoptar</q-item-section>
                 </q-item>
                 <q-separator dark></q-separator>
-                <q-item to="nosotros" clickable>
+                <q-item to="/nosotros" clickable>
                   <q-item-section>Nosotros</q-item-section>
                 </q-item>
 
                 <q-separator dark></q-separator>
-                <q-item to="contactar" clickable>
+                <q-item to="/contactar" clickable>
                   <q-item-section>Contacto</q-item-section>
                 </q-item>
               </q-list>
@@ -55,24 +55,24 @@
 
         <!--logo phone-->
         <router-link to="/">
-          <q-avatar class="lt-sm logo-image" style="width: 100px; height: auto">
+          <q-avatar class="lt-sm logo-image" style="width: 120px; height: auto">
             <img alt="logo_phone" src="../assets/logo_phone.webp" />
           </q-avatar>
         </router-link>
 
         <!--menu desktop-->
-        <q-tabs class="gt-xs text-primary">
+        <q-tabs class="gt-xs text-secondary">
           <router-link to="/"
             ><q-tab name="Inicio" label="Inicio"
           /></router-link>
-          <router-link to="adoptar"
+          <router-link to="/adoptar"
             ><q-tab name="Adoptar" label="Adoptar"
           /></router-link>
           <router-link to="/nosotros"
             ><q-tab name="Nosotros" label="Nosotros"
           /></router-link>
 
-          <router-link to="contactar"
+          <router-link to="/contactar"
             ><q-tab name="Contacto" label="Contacto"
           /></router-link>
         </q-tabs>
@@ -91,7 +91,7 @@
 
         <!--button login succes-->
         <div v-if="isLoggedIn">
-          <div class="q-pa-md button_login">
+          <div class="button_login">
             <q-btn-dropdown
               icon="mdi-account-check"
               color="primary"
@@ -223,6 +223,7 @@ export default {
       if (user) {
         currentUser.value = user;
         isLoggedIn.value = true;
+        medium.value = false;
       } else {
         isLoggedIn.value = false;
         currentUser.value = null;

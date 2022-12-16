@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <!-- Section image top -->
-    <div class="img-bg-about flex-bg">
+    <div class="size-bg img-about flex-bg">
       <div class="border-bg text-center container text-h1">
         Hasta que uno no ha amado un animal, una parte del alma sigue sin
         despertar
@@ -10,7 +10,7 @@
     </div>
 
     <!--Section about -->
-    <section class="section-about q-pa-xl bg-white">
+    <section class="section-about bg-white">
       <div class="container">
         <div class="flex-sobre-mi">
           <div class="sobre-mi-img">
@@ -35,12 +35,12 @@
     </section>
 
     <!--Section time line-->
-    <section class="section-time-line q-pa-xl">
+    <section class="section-time-line">
       <div class="container">
         <div class="text-center text-h2 q-pb-lg">
           ¿Qué es <span class="span-title">SecondChance?</span>
         </div>
-        <p class="text-justify q-pb-xl">
+        <p class="q-pb-lg">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas itaque
           hic quibusdam fugiat est numquam harum, accusamus suscipit consequatur
           laboriosam!Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -121,13 +121,13 @@
     </section>
 
     <!--Section newsletter-->
-    <section class="section-news q-pa-xl bg-white">
+    <section class="section-news bg-white">
       <div class="container">
         <div class="text-center text-h2">
           Quieres estar a la última de todas las novedades que se presentan a
           SecondChance?
           <span class="span-title"> Apuntate a nuestra Newsetter!</span>
-          <div class="text-center inherit q-pt-md">
+          <div class="q-pt-lg">
             <q-btn
               aria-label="Apuntate"
               icon-right="mdi-chevron-right"

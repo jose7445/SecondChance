@@ -49,26 +49,3 @@
     border-radius: 0 0 10px 10px;
   }
 }
-
-@media only screen and (max-width: 480px) {
-  .contact-box {
-    width: 100%;
-    margin: 8% 5%;
-  }
-}
-
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 50px;
-}
-
-@media only screen and (max-width: 480px) {
-  .links {
-    padding-top: 30px;
-  }
-  .contact-box {
-    margin: 0;
-  }
-}

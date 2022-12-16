@@ -1,7 +1,7 @@
 <template>
   <q-card class="bg-card">
     <div class="card-wrapper">
-      <router-link :to="{ name: 'pets', params: { id: pets.id } }">
+      <router-link :to="{ name: 'adoptar', params: { id: pets.id } }">
         <div class="user-pic">
           <img :src="pets.image_url" alt="" />
         </div>

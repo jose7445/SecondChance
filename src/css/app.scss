@@ -16,10 +16,32 @@ img {
   max-width: 100%;
 }
 
+section {
+  padding: 3rem 2rem 3rem 2rem;
+}
+
 .container {
   max-width: 120rem;
   width: 90%;
   margin: 0 auto;
+}
+
+.border-bg {
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.size-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 780px;
+}
+.flex-bg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .text-h1 {
@@ -65,12 +87,21 @@ a {
 
 /** MEDIA QUERY PHONE 320PX - 480PX **/
 @media (max-width: 480px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .border-bg {
+    margin: 0 2rem;
+  }
+  .size-bg {
+    background-attachment: scroll;
+  }
   .text-h1 {
     font-size: 30px;
   }
   .text-h2 {
     font-size: 25px;
-    text-align: center;
   }
   .text-h3 {
     font-size: 20px;

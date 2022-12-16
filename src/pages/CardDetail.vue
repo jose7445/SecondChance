@@ -22,7 +22,7 @@
               >
             </div>
             <div class="main-details">
-              <ul class="q-pt-md q-pl-none q-ma-none">
+              <ul class="q-pt-lg q-pl-none q-ma-none">
                 <li>
                   <strong>Especie</strong> <span>{{ pets.species }}</span>
                 </li>
@@ -36,8 +36,8 @@
                   <strong>Medida</strong><span>{{ pets.size }}</span>
                 </li>
               </ul>
-              <div class="pet-buttons">
-                <div class="text-center q-gutter-xl q-pt-md">
+              <div class="pet-buttons" align="middle">
+                <div class="q-gutter-lg q-pt-lg">
                   <q-btn
                     aria-label="Adoptar"
                     icon-right="mdi-hand-heart"
@@ -47,7 +47,7 @@
                   <q-btn
                     aria-label="Guardar"
                     icon-right="mdi-heart-multiple"
-                    label="Guardar en favoritos"
+                    label="Favoritos"
                     @click="savePet"
                     v-if="isLoged && !actualPet"
                   />
@@ -70,7 +70,7 @@
           <div class="text-h4 q-pb-md">Mi historia</div>
           <p>{{ pets.bio }}</p>
         </div>
-        <div class="row justify-between pet-information">
+        <div class="row pet-information">
           <div class="pet-personality col-md-6 col-lg-4 mb-5 q-pa-lg">
             <!-- Pet personality -->
             <div class="text-h4">Mi personalidad</div>
@@ -82,7 +82,7 @@
           </div>
 
           <!-- Pet status -->
-          <div class="col-md-6 col-lg-4 mb-5 pet-handle q-pa-lg">
+          <div class="pet-handle col-md-6 col-lg-4 mb-5 pet-handle q-pa-lg">
             <div class="text-h4">Me entregan</div>
             <ul class="q-pa-none">
               <li>
@@ -112,7 +112,7 @@
 
           <!-- Pet notes -->
           <div
-            class="col-md-6 col-lg-4 mb-5 pet-notes q-pa-lg"
+            class="pet-notes col-md-6 col-lg-4 mb-5 pet-notes q-pa-lg"
             v-if="pets.info_notes?.length > 0"
           >
             <div class="text-h4">Tienes que saber</div>
@@ -125,18 +125,13 @@
     </section>
 
     <!-- Section back -->
-    <section class="section-back q-pa-xl bg-white">
+    <section class="section-back bg-white">
       <div class="container">
         <div class="text-center text-h2">
           Quieres seguir buscando tu mascota
           <span class="span-title"> favorita?</span>
           <div class="text-center inherit q-pt-lg">
-            <q-btn
-              aria-label="Volver"
-              icon-right="mdi-arrow-left"
-              label="Volver"
-              to="/adoptar"
-            />
+            <q-btn aria-label="Volver" label="Volver" to="/adoptar" />
           </div>
         </div>
       </div>

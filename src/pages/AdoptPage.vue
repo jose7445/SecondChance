@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <!-- Section image top -->
-    <div class="img-bg-adopt flex-bg">
+    <div class="size-bg img-adopt flex-bg">
       <div class="border-bg text-center container text-h1">
         Los ojos de un animal tienen el poder de hablar un gran lenguaje
         <br /><span class="span-title">- Martin Buber -</span>
@@ -9,7 +9,7 @@
     </div>
 
     <!--Section search-->
-    <section class="section-search bg-white q-pa-xl">
+    <section class="section-search bg-white">
       <div class="text-center text-h2 q-pb-lg">
         Busca tu proxima <span class="span-title">mascota</span>
       </div>
@@ -24,14 +24,15 @@
     </section>
 
     <!--Section adopt-->
-    <section class="section-adopt q-pa-xl">
-      <div class="text-center text-h2 q-pa-sm">
+    <section class="section-adopt">
+      <div class="text-center text-h2">
         Adopotar nuestras
         <span class="span-title">mascotes</span>
-        <p class="q-pt-md">
+        <p class="q-pt-lg">
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
         </p>
       </div>
+
       <!--Pet cards-->
       <div class="container">
         <div class="flex-pet">
@@ -43,16 +44,21 @@
     </section>
 
     <!--Section testimonial-->
-    <section class="section-testimonial bg-white q-pa-xl q-mt-lg">
+    <section class="section-testimonial bg-white">
       <div class="text-center text-h2 q-pb-lg">
-        Que dicen nuestras <span class="span-title">familias de acogida?</span>
+        Que dicen nuestras
+        <span class="span-title">familias de acogida?</span>
       </div>
-      <p class="text-center q-pb-md">
+      <p class="text-center q-pb-lg">
         Lorem Ipsum es simplemente el texto de relleno de las imprentas archivos
         de texto. Lorem Ipsum ha sido el texto de relleno estándar de las
         industrias desde el año 1500, cuando un impresor (N. del T. persona que
         se dedica a la imprenta) desconocido usó una galería de textos y los
-        mezcló de tal manera.
+        mezcló de tal manera. Lorem Ipsum es simplemente el texto de relleno de
+        las imprentas archivos de texto. Lorem Ipsum ha sido el texto de relleno
+        estándar de las industrias desde el año 1500, cuando un impresor (N. del
+        T. persona que se dedica a la imprenta) desconocido usó una galería de
+        textos y los mezcló de tal manera.
       </p>
       <div class="container container--testimonials">
         <div class="testimonial">
@@ -162,8 +168,8 @@ export default defineComponent({
       }
       return this.pets.filter((pets) => {
         return (
-          pets.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          pets.species.toLowerCase().includes(this.searchTerm.toLowerCase())
+          pets.location.toLowerCase().includes(this.searchTerm) ||
+          pets.species.toLowerCase().includes(this.searchTerm)
         );
       });
     },

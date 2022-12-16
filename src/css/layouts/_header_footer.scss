@@ -15,21 +15,17 @@
   .bg-button-menu {
     background-color: transparent;
   }
-  .q-toolbar {
-    padding: 0;
-  }
   .q-avatar {
     border-radius: 0;
   }
   .title-footer {
-    font-size: 15px;
+    font-size: 18px;
   }
-}
-
-/** Button login MQ PHONE **/
-@media (max-width: 480px) {
-  .button_login {
-    padding: 0rem;
+  .q-footer {
+    padding: 0 1rem;
+  }
+  .q-header {
+    padding: 0 1rem 0 0;
   }
   .button_login button {
     padding: 0rem;

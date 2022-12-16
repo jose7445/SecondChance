@@ -3,7 +3,7 @@
     <div class="contact-box">
       <div class="contact-links">
         <h2 class="text-h2 text-center text-white">INICIAR SESIÓN</h2>
-        <div class="links q-gutter-lg">
+        <div class="q-gutter-lg" align="center">
           <q-btn
             round
             color="green"
@@ -17,7 +17,7 @@
             color="green"
             size="20px"
             icon="mdi-instagram"
-            href="https://www.facebook.com/"
+            href="https://www.instagram.com/_tortiillas_/"
             aria-label="Instagram"
           />
           <q-btn
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="contact-form-wrapper">
-        <q-form class="q-gutter-md">
+        <q-form>
           <div class="form-item">
             <q-input
               square
@@ -81,9 +81,13 @@
         </q-form>
 
         <!-- Button password remember-->
-        <div class="q-pt-lg row justify-between">
-          <q-btn flat @click="prompt = true">¿Olvidaste la clave?</q-btn>
-          <router-link to="registrarse">Registrarse</router-link>
+        <div class="q-pt-lg row justify-between items-center forget">
+          <q-btn flat @click="prompt = true" class="button-forget"
+            >¿Olvidaste la clave?</q-btn
+          >
+          <router-link to="/registrarse">
+            <div class="text-weight-medium">Registrarse</div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -120,6 +124,7 @@
 
 <script>
 import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
 import { ref } from "vue";
 import {
   getAuth,
@@ -135,6 +140,7 @@ export default {
     const password = ref("");
     const error = ref(null);
     const isPwd = ref(true);
+    const router = useRouter();
 
     return {
       email,
@@ -143,11 +149,12 @@ export default {
       isPwd,
       prompt: ref(false),
       address,
+      router,
 
       async login() {
         const auth = getAuth();
 
-        signInWithEmailAndPassword(auth, email.value, password.value)
+        await signInWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             const user = userCredential.user;
 
@@ -155,8 +162,9 @@ export default {
               message: "Sesión iniciada",
               type: "positive",
             });
-            setTimeout(() => location.reload(), 2000);
+            // setTimeout(() => location.reload(), 2000);
           })
+
           .catch((error) => {
             console.log(error.code);
             switch (error.code) {
@@ -193,7 +201,7 @@ export default {
               message: "Revise su correo eletronico",
               type: "positive",
             });
-            setTimeout(() => router.push({ path: "/" }), 2000);
+            // setTimeout(() => router.push({ path: "/" }), 500);
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -219,3 +227,19 @@ export default {
   },
 };
 </script>
+
+<style>
+.button-forget {
+  background-color: transparent;
+  color: #79d671;
+  font-weight: 300;
+  text-transform: none;
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .forget {
+    flex-direction: column-reverse;
+  }
+}
+</style>

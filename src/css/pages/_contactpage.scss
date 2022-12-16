@@ -1,29 +1,12 @@
 /** Section image top **/
-.border-bg {
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-}
-
-.img-bg-contact {
+.img-contact {
   background-image: url("https://cdn.pixabay.com/photo/2022/05/04/15/42/dog-7174266_960_720.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
-  background-attachment: fixed;
-  min-height: 800px;
 }
 
 @media (max-width: 480px) {
-  .img-bg-contact {
+  .img-contact {
     background-image: url("../assets/imagenes/background_contact_phone.webp");
-    background-attachment: scroll;
   }
-}
-
-.flex-bg {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 /** Section contact **/
@@ -44,10 +27,6 @@
 @media (max-width: 480px) {
   .col-section-contact {
     flex: 0 0 113%;
-    padding: 1rem;
-  }
-  .section-contact {
-    padding: 2rem;
   }
 }
 .card {
@@ -61,10 +40,6 @@
   box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   transition: 0.5s;
-}
-.title-h3 {
-  font-size: 20px;
-  margin: 1em 0;
 }
 
 .icon-wrapper {
@@ -98,5 +73,3 @@
   background-color: #ffffff;
   color: black;
 }
-
-/** <!--SECTION THREE--> **/

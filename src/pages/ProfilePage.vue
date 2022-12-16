@@ -1,8 +1,8 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="row q-col-gutter-md">
+  <q-page class="q-pa-lg">
+    <div class="row q-col-gutter-lg">
       <div class="col-lg-6 col-md-4 col-xs-12 col-sm-12">
-        <q-card class="card-bg text-black">
+        <q-card class="card-bg text-black q-pa-lg">
           <q-card-section class="text-center bg-transparent">
             <q-avatar size="100px">
               <img
@@ -10,7 +10,8 @@
                 src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
               />
             </q-avatar>
-            <div class="text-h4 q-mt-md">
+
+            <div class="text-h4">
               {{ userArray.name }} {{ userArray.subname }}
             </div>
           </q-card-section>
@@ -26,6 +27,7 @@
             {{ userArray.direction }}, {{ userArray.city }} - {{ userArray.cp }}
           </div>
           <q-separator color="primary" inset />
+
           <q-card-section>
             <div class="text-h5 text-center">
               {{ userArray.bio }}
@@ -38,10 +40,6 @@
         <q-card>
           <q-card-section class="q-pa-sm">
             <q-list class="row">
-              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <q-toggle v-model="readonly" label="Modificar perfil" />
-              </q-item>
-
               <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <q-item-section>
                   <q-input
@@ -51,7 +49,6 @@
                     v-model="name"
                     type="text"
                     label="Nombre"
-                    :readonly="readonly"
                   />
                 </q-item-section>
               </q-item>
@@ -64,7 +61,6 @@
                     type="text"
                     label="Apellidos"
                     v-model="subname"
-                    :readonly="readonly"
                   />
                 </q-item-section>
               </q-item>
@@ -76,7 +72,6 @@
                     type="tel"
                     mask="6## - ## - ## - ##"
                     label="Telefono"
-                    :readonly="readonly"
                   />
                 </q-item-section>
               </q-item>
@@ -88,7 +83,6 @@
                     required
                     label="Direccion"
                     v-model="direction"
-                    :readonly="readonly"
                   />
                 </q-item-section>
               </q-item>
@@ -100,7 +94,6 @@
                     required
                     label="Ciudad"
                     v-model="city"
-                    :readonly="readonly"
                   />
                 </q-item-section>
               </q-item>
@@ -113,7 +106,6 @@
                     required
                     label="Codigo Postal"
                     v-model="cp"
-                    :readonly="readonly"
                   />
                 </q-item-section>
               </q-item>
@@ -127,7 +119,6 @@
                     required
                     label="Biografia"
                     v-model="bio"
-                    :readonly="readonly"
                     autogrow
                   />
                 </q-item-section>
@@ -146,7 +137,7 @@
 
       <div class="col-lg-6 col-md-8 col-xs-12 col-sm-12">
         <q-card class="card-bg text-black">
-          <q-card-section class="text-h6 q-pa-sm">
+          <q-card-section class="text-h6 q-pa-lg">
             <div class="text-h6">Modificar contraseña</div>
           </q-card-section>
           <q-form @submit="updatePassword">
@@ -204,9 +195,7 @@
           <div class="text-h6">Modificar contraseña</div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          Contraseña modificada con exito
-        </q-card-section>
+        <q-card-section> Contraseña modificada con exito </q-card-section>
 
         <q-card-actions align="right">
           <q-btn flat label="OK" color="white" to="/" v-close-popup />
@@ -220,7 +209,7 @@
           <div class="text-h6">Modificar contraseña</div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
+        <q-card-section>
           Vuelve a inicar sesion para modificar la contraseña
         </q-card-section>
 
@@ -272,7 +261,6 @@ export default defineComponent({
       city: "",
       cp: "",
       bio: "",
-      readonly: true,
       newPassword: "",
       oldPassword: "",
       alertPositive: false,

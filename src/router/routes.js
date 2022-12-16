@@ -1,5 +1,3 @@
-import CardDetail from "../pages/CardDetail.vue";
-
 const routes = [
   {
     path: "/",
@@ -27,27 +25,23 @@ const routes = [
       { path: "", component: () => import("src/pages/AdoptPage.vue") },
     ],
   },
-  {
-    path: "/registrarse",
-    component: () => import("src/layouts/Header&Footer.vue"),
-    children: [{ path: "", component: () => import("src/pages/Register.vue") }],
-  },
-  {
-    path: "/adoptar/:id",
-    name: "pets",
-    component: CardDetail,
-  },
 
   {
-    path: "/pets/:id",
+    path: "/adoptar/:id",
     component: () => import("src/layouts/Header&Footer.vue"),
     children: [
       {
         path: "",
-        name: "pets",
+        name: "adoptar",
         component: () => import("src/pages/CardDetail.vue"),
       },
     ],
+  },
+
+  {
+    path: "/registrarse",
+    component: () => import("src/layouts/Header&Footer.vue"),
+    children: [{ path: "", component: () => import("src/pages/Register.vue") }],
   },
 
   {

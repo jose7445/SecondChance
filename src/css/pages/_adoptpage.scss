@@ -1,46 +1,21 @@
 /**  Section image top **/
 
-.img-bg-adopt {
+.img-adopt {
   background-image: url("../assets/imagenes/background_adopt.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
-  background-attachment: fixed;
-  min-height: 800px;
 }
 
 /**  Section image top MQ PHONE**/
 @media (max-width: 480px) {
-  .img-bg-adopt {
+  .img-adopt {
     background-image: url("../assets/imagenes/background_adopt_phone.webp");
-    background-attachment: scroll;
   }
 }
 
-.border-bg {
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-}
-
-.bg-card {
-  box-shadow: none;
-  background-color: transparent;
-  padding-top: 10rem;
-  text-align: center;
-}
-
 /**  Section adopt **/
-.flex-bg {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .flex-pet {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
   row-gap: 10rem;
   column-gap: 10rem;
 }
@@ -54,9 +29,6 @@
   }
   /**  Section search MQ PHONE**/
   .section-search {
-    padding: 2rem;
-  }
-  .section-testimonial {
     padding: 2rem;
   }
 }

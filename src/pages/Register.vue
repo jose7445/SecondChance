@@ -4,7 +4,7 @@
       <div class="contact-box-register">
         <div class="contact-links-register">
           <h2 class="text-h2 text-center text-white">REGISTRARSE</h2>
-          <div class="links q-gutter-xl">
+          <div class="q-gutter-xl" align="middle">
             <q-btn
               round
               color="green"
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="contact-form-wrapper-register">
-          <q-form class="q-gutter-md" @submit="register">
+          <q-form class="q-gutter-lg" @submit="register">
             <div class="form-item">
               <q-input
                 square

@@ -1,13 +1,5 @@
-.box-content-colapse {
-  width: 70%;
-  height: auto;
-  position: relative;
-  margin: auto;
-}
-
 .details-comp {
   cursor: pointer;
-
   padding: 16px;
   border-radius: 8px;
   margin-bottom: 32px;
@@ -63,21 +55,4 @@
 
 .details-comp:not([open]) p {
   opacity: 0;
-}
-
-@keyframes details-show {
-  0% {
-    opacity: 0;
-    transform: translatey(-25px);
-  }
-  100% {
-    opacity: 1;
-    transform: translatey(0);
-  }
-}
-
-@media (max-width: 480px) {
-  .box-content-colapse {
-    width: 90%;
-  }
 }
