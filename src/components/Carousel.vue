@@ -63,8 +63,4 @@ export default defineComponent({
     margin: 0 !important;
   }
 }
-
-.carousel * {
-  border-style: none;
-}
 </style>

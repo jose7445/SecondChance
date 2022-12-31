@@ -10,7 +10,7 @@
 
 <style>
 .logo {
-  margin-top: 20rem;
+  margin-top: 15rem;
   text-align: center;
 }
 
@@ -18,3 +18,19 @@
   width: 300px;
 }
 </style>
+
+<script>
+import { ref } from "vue";
+import { useMeta } from "quasar";
+export default {
+  setup() {
+    const title = ref("SecondChance | Panel de control"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
+  },
+};
+</script>

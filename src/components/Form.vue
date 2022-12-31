@@ -3,32 +3,6 @@
     <div class="contact-box">
       <div class="contact-links">
         <h2 class="text-h2 text-center text-white">CONTACTAR</h2>
-        <div class="links q-gutter-lg">
-          <q-btn
-            round
-            color="green"
-            size="20px"
-            icon="mdi-facebook"
-            href="https://www.facebook.com/joseluis.agudosabate/"
-            aria-label="Facebook"
-          />
-          <q-btn
-            round
-            color="green"
-            size="20px"
-            icon="mdi-linkedin"
-            href="https://www.linkedin.com/in/jose-agudo-sabate-bb1041137"
-            aria-label="Linkedin"
-          />
-          <q-btn
-            round
-            color="green"
-            size="20px"
-            icon="mdi-instagram"
-            href="https://www.instagram.com/_tortiillas_/"
-            aria-label="Instagram"
-          />
-        </div>
       </div>
       <div class="contact-form-wrapper">
         <q-form class="q-gutter-lg">
@@ -95,6 +69,7 @@
 <script>
 import { useQuasar } from "quasar";
 import { ref } from "vue";
+import { useMeta } from "quasar";
 
 export default {
   setup() {
@@ -103,7 +78,13 @@ export default {
     const name = ref(null);
     const email = ref(null);
     const text = ref(null);
-
+    const title = ref("SecondChance | Contactar"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
     return {
       name,
       email,

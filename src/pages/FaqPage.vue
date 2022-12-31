@@ -47,3 +47,23 @@
     </div>
   </section>
 </template>
+
+<script>
+import { ref } from "vue";
+import { useMeta } from "quasar";
+export default {
+  setup() {
+    const title = ref("SecondChance | FAQ"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
+
+    return {
+      step: ref(1),
+    };
+  },
+};
+</script>

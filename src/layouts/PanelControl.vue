@@ -31,7 +31,7 @@
           clickable
           v-ripple
           active-class="my-menu-link"
-          to="/mail"
+          to="/mensajes"
           class="text-secondary"
         >
           <q-item-section avatar>
@@ -60,18 +60,35 @@
           </q-item></router-link
         >
 
-        <q-item
-          clickable
-          v-ripple
-          active-class="my-menu-link"
-          class="text-secondary"
-        >
-          <q-item-section avatar>
-            <q-icon name="mdi-fire" />
-          </q-item-section>
+        <router-link to="/panelcontrol/match">
+          <q-item
+            clickable
+            v-ripple
+            active-class="my-menu-link"
+            class="text-secondary"
+          >
+            <q-item-section avatar>
+              <q-icon name="mdi-fire" />
+            </q-item-section>
 
-          <q-item-section>Mach animales</q-item-section>
-        </q-item>
+            <q-item-section>Mach animales</q-item-section>
+          </q-item>
+        </router-link>
+
+        <router-link to="/panelcontrol/mascotas">
+          <q-item
+            clickable
+            v-ripple
+            active-class="my-menu-link"
+            class="text-secondary"
+          >
+            <q-item-section avatar>
+              <q-icon name="mdi-dog" />
+            </q-item-section>
+
+            <q-item-section>Subir una mascota</q-item-section>
+          </q-item>
+        </router-link>
 
         <q-separator spaced />
 
@@ -100,11 +117,18 @@
 
 <script>
 import { ref } from "vue";
+import { useMeta } from "quasar";
 
 export default {
   setup() {
     const leftDrawerOpen = ref(false);
-
+    const title = ref("SecondChance | Perfil"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
     return {
       leftDrawerOpen,
       toggleLeftDrawer() {

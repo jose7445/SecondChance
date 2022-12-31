@@ -7,8 +7,8 @@
 
 .contact-links-register {
   width: 100%;
-  height: 260px;
-  padding: 2rem;
+  height: 200px;
+  padding: 5rem;
   background-color: #50924a;
   background: radial-gradient(
       circle at 55% 92%,
@@ -29,11 +29,6 @@
 }
 
 @media (max-width: 480px) {
-  .contact-links-register {
-    border-radius: 0;
-    width: 100%;
-    height: 250px;
-  }
   .contact-form-wrapper-register {
     width: 100%;
     border-radius: 0 0 10px 10px;

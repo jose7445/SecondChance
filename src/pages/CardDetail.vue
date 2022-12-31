@@ -70,7 +70,7 @@
           <div class="text-h4 q-pb-md">Mi historia</div>
           <p>{{ pets.bio }}</p>
         </div>
-        <div class="row pet-information">
+        <div class="row pet-information justify-around">
           <div class="pet-personality col-md-6 col-lg-4 mb-5 q-pa-lg">
             <!-- Pet personality -->
             <div class="text-h4">Mi personalidad</div>
@@ -194,12 +194,20 @@ import {
 } from "firebase/firestore";
 import db from "../boot/db";
 import Form from "../components/Form.vue";
-
+import { ref } from "vue";
+import { useMeta } from "quasar";
 export default {
   name: "CardDetail",
   components: { Form },
 
   data: () => {
+    const title = ref("SecondChance | Adoptar"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
     return {
       pets: [],
       favourite: [],

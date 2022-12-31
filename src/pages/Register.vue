@@ -4,32 +4,6 @@
       <div class="contact-box-register">
         <div class="contact-links-register">
           <h2 class="text-h2 text-center text-white">REGISTRARSE</h2>
-          <div class="q-gutter-xl" align="middle">
-            <q-btn
-              round
-              color="green"
-              size="20px"
-              icon="mdi-facebook"
-              href="https://www.facebook.com/joseluis.agudosabate/"
-              aria-label="Facebook"
-            />
-            <q-btn
-              round
-              color="green"
-              size="20px"
-              icon="mdi-instagram"
-              href="https://www.instagram.com/_tortiillas_/"
-              aria-label="Instagram"
-            />
-            <q-btn
-              round
-              color="green"
-              size="20px"
-              icon="mdi-linkedin"
-              href="https://www.linkedin.com/in/jose-agudo-sabate-bb1041137"
-              aria-label="Linkedin"
-            />
-          </div>
         </div>
         <div class="contact-form-wrapper-register">
           <q-form class="q-gutter-lg" @submit="register">
@@ -155,6 +129,22 @@
             </div>
 
             <div class="form-item">
+              <q-file
+                v-model="image_url"
+                label="Subir una imagen de perfil"
+                square
+                clearable
+                required
+                accept=".jpg, image/*"
+                style="max-width: 300px"
+              >
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
+            </div>
+
+            <div class="form-item">
               <q-input
                 square
                 clearable
@@ -210,8 +200,15 @@ import { useQuasar } from "quasar";
 import { ref } from "vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import {
+  getStorage,
+  uploadBytes,
+  getDownloadURL,
+  ref as firebaseStorageRef,
+} from "firebase/storage";
 import db from "../boot/db";
 import { useRouter } from "vue-router";
+import { useMeta } from "quasar";
 
 export default {
   setup() {
@@ -225,12 +222,32 @@ export default {
     const direction = ref("");
     const city = ref("");
     const cp = ref("");
+    const image_url = ref(null);
     const password_validate = ref("");
     const error = ref(null);
     const router = useRouter();
     const isPwd = ref(true);
+    const title = ref("SecondChance | Registro"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
+
+    function photo() {
+      const storage = getStorage();
+      const photoRef = firebaseStorageRef(
+        storage,
+        "users/" + image_url.value.name
+      );
+      return uploadBytes(photoRef, image_url.value).then(() =>
+        getDownloadURL(photoRef)
+      );
+    }
 
     return {
+      photo,
       email,
       password,
       error,
@@ -241,11 +258,14 @@ export default {
       city,
       cp,
       textarea,
+      image_url,
       password_validate,
       isPwd,
 
       async register() {
         const auth = getAuth();
+
+        let url = await photo();
         createUserWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             const user = userCredential.user;
@@ -259,6 +279,7 @@ export default {
                 direction: direction.value,
                 city: city.value,
                 cp: cp.value,
+                img_url: url,
                 bio: textarea.value,
               });
             } catch (error) {

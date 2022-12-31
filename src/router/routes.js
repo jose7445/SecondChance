@@ -67,6 +67,20 @@ const routes = [
   },
 
   {
+    path: "/panelcontrol/match",
+    component: () => import("src/layouts/PanelControl.vue"),
+    children: [{ path: "", component: () => import("src/pages/Match.vue") }],
+  },
+
+  {
+    path: "/panelcontrol/mascotas",
+    component: () => import("src/layouts/PanelControl.vue"),
+    children: [
+      { path: "", component: () => import("src/pages/UploadPet.vue") },
+    ],
+  },
+
+  {
     path: "/panelcontrol/faq",
     component: () => import("src/layouts/PanelControl.vue"),
     children: [{ path: "", component: () => import("src/pages/FaqPage.vue") }],
@@ -80,8 +94,8 @@ const routes = [
   },
 
   {
-    path: "/mail",
-    component: () => import("../layouts/Mail.vue"),
+    path: "/mensajes",
+    component: () => import("../layouts/Mensajes.vue"),
   },
 ];
 

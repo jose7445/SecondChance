@@ -74,6 +74,10 @@
   background-color: #ffffff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+.timer li {
+  border-bottom: none;
+}
+
 .timer-section .timer .step:not(:first-child),
 .timer-section .timer .step:not(:last-child) {
   margin: 0 0 60px 0;

@@ -2,11 +2,13 @@
   <q-page>
     <!-- Section image top -->
     <div class="size-bg img-about flex-bg">
-      <div class="border-bg text-center container text-h1">
-        Hasta que uno no ha amado un animal, una parte del alma sigue sin
-        despertar
-        <br /><span class="span-title">- Anatole France -</span>
-      </div>
+      <q-intersection transition="scale" class="container"
+        ><div class="border-bg text-center text-h1">
+          Hasta que uno no ha amado un animal, una parte del alma sigue sin
+          despertar
+          <br /><span class="span-title">- Anatole France -</span>
+        </div></q-intersection
+      >
     </div>
 
     <!--Section about -->
@@ -18,9 +20,9 @@
           </div>
           <div class="flex-name">
             <div class="text-h3">
-              Jose Agudo
+              Jose Agudo Sabate
               <p class="text-h4 text-primary">Fundador de SecondChance</p>
-              <hr />
+              <q-separator color="primary" />
             </div>
             <p class="sobre-mi-p">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
@@ -126,13 +128,13 @@
         <div class="text-center text-h2">
           Quieres estar a la última de todas las novedades que se presentan a
           SecondChance?
-          <span class="span-title"> Apuntate a nuestra Newsetter!</span>
+          <span class="span-title"> Apuntate a nuestra Newsletter!</span>
           <div class="q-pt-lg">
             <q-btn
               aria-label="Apuntate"
               icon-right="mdi-chevron-right"
               label="Apuntate"
-              to="/contactar"
+              @click="prompt"
             />
           </div>
         </div>
@@ -142,9 +144,40 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { useQuasar } from "quasar";
+import { useMeta } from "quasar";
+import { ref } from "vue";
+export default {
+  setup() {
+    const $q = useQuasar();
+    const title = ref("SecondChance | Nosotros"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
+    return {
+      prompt() {
+        $q.dialog({
+          title: "Introduzca un correo electronico",
+          color: "white",
 
-export default defineComponent({
-  name: "AboutPage",
-});
+          prompt: {
+            model: "",
+            isValid: (val) => val.length > 0,
+            type: "email",
+          },
+          cancel: true,
+          persistent: true,
+        }).onOk((data) => {
+          $q.notify({
+            message: "Peticion enviada",
+            type: "positive",
+          });
+        });
+      },
+    };
+  },
+};
 </script>

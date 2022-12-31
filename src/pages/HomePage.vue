@@ -3,10 +3,12 @@
     <!-- Section image top -->
 
     <div class="size-bg img-home flex-bg">
-      <div class="border-bg text-center container text-h1">
-        Un país se puede juzgar por la forma en que trata a sus animales
-        <br /><span class="span-title">- Mahatma Gandhi -</span>
-      </div>
+      <q-intersection transition="scale" class="container">
+        <div class="border-bg text-center text-h1">
+          Un país se puede juzgar por la forma en que trata a sus animales
+          <br /><span class="span-title">- Mahatma Gandhi -</span>
+        </div>
+      </q-intersection>
     </div>
 
     <!--Carousel-->
@@ -18,6 +20,7 @@
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
         </p>
       </div>
+
       <div class="carousel">
         <Carousel :pets="pets" />
         <div class="q-pt-lg">
@@ -99,7 +102,7 @@
           ¿Por qué
           <span class="span-title">adoptar?</span>
         </div>
-        <div class="flex-first q-pt-xl">
+        <div class="flex-first q-pt-lg">
           <div class="img-section-why">
             <img alt="img_salvar" src="../assets/imagenes/safe.webp" />
           </div>
@@ -124,17 +127,14 @@
         </div>
         <div class="flex-second">
           <div class="img-section-why">
-            <img
-              alt="img_mejorar"
-              src="../assets/imagenes/help.webp"
-              max-width="500px"
-              height="600"
-            />
+            <img alt="img_mejorar" src="../assets/imagenes/help.webp" />
           </div>
+
           <div class="text-section-why">
             <div class="text-left text-h3 q-pt-lg">
               Ayudar a una <span class="span-title">mascota</span>
             </div>
+
             <p class="q-pr-lg q-pt-lg">
               Lorem Ipsum es simplemente el texto de relleno de las imprentas y
               archivos de texto. Lorem Ipsum ha sido el texto de relleno
@@ -206,11 +206,20 @@
 import { defineComponent } from "vue";
 import Carousel from "../components/Carousel.vue";
 import { getAllPets } from "../boot/db";
-
+import { ref } from "vue";
+import { useMeta } from "quasar";
 export default defineComponent({
   name: "HomePage",
   components: { Carousel },
+
   data() {
+    const title = ref("SecondChance | Inicio"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
     return {
       pets: [],
       adoptados: 2,

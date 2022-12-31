@@ -1,18 +1,15 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header class="bg-scroll" expand elevated>
+    <q-header class="bg-scroll q-pt-md" expand elevated>
       <q-toolbar
         class="responsive-size container q-pa-none"
-        style="height: 105px"
+        style="height: 110px"
       >
         <!--logo desktop-->
         <router-link to="/">
-          <q-avatar
-            class="gt-xs logo-image"
-            style="height: auto; width: 230px; height: 90px"
-          >
+          <div class="gt-xs logo-image">
             <img alt="logo_desktop" src="../assets/logo_desktop.webp" />
-          </q-avatar>
+          </div>
         </router-link>
 
         <!--menu phone-->
@@ -50,12 +47,12 @@
           </q-btn>
           <q-space></q-space>
           <q-space></q-space>
-          <q-space></q-space>
+          <q-space class="q-mx-lg"></q-space>
         </div>
 
         <!--logo phone-->
         <router-link to="/">
-          <q-avatar class="lt-sm logo-image" style="width: 120px; height: auto">
+          <q-avatar class="lt-sm logo-image" style="width: 100px; height: auto">
             <img alt="logo_phone" src="../assets/logo_phone.webp" />
           </q-avatar>
         </router-link>
@@ -99,8 +96,7 @@
             >
               <!--user options-->
               <div class="row no-wrap q-pa-md justify-center">
-                <div class="column">
-                  <div class="text-h6 q-mb-md">Opciones</div>
+                <div class="column justify-center">
                   <q-item to="/panelcontrol" clickable>
                     <q-item-section>
                       <q-item-label>Panel de control</q-item-label>
@@ -111,12 +107,6 @@
                 <q-separator vertical inset class="q-mx-lg" />
 
                 <div class="column items-center">
-                  <q-avatar size="72px">
-                    <img
-                      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    />
-                  </q-avatar>
-
                   <div class="text-subtitle1 q-mt-md q-mb-xs">
                     {{ currentUser.email }}
                   </div>
@@ -167,8 +157,8 @@
     <q-footer reveal>
       <q-toolbar class="container q-pa-none">
         <q-toolbar-title class="title-footer"
-          >© SecondChance, 2022</q-toolbar-title
-        >
+          >SecondChance, 2022©
+        </q-toolbar-title>
         <div class="">
           <q-btn
             flat
@@ -201,10 +191,11 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import Login from "../components/Login.vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
+
 import { useQuasar } from "quasar";
 
 export default {
@@ -235,9 +226,9 @@ export default {
       currentUser,
       isLoggedIn,
 
-      logout() {
+      async logout() {
         const auth = getAuth();
-        signOut(auth)
+        await signOut(auth)
           .then(() => {
             isLoggedIn.value = false;
             currentUser.value = null;
@@ -256,5 +247,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

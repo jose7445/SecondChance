@@ -2,10 +2,12 @@
   <q-page>
     <!-- Section image top -->
     <div class="size-bg img-adopt flex-bg">
-      <div class="border-bg text-center container text-h1">
-        Los ojos de un animal tienen el poder de hablar un gran lenguaje
-        <br /><span class="span-title">- Martin Buber -</span>
-      </div>
+      <q-intersection transition="scale" class="container"
+        ><div class="border-bg text-center text-h1">
+          Los ojos de un animal tienen el poder de hablar un gran lenguaje
+          <br /><span class="span-title">- Martin Buber -</span>
+        </div></q-intersection
+      >
     </div>
 
     <!--Section search-->
@@ -36,7 +38,11 @@
       <!--Pet cards-->
       <div class="container">
         <div class="flex-pet">
-          <div v-for="pets in recipeListFiltered" :key="pets.id">
+          <div
+            v-for="pets in recipeListFiltered"
+            :key="pets.id"
+            v-show="pets.status"
+          >
             <Card :pets="pets" />
           </div>
         </div>
@@ -132,17 +138,28 @@ import { defineComponent } from "vue";
 import Card from "../components/Card.vue";
 import SearchPage from "../components/SearchPage.vue";
 import { db } from "../boot/firebase";
-
+import { ref } from "vue";
+import { useMeta } from "quasar";
 import { collection, getDocs } from "firebase/firestore";
 import "vue3-carousel/dist/carousel.css";
 
 export default defineComponent({
   name: "AdoptPage",
   components: { Card, SearchPage },
-  data: () => ({
-    pets: [],
-    searchTerm: "",
-  }),
+
+  data() {
+    const title = ref("SecondChance | Adoptar"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
+    return {
+      pets: [],
+      searchTerm: "",
+    };
+  },
 
   async created() {
     try {
@@ -163,13 +180,14 @@ export default defineComponent({
 
   computed: {
     recipeListFiltered() {
-      if (!this.searchTerm) {
-        return this.pets;
-      }
       return this.pets.filter((pets) => {
         return (
-          pets.location.toLowerCase().includes(this.searchTerm) ||
-          pets.species.toLowerCase().includes(this.searchTerm)
+          pets.location
+            .toLowerCase()
+            .includes(this.searchTerm.toLocaleLowerCase()) ||
+          pets.species
+            .toLowerCase()
+            .includes(this.searchTerm.toLocaleLowerCase())
         );
       });
     },

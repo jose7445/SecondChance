@@ -21,9 +21,18 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-
-export default defineComponent({
+import { ref } from "vue";
+import { useMeta } from "quasar";
+export default {
   name: "ErrorNotFound",
-});
+  setup() {
+    const title = ref("SecondChance | Error"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
+  },
+};
 </script>

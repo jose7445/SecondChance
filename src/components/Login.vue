@@ -3,35 +3,9 @@
     <div class="contact-box">
       <div class="contact-links">
         <h2 class="text-h2 text-center text-white">INICIAR SESIÓN</h2>
-        <div class="q-gutter-lg" align="center">
-          <q-btn
-            round
-            color="green"
-            size="20px"
-            icon="mdi-facebook"
-            href="https://www.facebook.com/joseluis.agudosabate/"
-            aria-label="Facebook"
-          />
-          <q-btn
-            round
-            color="green"
-            size="20px"
-            icon="mdi-instagram"
-            href="https://www.instagram.com/_tortiillas_/"
-            aria-label="Instagram"
-          />
-          <q-btn
-            round
-            color="green"
-            size="20px"
-            icon="mdi-linkedin"
-            href="https://www.linkedin.com/in/jose-agudo-sabate-bb1041137"
-            aria-label="Linkedin"
-          />
-        </div>
       </div>
       <div class="contact-form-wrapper">
-        <q-form>
+        <q-form @submit="login">
           <div class="form-item">
             <q-input
               square
@@ -56,7 +30,6 @@
               v-model="password"
               :type="isPwd ? 'password' : 'text'"
               label="Password"
-              :rules="[(val) => val.length > 6 || 'Minimo 6 caracteres']"
             >
               <template v-slot:append>
                 <q-icon
@@ -70,13 +43,8 @@
               </template>
             </q-input>
           </div>
-          <div class="text-center inherit">
-            <q-btn
-              type="submit"
-              label="ENVIAR"
-              @click="login"
-              color="primary"
-            />
+          <div class="text-center inherit q-pt-lg">
+            <q-btn type="submit" label="ENVIAR" color="primary" />
           </div>
         </q-form>
 
@@ -126,6 +94,7 @@
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
+import { useMeta } from "quasar";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -141,7 +110,13 @@ export default {
     const error = ref(null);
     const isPwd = ref(true);
     const router = useRouter();
-
+    const title = ref("SecondChance | Iniciar sesión"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
     return {
       email,
       password,

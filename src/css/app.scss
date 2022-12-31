@@ -17,7 +17,7 @@ img {
 }
 
 section {
-  padding: 3rem 2rem 3rem 2rem;
+  padding: 3rem 2rem;
 }
 
 .container {
@@ -27,14 +27,14 @@ section {
 }
 
 .border-bg {
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
+  border-top: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
 }
 
 .size-bg {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-attachment: fixed;
   min-height: 780px;
 }
@@ -45,17 +45,17 @@ section {
 }
 
 .text-h1 {
-  line-height: 1.4;
+  line-height: 1.2;
   font-family: $title;
   color: $secondary;
-  font-weight: 600;
+  font-weight: 800;
 }
 .text-h2,
 .text-h3,
 .text-h4 {
   font-family: $title;
   color: $secondary;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .span-title {
@@ -79,13 +79,10 @@ p {
 
 a {
   text-decoration: none;
-
   color: $primary;
 }
 
-/** MEDIA QUERIS GLOBALES **/
-
-/** MEDIA QUERY PHONE 320PX - 480PX **/
+/** MEDIA QUERY PHONE 480PX **/
 @media (max-width: 480px) {
   .container {
     width: 100%;
@@ -96,6 +93,7 @@ a {
   }
   .size-bg {
     background-attachment: scroll;
+    min-height: 570px;
   }
   .text-h1 {
     font-size: 30px;
@@ -109,10 +107,5 @@ a {
   }
   .text-h4 {
     font-size: 18px;
-  }
-  .span-title {
-    font-family: $title;
-    font-weight: 700;
-    color: $primary;
   }
 }

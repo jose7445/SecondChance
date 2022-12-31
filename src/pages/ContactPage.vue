@@ -2,10 +2,12 @@
   <q-page>
     <!-- Section image top -->
     <div class="size-bg img-contact flex-bg">
-      <div class="border-bg text-center container text-h1">
-        Nuestros compañeros perfectos nunca tienen menos de cuatro patas
-        <br /><span class="span-title">- Colette -</span>
-      </div>
+      <q-intersection transition="scale" class="container">
+        <div class="border-bg text-center text-h1">
+          Nuestros compañeros perfectos nunca tienen menos de cuatro patas
+          <br /><span class="span-title">- Colette -</span>
+        </div>
+      </q-intersection>
     </div>
 
     <!-- Section contact -->
@@ -95,11 +97,19 @@
 <script>
 import { defineComponent } from "vue";
 import Form from "../components/Form.vue";
-
+import { ref } from "vue";
+import { useMeta } from "quasar";
 export default defineComponent({
   name: "ContactPage",
   components: { Form },
   data() {
+    const title = ref("SecondChance | Contactar"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
     return {
       medium: false,
     };

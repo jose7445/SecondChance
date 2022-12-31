@@ -43,5 +43,9 @@ export default defineComponent({
   props: {
     pets: Object,
   },
+
+  data() {
+    return {};
+  },
 });
 </script>

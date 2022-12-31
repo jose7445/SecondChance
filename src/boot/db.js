@@ -30,6 +30,7 @@ export async function getAllPets() {
   return await getDocs(q).then((results) => {
     const pets = [];
     results.forEach((doc) => pets.push(doc.data()));
+
     return pets;
   });
 }

@@ -23,12 +23,21 @@ import { defineComponent } from "vue";
 import { getDoc, doc } from "firebase/firestore";
 import db from "../boot/db";
 import Card from "../components/Card.vue";
+import { ref } from "vue";
+import { useMeta } from "quasar";
 
 export default defineComponent({
   components: {
     Card,
   },
   data() {
+    const title = ref("SecondChance | Favoritos"); // we define the "title" prop
+    useMeta(() => {
+      return {
+        // whenever "title" from above changes, your meta will automatically update
+        title: title.value,
+      };
+    });
     return {
       favouriteArray: [],
       showModal: false,
