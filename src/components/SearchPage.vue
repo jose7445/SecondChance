@@ -5,7 +5,7 @@
         type="text"
         class="search__input"
         name="search"
-        placeholder="Por localización o especie "
+        placeholder="Por localización o especie"
         v-model="search"
       />
       <q-btn
@@ -30,11 +30,14 @@ export default defineComponent({
     search: "",
   }),
 
+  //Funció per esborrar allò que s'ha escrit
   methods: {
     clearSearch() {
       this.search = "";
     },
   },
+
+  //Funció per captura allò que s'escriu
   watch: {
     search(newVal) {
       this.$emit("search", newVal);

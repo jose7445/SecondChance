@@ -25,11 +25,10 @@
               <q-separator color="primary" />
             </div>
             <p class="sobre-mi-p">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              ac eleifend eros, quis placerat tellus. Morbi vitae libero eget
-              risus mattis euismod. Vestibulum ac finibus nunc, id facilisis
-              est. Nam consequat egestas neque sit amet tempus. In hac habitasse
-              platea dictumst.
+              Amante de los animales, activista y programador de profesión.
+              Gracias a esta iniciativa ha podido mezclar sus dos grandes
+              pasiones en un único proyecto que pretende dar una segunda
+              oportunidad a todas esas mascotas que lo necesita.
             </p>
           </div>
         </div>
@@ -40,24 +39,20 @@
     <section class="section-time-line">
       <div class="container">
         <div class="text-center text-h2 q-pb-lg">
-          ¿Qué es <span class="span-title">SecondChance?</span>
+          La historia de <span class="span-title">SecondChance</span>
         </div>
         <p class="q-pb-lg">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas itaque
-          hic quibusdam fugiat est numquam harum, accusamus suscipit consequatur
-          laboriosam!Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Quas itaque hic quibusdam fugiat est numquam harum, accusamus suscipit
-          consequatur laboriosam!Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Quas itaque hic quibusdam fugiat est numquam harum,
-          accusamus suscipit consequatur laboriosam!Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. Quas itaque hic quibusdam fugiat est
-          numquam harum, accusamus suscipit consequatur laboriosam!adipisicing
-          elit.
+          SecondChance, el nombre de este proyecto, es una página web donde la
+          adopción de mascotas es el principal motor motivacional y el objetivo
+          que sigue. Un proyecto que permite hacer más accesible la adopción en
+          todos los públicos a través de una herramienta moderna e intuitiva.
+          Este proyecto nace desde el corazón y desde la motivación altruista
+          por querer encontrar un hogar a esas mascotas que no lo tienen.
         </p>
       </div>
 
       <!--time line-->
-      <div class="timer-section">
+      <div class="timer-section q-pt-xl">
         <div class="container">
           <div class="timer-container">
             <ul class="timer">
@@ -66,9 +61,9 @@
                 <div class="content">
                   <div class="text-h3 q-pb-md text-primary">2022</div>
                   <p>
-                    Pellentesque habitant morbi tristique senectus et netus et
-                    malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                    feugiat vitae, ultricies eget, tempor sit amet, ante.
+                    Finalmente, después de muchos años de trabajo, SecondChance
+                    sale al mercado con un objetivo claro: Facilitar la adopción
+                    animal y reducir el número de mascotas abandonadas.
                   </p>
                 </div>
               </li>
@@ -77,9 +72,8 @@
                 <div class="content">
                   <div class="text-h3 q-pb-md">2021</div>
                   <p>
-                    Pellentesque habitant morbi tristique senectus et netus et
-                    malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                    feugiat vitae, ultricies eget, tempor sit amet, ante.
+                    2021 es un año importante para SecondChance. Durante este
+                    tiempo el proyecto se consolida y se empieza a construir.
                   </p>
                 </div>
               </li>
@@ -88,9 +82,10 @@
                 <div class="content">
                   <div class="text-h3 q-pb-md text-primary">2020</div>
                   <p>
-                    Pellentesque habitant morbi tristique senectus et netus et
-                    malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                    feugiat vitae, ultricies eget, tempor sit amet, ante.
+                    Después de que l'autoría se especialice en programación,
+                    SecondChance empieza a crearse a partir de un primer diseño
+                    aproximado. El proyecto se ve interrumpido por la pandemia
+                    Covid.
                   </p>
                 </div>
               </li>
@@ -99,9 +94,8 @@
                 <div class="content">
                   <div class="text-h3 q-pb-md">2019</div>
                   <p>
-                    Pellentesque habitant morbi tristique senectus et netus et
-                    malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                    feugiat vitae, ultricies eget, tempor sit amet, ante.
+                    A través del recorrido formativo y de la motivación,
+                    SecondChace empieza a estructurarse como proyecto.
                   </p>
                 </div>
               </li>
@@ -110,9 +104,8 @@
                 <div class="content">
                   <div class="text-h3 q-pb-md text-primary">2018</div>
                   <p>
-                    Pellentesque habitant morbi tristique senectus et netus et
-                    malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                    feugiat vitae, ultricies eget, tempor sit amet, ante.
+                    SecondChance nace en el imaginario de Jose Agudo, autor del
+                    proyecto, al perder y sufrir la perdida de su mascota.
                   </p>
                 </div>
               </li>
@@ -126,14 +119,14 @@
     <section class="section-news bg-white">
       <div class="container">
         <div class="text-center text-h2">
-          Quieres estar a la última de todas las novedades que se presentan a
+          ¿Quieres estar a la última de todas las novedades que se presentan en
           SecondChance?
-          <span class="span-title"> Apuntate a nuestra Newsletter!</span>
+          <span class="span-title">¡Apúntate a nuestra Newsletter!</span>
           <div class="q-pt-lg">
             <q-btn
               aria-label="Apuntate"
               icon-right="mdi-chevron-right"
-              label="Apuntate"
+              label="Apúntate"
               @click="prompt"
             />
           </div>
@@ -150,17 +143,21 @@ import { ref } from "vue";
 export default {
   setup() {
     const $q = useQuasar();
-    const title = ref("SecondChance | Nosotros"); // we define the "title" prop
+
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Nosotros");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
     return {
       prompt() {
+        //Dialog per introduir el correu electrònic
         $q.dialog({
-          title: "Introduzca un correo electronico",
+          title: "Introduzca un correo electrónico",
           color: "white",
 
           prompt: {
@@ -172,7 +169,7 @@ export default {
           persistent: true,
         }).onOk((data) => {
           $q.notify({
-            message: "Peticion enviada",
+            message: "Petición enviada",
             type: "positive",
           });
         });

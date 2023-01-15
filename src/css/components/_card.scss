@@ -20,6 +20,14 @@
   }
 }
 
+/** MEDIA QUERY TABLET  **/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card-wrapper {
+    height: 410px !important;
+    width: 360px !important;
+  }
+}
+
 .card-wrapper:hover .user-pic {
   height: 240px;
   width: 240px;
@@ -42,8 +50,15 @@
 /** MEDIA QUERY PHONE 480PX **/
 @media (max-width: 480px) {
   .user-pic {
-    height: 200px !important;
-    width: 200px !important;
+    height: 170px !important;
+    width: 190px !important;
+  }
+}
+/** MEDIA QUERY TABLET **/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .user-pic {
+    height: 170px !important;
+    width: 190px !important;
   }
 }
 
@@ -51,7 +66,7 @@
   height: 100%;
   width: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .name {
@@ -68,7 +83,13 @@
 /** MEDIA QUERY PHONE 480PX **/
 @media (max-width: 480px) {
   .card-wrapper .name {
-    top: 160px !important;
+    top: 120px !important;
+  }
+}
+/** MEDIA QUERY TABLET **/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card-wrapper .name {
+    top: 120px !important;
   }
 }
 
@@ -90,6 +111,14 @@
 
 /** MEDIA QUERY PHONE 480PX **/
 @media (max-width: 480px) {
+  .card-wrapper .social-details {
+    opacity: 1;
+    top: 160px !important;
+  }
+}
+
+/** MEDIA QUERY PHONE TABLET **/
+@media (min-width: 768px) and (max-width: 1024px) {
   .card-wrapper .social-details {
     opacity: 1;
     top: 160px !important;

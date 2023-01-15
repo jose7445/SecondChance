@@ -2,9 +2,9 @@
   <div class="q-pa-md">
     <q-stepper v-model="step" ref="stepper" color="primary" animated>
       <q-step :name="1" title="Información" icon="settings" :done="step > 1">
-        For each ad campaign that you create, you can control how much you're
-        willing to spend on clicks and conversions, which networks and
-        geographical locations you want your ads to show on, and more.
+        A través del siguiente formulario podras subir una mascota a nuestra
+        base de datos y proponer una nueva adopción. Pulsa el botón
+        <b>Continuar</b> para ir al formulario de registro.
       </q-step>
 
       <q-step
@@ -128,7 +128,7 @@
                         square
                         clearable
                         required
-                        label="Biografia"
+                        label="Biografía"
                         v-model="bio"
                       />
                     </q-item-section>
@@ -193,7 +193,7 @@
                         square
                         clearable
                         required
-                        label="Informacion adicional"
+                        label="Información adicional"
                         v-model="notes"
                       />
                     </q-item-section>
@@ -226,12 +226,17 @@
 
       <q-step :name="3" title="Finalizar" icon="add_comment">
         <div v-if="flag === true">
-          Try out different ad text to see what brings in the most customers,
-          and learn how to enhance your ads using features like ad extensions.
-          If you run into any problems with your ads, find out how to tell if
-          they're running and how to resolve approval issues.
+          ¡Tu mascota ha llegado a nuestra base de datos! El equipo de
+          SecondChance revisará la información enviada y, después de validarla,
+          recibirás una notificación indicando que tu mascota ya se puede
+          visualizar. Si la información enviada a través del formulario no es
+          correcta, recibirás una notificación indicando las correcciones
+          oportunas. ¡Muchas gracias!
         </div>
-        <div v-else>No has subido ninguna mascota.</div>
+        <div v-else>
+          No has subido ninguna mascota. Pulsa el botón <b>Atrás</b> para volver
+          al formulario de registro y subir una mascota.
+        </div>
       </q-step>
 
       <template v-slot:navigation>
@@ -259,9 +264,7 @@
 
 <script>
 import { ref, onBeforeUnmount } from "vue";
-
 import { uuid } from "vue-uuid";
-
 import { collection, addDoc } from "firebase/firestore";
 import {
   getStorage,
@@ -269,7 +272,6 @@ import {
   getDownloadURL,
   ref as firebaseStorageRef,
 } from "firebase/storage";
-
 import { useQuasar } from "quasar";
 import { useMeta } from "quasar";
 import db from "../boot/db";
@@ -297,16 +299,20 @@ export default {
     const handle_status = ref([]);
     const info_notes = ref([]);
     const flag = ref(false);
-
     const $q = useQuasar();
-    const title = ref("SecondChance | Subir una mascota"); // we define the "title" prop
+
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Subir una mascota");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
 
+    //Plugin Loading
+    //Funció per mostrar una pantalla de "carrega"
     onBeforeUnmount(() => {
       if (timer !== void 0) {
         clearTimeout(timer);
@@ -314,6 +320,7 @@ export default {
       }
     });
 
+    //Funció per enviar la imatge a la base de dades Firebase i a l'album pets/
     function photo() {
       if (image_url.value === null) {
         image_url.value = "";
@@ -330,6 +337,7 @@ export default {
     }
 
     return {
+      //Funció per enviar les dades del nou animal a Firebase
       async upload() {
         const handle_status_new = {
           vaccinated: vaccinated.value,
@@ -340,20 +348,25 @@ export default {
         const handle_info = JSON.parse(JSON.stringify(handle_status_new));
         info_notes.value.push(notes.value);
 
+        //Variable per captura l'url de la imatge
+        //Aquesta variable s'envia juntament amb la resta d'informació de la mascota
         let url = await photo();
 
+        //Funció per mostra la pantalla de "carrega"
         $q.loading.show({
           message: "Subiendo tu mascota a nuestra base de datos",
         });
         timer = setTimeout(() => {
           $q.loading.hide();
           timer = void 0;
+          //Funció per mostra missatge si la mascota ha pujat correctament
           $q.notify({
             message: "Mascota subida correctamente",
             type: "positive",
           });
         }, 4000);
 
+        //Les diferents dades que s'envien al nou document de Firebase "pets"
         const docRef = await addDoc(collection(db, "pets"), {
           age: age.value,
           bio: bio.value,
@@ -371,7 +384,7 @@ export default {
           status: status.value,
           location: location.value,
         });
-
+        flag.value = true;
         console.log("Document written with ID: ", docRef.id);
       },
       photo,

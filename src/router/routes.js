@@ -67,12 +67,6 @@ const routes = [
   },
 
   {
-    path: "/panelcontrol/match",
-    component: () => import("src/layouts/PanelControl.vue"),
-    children: [{ path: "", component: () => import("src/pages/Match.vue") }],
-  },
-
-  {
     path: "/panelcontrol/mascotas",
     component: () => import("src/layouts/PanelControl.vue"),
     children: [

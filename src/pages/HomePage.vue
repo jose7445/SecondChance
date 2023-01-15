@@ -14,7 +14,7 @@
     <!--Carousel-->
     <section class="section-pets">
       <div class="text-h2 text-center">
-        Mascotas adorables
+        ¡Mascotas adorables
         <span class="span-title">cerca de ti!</span>
         <p class="q-pt-lg">
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
@@ -42,11 +42,11 @@
             ¿Qué es <span class="span-title">SecondChance?</span>
           </div>
           <p>
-            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-            de las industrias desde el año 1500, cuando un impresor (N. del T.
-            persona que se dedica a la imprenta) desconocido usó una galería de
-            textos y los mezcló de tal manera.
+            SecondChance es un proyecto que nace desde el corazón y la
+            profesionalidad con la finalidad de facilitar la adopción animal.
+            SecondChance apuesta por el respeto, la fidelidad y el amor hacia
+            los animales y así quiere hacerlo extensible a la población, dando
+            una segunda oportunidad a esas mascotas que lo necesitan.
           </p>
         </div>
         <div class="flex-right">
@@ -111,17 +111,18 @@
               Salvar una <span class="span-title">vida</span>
             </div>
             <p class="q-pl-lg q-pt-lg">
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-              archivos de texto. Lorem Ipsum ha sido el texto de relleno
-              estándar de las industrias desde el año 1500, cuando un impresor
-              (N. del T. persona que se dedica a la imprenta) desconocido usó
-              una galería de textos y los mezcló de tal manera que logró hacer
-              un libro de textos especimen. No sólo sobrevivió 500 años, sino
-              que tambien ingresó como texto de relleno en documentos
-              electrónicos, quedando esencialmente igual al original.persona que
-              se dedica a la imprenta) desconocido usó una galería de textos y
-              los mezcló de tal manera que logró hacer un libro de textos
-              especimen. No sólo sobrevivió 500 años.
+              Según la Fundación Affinity, en el año 2020, alrededor de 286.153
+              perros y gatos fueron abandonados o se perdieron. Esta cifra,
+              equivale a un descenso del 6,6% respecto al año 2019. A estos
+              datos, se le agrega que en el año 2021 fueron abandonados 285.554
+              animales de compañía. Las cifras aún son alarmantes, por eso,
+              SecondChance quiere contribuir a facilitar y visibilizar la
+              adopción de mascotas a través de este nuevo proyecto. Salvar una
+              vida, dar una segunda oportunidad u ofrecer un nuevo hogar es el
+              motor principal y el cometido de este proyecto. Deseamos
+              contribuir en la disminución de estas cifras tan alarmantes que,
+              aunque la tendencia es que disminuyan poco a poco, siguen siendo
+              cifras muy preocupantes.
             </p>
           </div>
         </div>
@@ -132,21 +133,22 @@
 
           <div class="text-section-why">
             <div class="text-left text-h3 q-pt-lg">
-              Ayudar a una <span class="span-title">mascota</span>
+              Amor <span class="span-title">incondicional</span>
             </div>
-
             <p class="q-pr-lg q-pt-lg">
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-              archivos de texto. Lorem Ipsum ha sido el texto de relleno
-              estándar de las industrias desde el año 1500, cuando un impresor
-              (N. del T. persona que se dedica a la imprenta) desconocido usó
-              una galería de textos y los mezcló de tal manera que logró hacer
-              un libro de textos especimen. No sólo sobrevivió 500 años, sino
-              que tambien ingresó como texto de relleno en documentos
-              electrónicos, quedando esencialmente igual al original.persona que
-              se dedica a la imprenta) desconocido usó una galería de textos y
-              los mezcló de tal manera que logró hacer un libro de textos
-              especimen. No sólo sobrevivió 500 años.
+              Uno de los beneficios de adoptar, y el más obvio, de convertirse
+              en "colega" de una mascota es el amor incondicional y la compañía
+              de por vida. La afortunada mascota que ha sido adoptada no dudará
+              en demostrar su gratitud en todo momento con todo su afecto. Si
+              bien en cierto que al principio muchas se muestran más inseguras o
+              miedosas, conforme se vayan acostumbrando a su nuevo hogar, nunca
+              olvidarán el sentimiento de ese momento en el que se le dio una
+              segunda oportunidad de formar parte de una familia. Además, La
+              mayoría de los propietarios de mascotas tienen claras las alegrías
+              que conlleva compartir sus vidas con un amigo peludo, pero las
+              mascotas también aportan grandes beneficios para la salud. Un
+              perro o un gato feliz puede mejorar el estado anímico de una
+              persona y ayudar a su salud mental en general.
             </p>
           </div>
         </div>
@@ -168,20 +170,21 @@
             </div>
             <div class="title-h3 text-h3">Adoptar</div>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
-              consequatur necessitatibus eaque.
+              En SecondChance tendrás la oportunidad de empezar una nueva vida
+              con una gran mascota a tu lado. ¡No lo dudes y adopta con
+              nosotros!
             </p>
           </div>
         </div>
         <div class="col-section-collaborate">
           <div class="card">
             <div class="icon-wrapper">
-              <i class="fas fa-hand-holding-dollar"></i>
+              <i class="fa-solid fa-hand-holding-heart"></i>
             </div>
             <div class="title-h3 text-h3">Donaciones</div>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
-              consequatur necessitatibus eaque.
+              ¡Puedes ayudarnos realizando donaciones económicas para que el
+              proyecto siga ayudando a esas mascotas que más lo necesitan!
             </p>
           </div>
         </div>
@@ -192,8 +195,9 @@
             </div>
             <div class="title-h3 text-h3">Protectoras</div>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
-              consequatur necessitatibus eaque.
+              Si eres una protectora y quieres colaborar con nosotros, no lo
+              dudes y ponte en contacto con nosotros lo antes posible. ¡Te
+              ayudaremos!
             </p>
           </div>
         </div>
@@ -213,10 +217,12 @@ export default defineComponent({
   components: { Carousel },
 
   data() {
-    const title = ref("SecondChance | Inicio"); // we define the "title" prop
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Inicio");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
@@ -227,6 +233,7 @@ export default defineComponent({
     };
   },
 
+  //Funció que fa la crida de la funció que recupera els "pets" de Firebase
   mounted() {
     getAllPets().then((pets) => {
       this.pets = pets;

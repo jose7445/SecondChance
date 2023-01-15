@@ -5,8 +5,8 @@
         <div class="user-pic">
           <img :src="pets.image_url" alt="" />
         </div>
-        <div class="name">
-          <div class="text-h3 q-mb-lg">{{ pets.name }}</div>
+        <div class="name q-pt-md">
+          <div class="text-h2 q-mb-lg">{{ pets.name }}</div>
           <p>{{ pets.short_description }}</p>
         </div>
         <div class="social-details q-gutter-lg">
@@ -25,8 +25,8 @@
           <div class="absolute-top card-btn">
             <q-btn
               aria-label="Adoptar"
-              icon-right="mdi-chevron-right"
-              label="Adoptar"
+              icon-right="mdi-information"
+              label="Más información"
             />
           </div>
         </div>
@@ -42,10 +42,6 @@ export default defineComponent({
   name: "Card",
   props: {
     pets: Object,
-  },
-
-  data() {
-    return {};
   },
 });
 </script>

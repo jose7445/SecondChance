@@ -103,10 +103,12 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
     const miniState = ref(false);
 
-    const title = ref("SecondChance | Mensajes"); // we define the "title" prop
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Mensajes");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
@@ -127,7 +129,7 @@ export default defineComponent({
         {
           name: "Administración SecondChance",
           avatar: "https://cdn.quasar.dev/img/boy-avatar.png",
-          subject: "Bienvenida",
+          subject: "Bienvenido",
           date: "Enero 22, 2022",
         },
       ],
@@ -141,5 +143,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style></style>

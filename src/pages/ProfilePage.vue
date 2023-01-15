@@ -76,7 +76,7 @@
                     required
                     type="tel"
                     mask="6## - ## - ## - ##"
-                    label="Telefono"
+                    label="Teléfono"
                     :readonly="readonly"
                   />
                 </q-item-section>
@@ -87,7 +87,7 @@
                     square
                     clearable
                     required
-                    label="Direccion"
+                    label="Dirección"
                     v-model="direction"
                     :readonly="readonly"
                   />
@@ -112,7 +112,7 @@
                     square
                     clearable
                     required
-                    label="Codigo Postal"
+                    label="Código Postal"
                     v-model="cp"
                     :readonly="readonly"
                   />
@@ -126,7 +126,7 @@
                     square
                     clearable
                     required
-                    label="Biografia"
+                    label="Biografía"
                     v-model="bio"
                     autogrow
                     :readonly="readonly"
@@ -213,7 +213,7 @@
           <div class="text-h6">Modificar contraseña</div>
         </q-card-section>
 
-        <q-card-section> Contraseña modificada con exito </q-card-section>
+        <q-card-section>Contraseña modificada con éxito</q-card-section>
 
         <q-card-actions align="right">
           <q-btn flat label="OK" color="white" to="/" v-close-popup />
@@ -228,7 +228,7 @@
         </q-card-section>
 
         <q-card-section>
-          Vuelve a inicar sesion para modificar la contraseña
+          Vuelve a iniciar sesión para modificar la contraseña
         </q-card-section>
 
         <q-card-actions align="right">
@@ -245,7 +245,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        Perfil actualizado con exito
+        Perfil actualizado con éxito
       </q-card-section>
 
       <q-card-actions align="right">
@@ -264,7 +264,6 @@ import {
 } from "firebase/auth";
 import { defineComponent } from "vue";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
-
 import db from "../boot/db";
 
 export default defineComponent({
@@ -280,6 +279,7 @@ export default defineComponent({
       city: "",
       cp: "",
       bio: "",
+      img_url: null,
       newPassword: "",
       oldPassword: "",
       alertPositive: false,
@@ -290,15 +290,15 @@ export default defineComponent({
     };
   },
 
-  // onAuthStateChanged(auth, (user) => {})
+  //Funció per recuperar l'usuari que ha iniciat sessió
   async created() {
     const auth = getAuth();
     const user = auth.currentUser;
 
     if (user) {
+      //Funció per recuperar la informació de l'usuari que ha iniciat sessió
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
-      console.log(this.userState);
 
       try {
         if (docSnap.exists()) {
@@ -316,6 +316,7 @@ export default defineComponent({
   },
 
   methods: {
+    //Funció per actualitzar la informació de l'usuari
     async updateInfo() {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
@@ -336,6 +337,8 @@ export default defineComponent({
           let updateInfo = Object.fromEntries(
             Object.entries(object).filter(([_, v]) => v != "")
           );
+          //Funció per actualitzar aquells valors que s'han introduït
+          //Els valors que no s'han introduït no se sobreescriuen
           updateDoc(profile, updateInfo, { merge: true });
           this.alertUpdate = true;
         } else {
@@ -345,21 +348,25 @@ export default defineComponent({
     },
 
     async updatePassword() {
+      //Funció per actualitzar el password de l'usuari
       const auth = getAuth();
-
       const user = auth.currentUser;
       const newPassword = this.newPassword;
 
       updatePassword(user, newPassword)
         .then(() => {
           this.alertPositive = true;
+          //Funció per tancar la sessió de l'usuari
+          //Quan s'actualitza el password es tanca la sessió de l'usuari
           signOut(auth)
             .then(() => {})
             .catch((error) => {
-              // An error happened.
+              console.log(error);
             });
         })
         .catch((error) => {
+          //Si no es pot actualitzar la password s'envia un missatge
+          //Aquest missatge indica a l'usuari que torni a iniciar sessió per modificar el password
           this.alertNegative = true;
           console.log(error);
         });

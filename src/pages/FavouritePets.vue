@@ -4,9 +4,11 @@
       <div class="text-center text-h2">
         Tus mascotas <span class="span-title">favoritas</span>
         <p v-if="favouriteArray.length" class="q-pt-lg">
-          ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
+          ¡Consulta la ficha de las mascotas en adopción para conocerlos mejor!
         </p>
-        <p v-else class="q-pt-lg">No tienes ningún animal en tus favoritos !</p>
+        <p v-else class="q-pt-lg">
+          ¡No tienes ninguna mascota en tus favoritos!
+        </p>
       </div>
       <div class="row justify-around">
         <div v-for="favouriteArray in favouriteArray" :key="favouriteArray.id">
@@ -31,10 +33,12 @@ export default defineComponent({
     Card,
   },
   data() {
-    const title = ref("SecondChance | Favoritos"); // we define the "title" prop
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Favoritos");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
@@ -44,10 +48,12 @@ export default defineComponent({
     };
   },
 
+  //Funció per recuperar l'usuari que ha iniciat sessió
   async created() {
     const auth = getAuth();
     const user = auth.currentUser;
 
+    //Funció per recuperar la informació de l'usuari que ha iniciat sessió
     if (user) {
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);

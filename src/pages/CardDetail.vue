@@ -15,7 +15,7 @@
           </div>
           <!-- Pet info -->
           <div class="q-pa-xl information">
-            <div class="text-h2">
+            <div class="text-h2 pet_name">
               {{ pets.name }}
               <span class="span-title"
                 >{{ pets.age }} años, {{ pets.location }}</span
@@ -66,11 +66,11 @@
         </div>
 
         <!-- Pet history -->
-        <div class="pet-history q-pa-lg bg-grey-1">
+        <div class="pet-history q-pa-lg bg-grey-3">
           <div class="text-h4 q-pb-md">Mi historia</div>
           <p>{{ pets.bio }}</p>
         </div>
-        <div class="row pet-information justify-around">
+        <div class="row pet-information justify-between">
           <div class="pet-personality col-md-6 col-lg-4 mb-5 q-pa-lg">
             <!-- Pet personality -->
             <div class="text-h4">Mi personalidad</div>
@@ -97,7 +97,7 @@
                 ><span v-else>No</span>
               </li>
               <li>
-                <strong>Esterelizado</strong
+                <strong>Esterilizado</strong
                 ><span class="yes" v-if="pets.handle_status?.sterilized"
                   >Sí</span
                 ><span v-else>No</span>
@@ -128,7 +128,7 @@
     <section class="section-back bg-white">
       <div class="container">
         <div class="text-center text-h2">
-          Quieres seguir buscando tu mascota
+          ¿Quieres seguir buscando tu mascota
           <span class="span-title"> favorita?</span>
           <div class="text-center inherit q-pt-lg">
             <q-btn aria-label="Volver" label="Volver" to="/adoptar" />
@@ -152,7 +152,7 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          Se ha añadido a <span class="span-title">{{ pets.name }}</span> a tus
+          ¡Se ha añadido a <span class="span-title">{{ pets.name }}</span> a tus
           favoritos!
         </q-card-section>
 
@@ -170,7 +170,7 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          Se ha eliminado a <span class="span-title">{{ pets.name }}</span> de
+          ¡Se ha eliminado a <span class="span-title">{{ pets.name }}</span> de
           tus favoritos!
         </q-card-section>
 
@@ -201,10 +201,12 @@ export default {
   components: { Form },
 
   data: () => {
-    const title = ref("SecondChance | Adoptar"); // we define the "title" prop
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Adoptar");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
@@ -220,6 +222,7 @@ export default {
     };
   },
 
+  //Funcio per mostrar els "pets" a través de l'id
   async created() {
     let id = this.$route.params.id;
     if (!isNaN(id)) {
@@ -227,14 +230,17 @@ export default {
     }
     this.pets = await getPetById(id);
 
+    //Funció per recuperar l'usuari que ha iniciat sessió
     const auth = getAuth();
     const user = auth.currentUser;
-
     if (user) {
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
+      //Flag per mostrar funcionalitats segons si l'usuari està logejat o no
       this.isLoged = true;
 
+      //Funció per buscar la mascota a la llista de favorits
+      //Si l'animal es troba, s'activa la "flag" per mostra la funcionalitat d'esborrar l'animal de la llista
       try {
         if (docSnap.exists()) {
           const userInfo = docSnap.data();
@@ -248,6 +254,7 @@ export default {
             };
             return returnObjeto;
           });
+
           const id = this.$route.params.id;
           const found = arrayObtenido.find((x) => x.id == id);
           if (found) {
@@ -265,6 +272,7 @@ export default {
   },
 
   methods: {
+    //Funció per enviar la mascota a la llista de favorits
     async savePet() {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
@@ -287,6 +295,7 @@ export default {
       });
     },
 
+    //Funció per esborrar la mascota de la llista de favorits
     remove() {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {

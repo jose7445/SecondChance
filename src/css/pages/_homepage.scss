@@ -46,8 +46,8 @@
   }
 }
 
-/** Section secondchance MQ DESKTOP  **/
-@media (min-width: 769px) and (max-width: 1024px) {
+/** Section secondchance MQ TABLET  **/
+@media (min-width: 768px) and (max-width: 1024px) {
   .flex-section-secondchance {
     display: flex;
     flex-wrap: wrap;
@@ -55,6 +55,9 @@
     align-items: center;
     width: 100%;
     gap: 0;
+  }
+  .flex-section-secondchance {
+    text-align: center;
   }
 }
 
@@ -99,7 +102,7 @@
 .img-section-why img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 /** Section why MQ PHONE **/
@@ -150,7 +153,7 @@
 }
 
 /** Section why MQ DESKTOP **/
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .flex-first {
     display: flex;
     flex-direction: column;
@@ -170,6 +173,7 @@
 
   .text-section-why p {
     padding: 1rem 0 3rem;
+    text-align: CENTER;
   }
   .section-why {
     padding: 3rem 0 0 0;
@@ -257,6 +261,7 @@
 
 /** Contact card **/
 .card {
+  cursor: default;
   width: 100%;
   height: 100%;
   padding: 2em 1.5em;
@@ -265,7 +270,6 @@
   background-position: 0 2.5%;
   border-radius: 5px;
   box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
   transition: 0.5s;
 }
 .title-h3 {

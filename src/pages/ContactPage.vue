@@ -21,12 +21,12 @@
           <div class="col-section-contact">
             <div class="card">
               <div class="icon-wrapper">
-                <i class="fa fa-paw"></i>
+                <i class="fa fa-info-circle"></i>
               </div>
               <div class="title-h3 text-h3">Ayuda</div>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quisquam consequatur necessitatibus eaque.
+                ¡Si tienes cualquier duda o simplemente quieres enviarnos alguna
+                sugerencia, hazlo ya!
               </p>
               <div class="text-center inherit q-pt-lg">
                 <q-btn
@@ -42,12 +42,12 @@
           <div class="col-section-contact">
             <div class="card">
               <div class="icon-wrapper">
-                <i class="fas fa-hand-holding-dollar"></i>
+                <i class="fas fa-paw"></i>
               </div>
               <div class="title-h3 text-h3">Adopciones</div>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quisquam consequatur necessitatibus eaque.
+                ¡Si tienes cualquier duda a cerca de algún proceso de adopción,
+                su estado o tienes alguna sugerencia, envíanosla!
               </p>
               <div class="text-center inherit q-pt-lg">
                 <q-btn
@@ -63,12 +63,13 @@
           <div class="col-section-contact">
             <div class="card">
               <div class="icon-wrapper">
-                <i class="fas fa-house"></i>
+                <i class="fas fa-handshake"></i>
               </div>
               <div class="title-h3 text-h3">Colaboraciones</div>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quisquam consequatur necessitatibus eaque.
+                ¡Si tienes cualquier duda a cerca de como colaborar con
+                nosotros, como participar o cualquier duda relacionada, no lo
+                dudes!
               </p>
               <div class="text-center inherit q-pt-lg">
                 <q-btn
@@ -102,16 +103,21 @@ import { useMeta } from "quasar";
 export default defineComponent({
   name: "ContactPage",
   components: { Form },
-  data() {
-    const title = ref("SecondChance | Contactar"); // we define the "title" prop
+  setup() {
+    //Modal per mostrar el formulari
+    const medium = ref(false);
+
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Contactar");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
     return {
-      medium: false,
+      medium,
     };
   },
 });

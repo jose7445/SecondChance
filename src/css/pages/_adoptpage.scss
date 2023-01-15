@@ -33,7 +33,7 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   /**  Section adopt MQ TABLET**/
   .flex-pet {
     display: flex;
@@ -89,14 +89,10 @@
     flex-wrap: wrap;
     gap: 25px 40px;
     justify-content: center;
-    padding: 45px 45px 90px;
 
     @media (min-width: 78.125em) {
       padding: 0;
-      max-width: 1160px;
-    }
-    @media (max-width: 480px) {
-      padding: 0;
+      max-width: 100%;
     }
   }
 }

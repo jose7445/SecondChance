@@ -6,9 +6,14 @@
         style="height: 110px"
       >
         <!--logo desktop-->
-        <router-link to="/">
+        <router-link to="/" aria-label="page">
           <div class="gt-xs logo-image">
-            <img alt="logo_desktop" src="../assets/logo_desktop.webp" />
+            <img
+              alt="logo_desktop"
+              src="../assets/logo_desktop.webp"
+              width="50"
+              height="100"
+            />
           </div>
         </router-link>
 
@@ -40,7 +45,7 @@
 
                 <q-separator dark></q-separator>
                 <q-item to="/contactar" clickable>
-                  <q-item-section>Contacto</q-item-section>
+                  <q-item-section>Contactar</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
@@ -51,7 +56,7 @@
         </div>
 
         <!--logo phone-->
-        <router-link to="/">
+        <router-link to="/" aria-label="page">
           <q-avatar class="lt-sm logo-image" style="width: 100px; height: auto">
             <img alt="logo_phone" src="../assets/logo_phone.webp" />
           </q-avatar>
@@ -70,7 +75,7 @@
           /></router-link>
 
           <router-link to="/contactar"
-            ><q-tab name="Contacto" label="Contacto"
+            ><q-tab name="Contactar" label="Contactar"
           /></router-link>
         </q-tabs>
 
@@ -157,7 +162,7 @@
     <q-footer reveal>
       <q-toolbar class="container q-pa-none">
         <q-toolbar-title class="title-footer"
-          >SecondChance, 2022©
+          >SecondChance, 2023©
         </q-toolbar-title>
         <div class="">
           <q-btn
@@ -191,7 +196,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import Login from "../components/Login.vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
@@ -209,6 +214,7 @@ export default {
     const router = useRouter();
     const $q = useQuasar();
 
+    //Funció per saber l'estat de l'usuari logejat
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -226,6 +232,7 @@ export default {
       currentUser,
       isLoggedIn,
 
+      //Funcio per tancar sessió
       async logout() {
         const auth = getAuth();
         await signOut(auth)

@@ -56,24 +56,9 @@
               <q-icon name="mdi-heart" />
             </q-item-section>
 
-            <q-item-section>Animales favoritos</q-item-section>
+            <q-item-section>Mascotas favoritas</q-item-section>
           </q-item></router-link
         >
-
-        <router-link to="/panelcontrol/match">
-          <q-item
-            clickable
-            v-ripple
-            active-class="my-menu-link"
-            class="text-secondary"
-          >
-            <q-item-section avatar>
-              <q-icon name="mdi-fire" />
-            </q-item-section>
-
-            <q-item-section>Mach animales</q-item-section>
-          </q-item>
-        </router-link>
 
         <router-link to="/panelcontrol/mascotas">
           <q-item
@@ -122,10 +107,13 @@ import { useMeta } from "quasar";
 export default {
   setup() {
     const leftDrawerOpen = ref(false);
-    const title = ref("SecondChance | Perfil"); // we define the "title" prop
+
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Perfil");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });

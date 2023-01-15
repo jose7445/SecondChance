@@ -1,7 +1,7 @@
 <template>
   <q-card-section class="q-pa-none">
     <div class="contact-box">
-      <div class="contact-links">
+      <div class="contact-links row items-center justify-center">
         <h2 class="text-h2 text-center text-white">CONTACTAR</h2>
       </div>
       <div class="contact-form-wrapper">
@@ -78,10 +78,13 @@ export default {
     const name = ref(null);
     const email = ref(null);
     const text = ref(null);
-    const title = ref("SecondChance | Contactar"); // we define the "title" prop
+
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Contactar");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
@@ -90,6 +93,7 @@ export default {
       email,
       text,
 
+      //Funció per validar les dades introduïdes al formulari
       triggerPositive() {
         if (name.value && email.value && text.value != null) {
           $q.notify({

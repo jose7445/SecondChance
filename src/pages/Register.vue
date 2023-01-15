@@ -49,8 +49,9 @@
                 type="tel"
                 lazy-rules
                 mask="6## - ## - ## - ##"
-                label="Telefono"
-                :rules="[(val) => val.length >= 18 || 'Telefono no valido']"
+                label="Teléfono"
+                placeholder="El número 6 del inicio se introduce automáticamente"
+                :rules="[(val) => val.length >= 18 || 'Teléfono no válido']"
               >
                 <template v-slot:prepend>
                   <q-icon name="call" />
@@ -102,9 +103,9 @@
                   type="number"
                   lazy-rules
                   :rules="[
-                    (val) => val.length === 5 || 'Codigo postal no valido',
+                    (val) => val.length === 5 || 'Código postal no válido',
                   ]"
-                  label="Codigo Postal"
+                  label="Código Postal"
                 >
                   <template v-slot:prepend>
                     <q-icon name="map" />
@@ -122,7 +123,7 @@
                 autogrow
                 type="textarea"
                 :rules="[(val) => val.length > 0 || 'Campo obligatorio']"
-                label="Porque quieres adoptar?"
+                label="¿Porque quieres adoptar?"
                 lazy-rules
               >
               </q-input>
@@ -136,7 +137,6 @@
                 clearable
                 required
                 accept=".jpg, image/*"
-                style="max-width: 300px"
               >
                 <template v-slot:prepend>
                   <q-icon name="attach_file" />
@@ -171,7 +171,7 @@
                 v-model="password"
                 :type="isPwd ? 'password' : 'text'"
                 label="Password"
-                :rules="[(val) => val.length > 6 || 'Minimo 6 caracteres']"
+                :rules="[(val) => val.length > 6 || 'Mínimo 6 caracteres']"
               >
                 <template v-slot:append>
                   <q-icon
@@ -227,14 +227,17 @@ export default {
     const error = ref(null);
     const router = useRouter();
     const isPwd = ref(true);
-    const title = ref("SecondChance | Registro"); // we define the "title" prop
+    const title = ref("SecondChance | Registro");
+
+    //Plugin Loading
+    //Funció per mostrar una pantalla de "carrega"
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
 
+    //Funció per enviar la imatge a la base de dades Firebase i a l'album users/
     function photo() {
       const storage = getStorage();
       const photoRef = firebaseStorageRef(
@@ -262,14 +265,18 @@ export default {
       password_validate,
       isPwd,
 
+      //Funció per enviar les dades del usuari a Firebase
       async register() {
         const auth = getAuth();
 
+        //Variable per captura l'url de la imatge
+        //Aquesta variable s'envia juntament amb la resta d'informació del usuari
         let url = await photo();
         createUserWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             const user = userCredential.user;
 
+            //Les diferents dades que s'envien al nou document de Firebase "users"
             try {
               const docRef = setDoc(doc(db, "users", userCredential.user.uid), {
                 name: name.value,
@@ -287,22 +294,24 @@ export default {
             }
             setTimeout(() => router.push({ path: "/" }), 2000);
 
+            //Funció per mostra missatge si l'usuari s'ha registrat correctament
             $q.notify({
               message: "Registro completado",
               type: "positive",
             });
           })
+          //Funció per mostra missatge si l'usuari no s'ha registrat correctament
           .catch((error) => {
             console.log(error.code);
             switch (error.code) {
               case "auth/invalid-email":
-                error.message = "Correo eletronico incorrecto";
+                error.message = "Correo electrónico  incorrecto";
                 break;
               case "auth/weak-password":
-                error.message = "Contraseña debil";
+                error.message = "Contraseña débil";
                 break;
               case "auth/email-already-in-use":
-                error.message = "Correo eletronico en uso";
+                error.message = "Correo electrónico en uso";
                 break;
               case "auth/admin-restricted-operation":
                 error.message = "Faltan campos por rellenar";

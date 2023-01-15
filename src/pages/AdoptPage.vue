@@ -13,14 +13,12 @@
     <!--Section search-->
     <section class="section-search bg-white">
       <div class="text-center text-h2 q-pb-lg">
-        Busca tu proxima <span class="span-title">mascota</span>
+        Busca tu próxima <span class="span-title">mascota</span>
       </div>
       <p class="text-center">
-        Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-        archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
-        las industrias desde el año 1500, cuando un impresor (N. del T. persona
-        que se dedica a la imprenta) desconocido usó una galería de textos y los
-        mezcló de tal maneraqweqweqweqweqwe.
+        Encuentra a tu mascota a través del siguiente buscador si lo necesitas.
+        Puedes buscar por <b>localidad (p.e Barcelona)</b> o por
+        <b>especie (p.e Gato o Perro)</b>
       </p>
       <SearchPage v-on:search="setSearchTerm" />
     </section>
@@ -28,10 +26,13 @@
     <!--Section adopt-->
     <section class="section-adopt">
       <div class="text-center text-h2">
-        Adopotar nuestras
-        <span class="span-title">mascotes</span>
-        <p class="q-pt-lg">
+        Adopta nuestras
+        <span class="span-title">mascotas</span>
+        <p v-if="recipeListFiltered.length" class="q-pt-lg">
           ¡Consulta la ficha de los animales en adopción para conocerlos mejor!
+        </p>
+        <p v-else="recipeListFiltered.length" class="q-pt-lg">
+          ¡No hay mascotas encontradas!
         </p>
       </div>
 
@@ -52,26 +53,21 @@
     <!--Section testimonial-->
     <section class="section-testimonial bg-white">
       <div class="text-center text-h2 q-pb-lg">
-        Que dicen nuestras
+        ¿Que dicen nuestras
         <span class="span-title">familias de acogida?</span>
       </div>
       <p class="text-center q-pb-lg">
-        Lorem Ipsum es simplemente el texto de relleno de las imprentas archivos
-        de texto. Lorem Ipsum ha sido el texto de relleno estándar de las
-        industrias desde el año 1500, cuando un impresor (N. del T. persona que
-        se dedica a la imprenta) desconocido usó una galería de textos y los
-        mezcló de tal manera. Lorem Ipsum es simplemente el texto de relleno de
-        las imprentas archivos de texto. Lorem Ipsum ha sido el texto de relleno
-        estándar de las industrias desde el año 1500, cuando un impresor (N. del
-        T. persona que se dedica a la imprenta) desconocido usó una galería de
-        textos y los mezcló de tal manera.
+        SecondChance apuesta para mantener la relación y comunicación con las
+        familias adoptivas. A continuación podéis leer sus experiencias con el
+        proyecto y el proceso de adopción
       </p>
       <div class="container container--testimonials">
         <div class="testimonial">
           <p>
-            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-            de las industrias desde el año 1500.
+            Contactar con SecondChance a través de la web fue muy fácil e
+            intuitivo. Enseguida tuve un flechazo con Grety, ya que pude leer su
+            descripción y ver su fotografía. Estoy encantada de haber conocido a
+            mi mascota y de colaborar con SecondChance.
           </p>
 
           <div class="testimonial__details">
@@ -82,17 +78,18 @@
               />
             </div>
             <div class="testimonial__info">
-              <h4 class="q-mb-none">Jose Luis Agudo</h4>
-              <h5 class="q-mt-sm">Multimedia</h5>
+              <h4 class="q-mb-none">Cristina Nava</h4>
+              <h5 class="q-mt-sm">Educadora Social</h5>
             </div>
           </div>
         </div>
 
         <div class="testimonial">
           <p>
-            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-            de las industrias desde el año 1500.
+            Desde siempre he querido adoptar una mascota, pero nunca me atrevía
+            a dar el paso. Encontré esta web después de ver otras y fue amor
+            primer vista. Gracias por facilitarme todo el proceso de adopción y
+            ayudar a aquellos que más lo necesitan.
           </p>
 
           <div class="testimonial__details">
@@ -110,9 +107,10 @@
         </div>
         <div class="testimonial">
           <p>
-            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-            de las industrias desde el año 1500.
+            Me encantan los animales y adoptar ha sido mi única opción a la hora
+            de acogerlos. Después de visitar diferentes webs de adopción, puedo
+            decir que SecondChance es un proyecto que respeta, cuida y da feliz
+            a mascotas.
           </p>
 
           <div class="testimonial__details">
@@ -123,8 +121,8 @@
               />
             </div>
             <div class="testimonial__info">
-              <h4 class="q-mb-none">Jose Luis Agudo</h4>
-              <h5 class="q-mt-sm">Multimedia</h5>
+              <h4 class="q-mb-none">Aleix Agudo</h4>
+              <h5 class="q-mt-sm">Biólogo</h5>
             </div>
           </div>
         </div>
@@ -148,10 +146,12 @@ export default defineComponent({
   components: { Card, SearchPage },
 
   data() {
-    const title = ref("SecondChance | Adoptar"); // we define the "title" prop
+    //Plugin Meta
+    //Modifica el títol de la pàgina
+    //Millora el SEO del lloc web
+    const title = ref("SecondChance | Adoptar");
     useMeta(() => {
       return {
-        // whenever "title" from above changes, your meta will automatically update
         title: title.value,
       };
     });
@@ -162,6 +162,7 @@ export default defineComponent({
   },
 
   async created() {
+    //Funció per mostrar la col·lecció "pets" de Firebase
     try {
       const querySnapshot = await getDocs(collection(db, "pets"));
       querySnapshot.forEach((doc) => {
@@ -173,12 +174,14 @@ export default defineComponent({
   },
 
   methods: {
+    //Funció per capturar el que s'escriu al cercador
     setSearchTerm(searchTerm) {
       this.searchTerm = searchTerm;
     },
   },
 
   computed: {
+    //Funció que defineix els mètodes  de cerca
     recipeListFiltered() {
       return this.pets.filter((pets) => {
         return (
@@ -194,5 +197,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style></style>
